@@ -30,14 +30,11 @@ const PairModal = ({
 
   const handleChangePair = (item) => {
     navigation.navigate(NAVIGATION_BOTTOM_TAB_STACK, {
-        screen: NAVIGATION_TRADE_STACK,
-        params: {
-          screen:TRADE_SCREEN,
+          screen: "Market",
           params: {
              coinDetail: item,
              path: "Spot"
           },
-        },
       });
       setShowPair(false);
   }
@@ -120,7 +117,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     width: '90%',
-    backgroundColor: '#36363F',
+    backgroundColor: colors.disabledText,
     paddingHorizontal: 15,
     paddingVertical: 25,
     borderRadius: 20,

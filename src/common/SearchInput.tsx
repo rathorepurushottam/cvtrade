@@ -21,7 +21,7 @@ import {eye_close_icon, eye_open_icon, searchIcon} from '../helper/ImageAssets';
 import TouchableOpacityView from './TouchableOpacityView';
 import FastImage from 'react-native-fast-image';
 import {Button} from './Button';
-import {AppText, BOLD, FIFTEEN, MEDIUM, NORMAL, YELLOW} from './AppText';
+import {AppText, BOLD, FIFTEEN, GREEN, MEDIUM, NORMAL, RED, YELLOW} from './AppText';
 import NavigationService from '../navigation/NavigationService';
 import {HOME_SCREEN} from '../navigation/routes';
 
@@ -105,7 +105,7 @@ const SearchInput = ({
             setFocus(false);
             NavigationService.goBack();
           }}>
-          <AppText type={FIFTEEN} color={YELLOW} weight={MEDIUM}>
+          <AppText type={FIFTEEN} color={RED} weight={MEDIUM}>
             Cancel
           </AppText>
         </TouchableOpacityView>

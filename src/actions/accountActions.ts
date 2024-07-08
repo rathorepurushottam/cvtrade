@@ -278,8 +278,8 @@ export const getUserReferCode = () => async (dispatch: AppDispatch) => {
     const response: any = await appOperation.customer.user_refer_code();
     console.log('res:::', response);
     if (response.success) {
-      dispatch(setReferCode(response?.data));
-      dispatch(getReferralList(response?.data))
+      dispatch(setReferCode(response?.data?.user_code));
+      // dispatch(getReferralList(response?.data))
     }
   } catch (e) {
     logger(e);

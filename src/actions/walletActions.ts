@@ -55,7 +55,7 @@ export const generateAddress =
       dispatch(setLoading(true));
       dispatch(setWalletAddress(''));
       const response: any = await appOperation.customer.generate_address(data);
-      console.log('rs', response);l
+      console.log('rs', response);
 
       if (response.success) {
         dispatch(setWalletAddress(response?.data));
@@ -126,7 +126,7 @@ export const getWalletHistory = () => async (dispatch: AppDispatch) => {
   try {
     // dispatch(setLoading(true));
     const response: any = await appOperation.customer.wallet_history();
-
+    // console.log(response, "dispatch(getWalletHistory());")
     if (response.success) {
       dispatch(setWalletHistory(response?.data));
     }
@@ -215,12 +215,29 @@ export const getTransactionHistory =
   };
 
   export const getCoinDetails =
-  (data: any) => async (dispatch: AppDispatch) => {
+  (data: any, type: any,balance: any) => async (dispatch: AppDispatch) => {
+    console.log('Finally');
     try {
       dispatch(setLoading(true));
       const response: any = await appOperation.customer.coin_details(data);
+      console.log(response, "getCoinDetails");
       if (response.success) {
         dispatch(setCoinDetails(response?.data));
+        if(type == "deposit") {
+            if (response?.data?.deposit_status === 'ACTIVE') {
+            NavigationService.navigate(DEPOSIT_SCREEN, {walletDetail: response?.data});
+        } else {
+          showError('Deposit is Disable for Now');
+        }
+        } else if (type == "withdraw") {
+          if (response?.data?.withdrawal_status === 'ACTIVE') {
+
+         NavigationService.navigate(WITHDRAW_SCREEN, {walletDetail: response?.data, balance});
+    }else {
+      showError('Withdrawal is Disable for Now');
+    }
+        }
+        
       }
     } catch (e) {
       logger(e);

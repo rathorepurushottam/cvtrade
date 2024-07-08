@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.cryptobux.cvtrade.app-mergeDebugResources-42:/values-pt/values-pt.xml",
+            "outputFile": "com.crypto.cvtrade.app-mergeDebugResources-42:/values-pt/values-pt.xml",
             "map": [
                 {
                     "source": "/Users/purushottamrathore/.gradle/caches/transforms-3/b3627ca143232ec2ceb6e319eb18971d/transformed/appcompat-1.6.1/res/values-pt/values-pt.xml",

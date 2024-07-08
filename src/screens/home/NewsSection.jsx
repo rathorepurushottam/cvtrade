@@ -15,6 +15,7 @@ import { colors } from "../../theme/colors";
 import { useNavigation } from "@react-navigation/native";
 import { AppText, TWELVE, MEDIUM } from "../../common";
 import { Screen } from "../../theme/dimens";
+import { INVITE_AND_EARN_SCREEN } from "../../navigation/routes";
 
 const NewsSection = () => {
   const navigation = useNavigation();
@@ -30,7 +31,7 @@ const NewsSection = () => {
       id: 2,
       image: InviteEarn_Icon,
       title: "Invite Earn",
-      onPress: () => navigation.navigate("ComingSoon"),
+      onPress: () => navigation.navigate(INVITE_AND_EARN_SCREEN),
     },
     {
       id: 3,

@@ -71,7 +71,7 @@ export const authStyles = StyleSheet.create({
   },
 
   underlineStyleHighLighted: {
-    borderColor: colors.buttonBg,
+    borderColor: colors.buyBtnGreen,
   },
   tabbar: {
     backgroundColor: 'transparent',

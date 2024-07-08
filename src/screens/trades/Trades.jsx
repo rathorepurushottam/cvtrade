@@ -24,10 +24,7 @@ import { slideData } from '../../helper/dummydata';
 
 const Trades = () => {
   const route = useRoute();
-  const dispatch = useAppDispatch();
   const coinDetail = route?.params?.coinDetail;
-  const path = route?.params?.path;
- const isFocus = useIsFocused()
   const [selectedSlide, setSelectedSlide] = useState(0);
   const [selectedKey, setSelectedKey] = useState('Spot');
   // useEffect(() => {
@@ -62,16 +59,8 @@ const Trades = () => {
   return (
     <AppSafeAreaView source={BG_Two} barStyle={"dark-content"}>
         
-      {/* <ImageBackground source={HOME_BG} style={styles.imgBg}> */}
-        {/* <View style={styles.emptySpace}></View> */}
-        {/* <View style={styles.listView}>
-          <FlatList horizontal data={slideData} renderItem={_renderItem} scrollEnabled={false}/>
-        </View> */}
-        {/* {selectedKey == 'Spot' && <BtcCoinDetails coinDetails={coinDetail} />} */}
-        {/* {selectedKey === 'Launchpad' && <Launchpad onSelectedKey={setSelectedKey} onSelectedSlide={setSelectedSlide}/>}
-        {selectedKey == 'Staking' && <StakingTrade />} */}
-         <BtcCoinDetails/>
-      {/* </ImageBackground> */}
+      
+         <BtcCoinDetails coinDetails={coinDetail}/>
 
       <RBSheet
         ref={rbSheet}

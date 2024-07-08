@@ -8,7 +8,7 @@ const RadioButton = ({value, onChange}) => {
   return (
     <TouchableOpacityView style={styles.container} onPress={onChange}>
       <View
-        style={[styles.innerView, value && {backgroundColor: colors.buttonBg}]}
+        style={[styles.innerView, value && {backgroundColor: colors.textGreen}]}
       />
     </TouchableOpacityView>
   );
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     height: 14,
     width: 14,
     borderWidth: borderWidth,
-    borderColor: colors.buttonBg,
+    borderColor: colors.textGreen,
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',

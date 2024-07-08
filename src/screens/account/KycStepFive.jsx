@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
 import {
-  AppSafeAreaView,
   AppText,
   Button,
   FOURTEEN,
+  GREEN,
   PictureModal,
   SECOND,
   SEMI_BOLD,
   SIXTEEN,
   TEN,
-  Toolbar,
   YELLOW,
 } from '../../common';
+import AppSafeAreaView from '../../common/AppSafeAreaView';
+import ToolBar from '../../common/ToolBar';
 import KeyBoardAware from '../../common/KeyboardAware';
 import {StyleSheet, View} from 'react-native';
 import {colors} from '../../theme/colors';
@@ -23,7 +24,7 @@ import {
 } from '../../theme/dimens';
 import TouchableOpacityView from '../../common/TouchableOpacityView';
 import FastImage from 'react-native-fast-image';
-import {doneIcon, uploadIcon} from '../../helper/ImageAssets';
+import {Upload_Icon, Kyc_Completed} from '../../helper/ImageAssets';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import {commonStyles} from '../../theme/commonStyles';
 import {showError} from '../../helper/logger';
@@ -32,6 +33,8 @@ import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {SpinnerSecond} from '../../common/SpinnerSecond';
 import {kycVerification} from '../../actions/accountActions';
 import {checkValue} from '../../helper/utility';
+import CommonButton from '../../common/CommonButton';
+import ImageSelection from "../../common/ImageSelection";
 
 const KycStepFive = () => {
   const dispatch = useAppDispatch();
@@ -43,33 +46,6 @@ const KycStepFive = () => {
   const [selfie, setSelfie] = useState();
   const [isVisible, setIsVisible] = useState(false);
 
-  const onPressCamera = () => {
-    ImageCropPicker.openCamera({
-      useFrontCamera: true,
-      multiple: false,
-      mediaType: 'photo',
-      cropping: true,
-      compressImageQuality: 1
-    })
-      .then(image => {
-        if(image?.size < 5000000 && (image?.mime === "image/png" || image?.mime === "image/jpeg" || image?.mime === "image/jpg")) {
-          let mime = image?.mime?.split('/');
-          let tempphoto = {
-            uri: image.path,
-            name: image?.path ||'image_name',
-            type: image.mime,
-          };
-          setSelfie(tempphoto);
-        } else {
-          setSelfie('');
-          showError("Only JPEG, PNG & JPG formats and file size upto 5MB are supported");
-          return;
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
   const onSubmit = () => {
     if (!selfie) {
       showError(errorText?.selfie);
@@ -104,7 +80,7 @@ const KycStepFive = () => {
 
   return (
     <AppSafeAreaView>
-      <Toolbar isSecond title={checkValue(languages?.kyc_one)} />
+      <ToolBar isSecond title={checkValue(languages?.kyc_one)} />
       <KeyBoardAware>
         <AppText type={SIXTEEN} weight={SEMI_BOLD} style={styles.title}>
           {checkValue(languages?.kyc_sixteen)}
@@ -123,7 +99,7 @@ const KycStepFive = () => {
             }}
             style={styles.fileContainer}>
             <FastImage
-              source={selfie ? doneIcon : uploadIcon}
+              source={selfie ? Kyc_Completed : Upload_Icon}
               style={styles.uploadIcon}
               resizeMode="contain"
             />
@@ -134,8 +110,8 @@ const KycStepFive = () => {
             </AppText>
           </TouchableOpacityView>
         </View>
-        <View>
-        <AppText style={commonStyles.centerText} type={FOURTEEN} color={YELLOW}>
+        <View style={{marginTop: 10}}>
+        <AppText style={commonStyles.centerText} type={FOURTEEN} color={GREEN}>
           {checkValue(languages?.kyc_eighteen)}
         </AppText>
         <AppText style={commonStyles.centerText}>
@@ -144,22 +120,29 @@ const KycStepFive = () => {
           {checkValue(languages?.kyc_twenty)}
         </AppText>
       </View>
-      <Button
-        children={'Submit'}
+      <CommonButton
+        title={'Submit'}
         onPress={() => onSubmit()}
         containerStyle={styles.button}
       />
       </KeyBoardAware>
       
-      <PictureModal
-        isVisible={isVisible}
-        onBackButtonPress={() => setIsVisible(false)}
-        onPressCamera={() => {
-          onPressCamera();
+      <ImageSelection
+        showModal={isVisible}
+        close={() => {
+          setIsVisible(false);
         }}
-        isFront
+        selected={(e) => {
+          setSelfie({
+            type: e?.mime,
+            uri: e?.path,
+            name: e?.path || "image_name",
+          })
+          // console.log(e, "===e===");
+        }}
+        
+        
       />
-      <SpinnerSecond />
     </AppSafeAreaView>
   );
 };
@@ -189,7 +172,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 150,
     borderWidth: borderWidth,
-    borderColor: colors.buttonBg,
+    borderColor: colors.textGreen,
     borderStyle: 'dashed',
     borderRadius: 10,
     marginTop: 20,

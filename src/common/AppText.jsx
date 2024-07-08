@@ -44,6 +44,9 @@ export const AMBER = 'AMBER';
 export const BLUE = 'BLUE';
 export const CHANGETEXT = 'CHANGETEXT';
 export const BELOWTEXT = 'BELOWTEXT';
+export const TEXTCOLOR = "TEXTCOLOR";
+export const KYCDARKBLUE = 'KYCDARKBLUE';
+export const HISTORYTEXT = "HISTORYTEXT";
 
 const AppText = ({
   type,
@@ -166,6 +169,15 @@ const AppText = ({
         break;
         case BELOWTEXT:
         style['color'] = colors.belowText;
+        break;
+        case TEXTCOLOR:
+        style['color'] = colors.textColor;
+        break;
+        case KYCDARKBLUE:
+        style['color'] = colors.KycDarkBlue;
+        break;
+        case HISTORYTEXT:
+        style['color'] = colors.historyText;
         break;
 
       default:

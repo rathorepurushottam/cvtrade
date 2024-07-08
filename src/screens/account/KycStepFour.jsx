@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {
-  AppSafeAreaView,
   AppText,
   Button,
   Input,
@@ -9,8 +8,9 @@ import {
   SEMI_BOLD,
   SIXTEEN,
   TEN,
-  Toolbar,
 } from '../../common';
+import AppSafeAreaView from '../../common/AppSafeAreaView';
+import ToolBar from '../../common/ToolBar';
 import KeyBoardAware from '../../common/KeyboardAware';
 import {StyleSheet, View} from 'react-native';
 import {colors} from '../../theme/colors';
@@ -22,11 +22,10 @@ import {
 } from '../../theme/dimens';
 import {PickerSelect} from '../../common/PickerSelect';
 import {documentType, documentType2} from '../../helper/dummydata';
-import {errorText, placeHolderText, titleText} from '../../helper/Constants';
+import {errorText, titleText} from '../../helper/Constants';
 import TouchableOpacityView from '../../common/TouchableOpacityView';
 import FastImage from 'react-native-fast-image';
-import {doneIcon, uploadIcon} from '../../helper/ImageAssets';
-import ImageCropPicker from 'react-native-image-crop-picker';
+import {Upload_Icon, Kyc_Completed} from '../../helper/ImageAssets';
 import {showError} from '../../helper/logger';
 import {
   checkValidAdharCardNumber,
@@ -38,6 +37,8 @@ import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {setKycData} from '../../slices/accountSlice';
 import NavigationService from '../../navigation/NavigationService';
 import {KYC_STEP_THREE_SCREEN} from '../../navigation/routes';
+import CommonButton from '../../common/CommonButton';
+import ImageSelection from "../../common/ImageSelection";
 
 const KycStepFour = () => {
   const dispatch = useAppDispatch();
@@ -54,61 +55,6 @@ const KycStepFour = () => {
   const [docBack, setDocBack] = useState();
   const [isVisible, setIsVisible] = useState(false);
   const [isFront, setIsFront] = useState(true);
-
-  const onPressCamera = () => {
-    ImageCropPicker.openCamera({
-      multiple: false,
-      mediaType: 'photo',
-      cropping: true,
-      compressImageQuality: 1
-    })
-      .then(image => {
-        if(image?.size < 5000000 && (image?.mime === "image/png" || image?.mime === "image/jpeg" || image?.mime === "image/jpg")) {
-          let mime = image?.mime?.split('/');
-          let tempphoto = {
-            uri: image.path,
-            name: 'doc_front' + image.modificationDate + '.' + mime[1],
-            type: image.mime,
-          };
-          isFront ? setDocFront(tempphoto) : setDocBack(tempphoto);
-        } else {
-          isFront ? setDocFront('') : setDocBack('');
-          showError("Only JPEG, PNG & JPG formats and file size upto 5MB are supported");
-          return;
-        }
-        
-      })
-
-      .catch(error => {
-        console.log(error);
-      });
-  };
-  const onPressGallery = () => {
-    ImageCropPicker.openPicker({
-      multiple: false,
-      mediaType: 'photo',
-      cropping: true,
-      compressImageQuality: 1
-    })
-      .then(image => {
-        if(image?.size < 5000000 && (image?.mime === "image/png" || image?.mime === "image/jpeg" || image?.mime === "image/jpg")) {
-          let mime = image?.mime?.split('/');
-          let tempphoto = {
-            uri: image.path,
-            name: 'doc_front' + image.modificationDate + '.' + mime[1],
-            type: image.mime,
-          };
-          isFront ? setDocFront(tempphoto) : setDocBack(tempphoto);
-        } else {
-          isFront ? setDocFront('') : setDocBack('');
-          showError("Only JPEG, PNG & JPG formats and file size upto 5MB are supported");
-          return;
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
 
   const onNext = () => {
     if (!docType) {
@@ -147,7 +93,7 @@ const KycStepFour = () => {
   };
   return (
     <AppSafeAreaView>
-      <Toolbar isSecond title={checkValue(languages?.kyc_one)} />
+      <ToolBar isSecond title={checkValue(languages?.kyc_one)} />
       <KeyBoardAware>
         <AppText type={SIXTEEN} weight={SEMI_BOLD} style={styles.title}>
           {checkValue(languages?.kyc_thirteen)}
@@ -194,7 +140,7 @@ const KycStepFour = () => {
             }}
             style={styles.fileContainer}>
             <FastImage
-              source={docFront ? doneIcon : uploadIcon}
+              source={docFront ? Kyc_Completed : Upload_Icon}
               style={styles.uploadIcon}
               resizeMode="contain"
             />
@@ -217,7 +163,7 @@ const KycStepFour = () => {
             }}
             style={styles.fileContainer}>
             <FastImage
-              source={docBack ? doneIcon : uploadIcon}
+              source={docBack ? Kyc_Completed : Upload_Icon}
               style={styles.uploadIcon}
               resizeMode="contain"
             />
@@ -228,13 +174,13 @@ const KycStepFour = () => {
             </AppText>
           </TouchableOpacityView>
         </View>
-        <Button
-          children={checkValue(languages?.kyc_three)}
+        <CommonButton
+          title={checkValue(languages?.kyc_three)}
           onPress={() => onNext()}
           containerStyle={styles.button}
         />
       </KeyBoardAware>
-      <PictureModal
+      {/* <PictureModal
         isVisible={isVisible}
         onBackButtonPress={() => setIsVisible(false)}
         onPressGallery={() => {
@@ -243,6 +189,31 @@ const KycStepFour = () => {
         onPressCamera={() => {
           onPressCamera();
         }}
+      /> */}
+      <ImageSelection
+        showModal={isVisible}
+        close={() => {
+          setIsVisible(false);
+        }}
+        selected={(e) => {
+          // setProfileImage({
+          //   type: e?.mime,
+          //   uri: e?.path,
+          //   name: e?.path || "image_name",
+          // });
+          isFront ? setDocFront({
+            type: e?.mime,
+            uri: e?.path,
+            name: e?.path || "image_name",
+          }) : setDocBack({
+            type: e?.mime,
+            uri: e?.path,
+            name: e?.path || "image_name",
+          });
+          // console.log(e, "===e===");
+        }}
+        
+        
       />
     </AppSafeAreaView>
   );
@@ -274,7 +245,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 150,
     borderWidth: borderWidth,
-    borderColor: colors.buttonBg,
+    borderColor: colors.textLightGreen,
     borderStyle: 'dashed',
     borderRadius: 10,
     marginTop: 20,

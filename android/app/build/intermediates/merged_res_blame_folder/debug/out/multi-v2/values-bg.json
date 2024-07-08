@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.cryptobux.cvtrade.app-mergeDebugResources-42:/values-bg/values-bg.xml",
+            "outputFile": "com.crypto.cvtrade.app-mergeDebugResources-42:/values-bg/values-bg.xml",
             "map": [
                 {
                     "source": "/Users/purushottamrathore/.gradle/caches/transforms-3/0a7cb7034eac515addf17ce8efdbda3b/transformed/jetified-play-services-basement-18.1.0/res/values-bg/values.xml",

@@ -184,15 +184,15 @@ export const cancelOrder =
   };
 
 export const placeOrder =
-  (data: PlaceOrderProps, setVisible: any) => async (dispatch: AppDispatch) => {
+  (data: PlaceOrderProps, refRBSheetOrder: any) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setLoading(true));
       const response: any = await appOperation.customer.place_order(data);
 
       if (response.success) {
         dispatch(setOrderData(data));
-        showError(response?.message);
-        setVisible(true);
+        // showError(response?.message);
+        refRBSheetOrder?.current?.open();
       } else {
         showError(response?.message);
         // setVisible(true);
@@ -332,9 +332,9 @@ export const getTransactionHistory =
   };
 
   export const getActivityLogs =
-  (skip: number, limit: number) => async (dispatch: AppDispatch) => {
+  () => async (dispatch: AppDispatch) => {
     try {
-      const response: any = await appOperation.customer.get_Activity_logs(skip, limit);
+      const response: any = await appOperation.customer.get_Activity_logs();
       console.log('res:::::getTransactionHistory:::::', response);
       if (response?.success) {
         if (response?.data?.length == 0) {

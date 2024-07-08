@@ -63,7 +63,7 @@ const CommonInput = ({
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            right: 20,
+            right: 1,
             bottom: 6,
           }}
           onPress={onGetOtp}

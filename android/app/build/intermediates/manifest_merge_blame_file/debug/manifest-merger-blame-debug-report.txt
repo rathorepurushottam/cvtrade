@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.cryptobux.cvtrade"
-4    android:versionCode="5"
-5    android:versionName="1.0.4" >
+3    package="com.crypto.cvtrade"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
@@ -80,12 +80,12 @@
 40
 41    <permission
 41-->[androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
-42        android:name="com.cryptobux.cvtrade.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+42        android:name="com.crypto.cvtrade.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
 42-->[androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
 43        android:protectionLevel="signature" />
 43-->[androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
 44
-45    <uses-permission android:name="com.cryptobux.cvtrade.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
+45    <uses-permission android:name="com.crypto.cvtrade.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- for android -->
 45-->[androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
 45-->[androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 46    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
@@ -144,7 +144,7 @@
 67
 68    <application
 68-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:12:5-35:19
-69        android:name="com.cryptobux.cvtrade.MainApplication"
+69        android:name="com.crypto.cvtrade.MainApplication"
 69-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:13:7-38
 70        android:allowBackup="false"
 70-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:17:7-34
@@ -168,7 +168,7 @@
 80-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:19:7-42
 81        <activity
 81-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:22:7-34:18
-82            android:name="com.cryptobux.cvtrade.MainActivity"
+82            android:name="com.crypto.cvtrade.MainActivity"
 82-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:23:9-37
 83            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
 83-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:25:9-118
@@ -198,7 +198,7 @@
 96-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-24:20
 97            android:name="com.reactnative.ivpusic.imagepicker.IvpusicImagePickerFileProvider"
 97-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-94
-98            android:authorities="com.cryptobux.cvtrade.provider"
+98            android:authorities="com.crypto.cvtrade.provider"
 98-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-60
 99            android:exported="false"
 99-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-37
@@ -223,7 +223,7 @@
 110-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
 111            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
 111-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-83
-112            android:authorities="com.cryptobux.cvtrade.fileprovider"
+112            android:authorities="com.crypto.cvtrade.fileprovider"
 112-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-64
 113            android:exported="false"
 113-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
@@ -407,7 +407,7 @@
 211-->[com.google.firebase:firebase-common:20.4.2] /Users/purushottamrathore/.gradle/caches/transforms-3/4428d254c9d0b6dfb3bd7070fb67fe23/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:23:9-28:39
 212            android:name="com.google.firebase.provider.FirebaseInitProvider"
 212-->[com.google.firebase:firebase-common:20.4.2] /Users/purushottamrathore/.gradle/caches/transforms-3/4428d254c9d0b6dfb3bd7070fb67fe23/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:24:13-77
-213            android:authorities="com.cryptobux.cvtrade.firebaseinitprovider"
+213            android:authorities="com.crypto.cvtrade.firebaseinitprovider"
 213-->[com.google.firebase:firebase-common:20.4.2] /Users/purushottamrathore/.gradle/caches/transforms-3/4428d254c9d0b6dfb3bd7070fb67fe23/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:25:13-72
 214            android:directBootAware="true"
 214-->[com.google.firebase:firebase-common:20.4.2] /Users/purushottamrathore/.gradle/caches/transforms-3/4428d254c9d0b6dfb3bd7070fb67fe23/transformed/jetified-firebase-common-20.4.2/AndroidManifest.xml:26:13-43
@@ -457,7 +457,7 @@
 239-->[androidx.emoji2:emoji2:1.2.0] /Users/purushottamrathore/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
 240            android:name="androidx.startup.InitializationProvider"
 240-->[androidx.emoji2:emoji2:1.2.0] /Users/purushottamrathore/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-241            android:authorities="com.cryptobux.cvtrade.androidx-startup"
+241            android:authorities="com.crypto.cvtrade.androidx-startup"
 241-->[androidx.emoji2:emoji2:1.2.0] /Users/purushottamrathore/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
 242            android:exported="false" >
 242-->[androidx.emoji2:emoji2:1.2.0] /Users/purushottamrathore/.gradle/caches/transforms-3/faa3592d2fc203d6c74b9a5f601058a1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37

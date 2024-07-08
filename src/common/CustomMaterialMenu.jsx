@@ -45,7 +45,7 @@ const CustomMaterialMenu = ({ walletDetail }) => {
     hideMenu();
     NavigationService.navigate(WITHDRAW_SCREEN, { walletDetail: coinDetails });
   };
-  console.log(walletDetail, "walletdetails");
+ 
   return (
     <View>
       <Menu

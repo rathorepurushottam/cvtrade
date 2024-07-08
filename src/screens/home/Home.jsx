@@ -20,6 +20,8 @@ import { getAdminBankDetails, getTradeHistory, getUserPortfolio, getUserWallet, 
 import {mainBg, searchIcon, Notification_Icon} from '../../helper/ImageAssets';
 import { colors } from '../../theme/colors';
 import { Screen } from '../../theme/dimens';
+import { useNavigation } from '@react-navigation/native';
+import { NOTIFICATION_SCREEN, SEARCH_SCREEN } from '../../navigation/routes';
 
 // Create a socket instance and ensure correct connection options
 const socket = connect(BASE_URL, {
@@ -30,6 +32,7 @@ const socket = connect(BASE_URL, {
 
 const Home = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const userData = useAppSelector(state => {
     return state.auth.userData;
   });
@@ -106,25 +109,13 @@ const Home = () => {
   }, []);
 
   return (
-    // <AppSafeAreaView>
-    //   <Header />
-    //   {!useAppSelector((state) => state.home.socketLoading) && (
-    //     <KeyBoardAware style={commonStyles.zeroPadding}>
-    //       <HomeSlider />
-    //       <CoinSlider />
-    //       <HomeMenuBar />
-    //       <CoinList />
-    //     </KeyBoardAware>
-    //   )}
-    //   <SpinnerSecond loading={loading}/>
-    // </AppSafeAreaView>
     <AppSafeAreaView source={mainBg} barStyle={"dark-content"}>
       <ScrollView>
         <HomeSlider />
         <View style={[styles.Main_Container, { width: Screen.Width }]}>
           <TouchableOpacity
             style={styles?.Search_Container}
-            // onPress={() => navigation.navigate("Search")}
+            onPress={() => navigation.navigate(SEARCH_SCREEN)}
           >
             <Image
               source={searchIcon}
@@ -134,7 +125,7 @@ const Home = () => {
             <AppText type={THIRTEEN} color={colors.black} style={{ marginLeft: 5 }} weight={MEDIUM}>Search</AppText>
           </TouchableOpacity>
           <View style={styles.Min_Container}>
-            <TouchableOpacity style={styles?.Common_Container}>
+            <TouchableOpacity style={styles?.Common_Container}  onPress={() => navigation.navigate(NOTIFICATION_SCREEN)}>
               <Image
                 source={Notification_Icon}
                 resizeMode="contain"

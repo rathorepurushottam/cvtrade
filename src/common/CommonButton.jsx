@@ -13,11 +13,12 @@ const CommonButton = ({
   containerStyle = {},
   normalButton = false,
   normalButtonStyle = {},
+  disable
 }) => {
   return (
     <View style={[styles.container, { ...containerStyle }]}>
       {!normalButton ? (
-        <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
+        <TouchableOpacity onPress={onPress} activeOpacity={0.9} disabled={disable}>
           <LinearGradient
             colors={["#57934E", "#AAE9A1"]}
             start={{ x: 0, y: 0 }}

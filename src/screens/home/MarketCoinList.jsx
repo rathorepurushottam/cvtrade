@@ -103,13 +103,13 @@
 //       return handleData()?.filter(coin => coin.quote_currency === activeTab);
 //     }
 //   };
-  
+
 //   // console.log(coinData, "coinData");
-  
+
 //   return getData()?.length !== 0 ? (
 //     getData()?.map(item => {
 //       return <View key={item?._id} style={{}}>{RenderItem({ item , currency})}</View>
-      
+
 //     })
 //   ) : (
 //     <ListEmptyComponent />
@@ -153,36 +153,67 @@
 // });
 // export default MarketCoinList;
 import React, { useCallback } from "react";
-import { FlatList, Image, StyleSheet, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { BASE_URL } from "../../helper/Constants";
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector } from "../../store/hooks";
 import { AppText, BOLD, THIRTEEN, ELEVEN, TWELVE } from "../../common";
+import { useNavigation } from "@react-navigation/native";
+import { NAVIGATION_BOTTOM_TAB_STACK } from "../../navigation/routes";
 
 const RenderItem = React.memo(({ item }) => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.Min_Container}>
+    <TouchableOpacity
+      style={styles.Min_Container}
+      onPress={() => {
+        navigation.navigate(NAVIGATION_BOTTOM_TAB_STACK, {
+          screen: "Market",
+          params: {
+            coinDetail: item,
+            path: "Spot",
+          },
+        });
+      }}
+    >
       <View style={{ flexDirection: "row", width: "33%" }}>
-        <Image source={{uri:`${BASE_URL}${item?.icon_path}`}} resizeMode="contain" style={styles?.icon} />
-        <AppText weight={BOLD} type={THIRTEEN} style={{marginLeft: 10}}>{item?.base_currency}
+        <Image
+          source={{ uri: `${BASE_URL}${item?.icon_path}` }}
+          resizeMode="contain"
+          style={styles?.icon}
+        />
+        <AppText weight={BOLD} type={THIRTEEN} style={{ marginLeft: 10 }}>
+          {item?.base_currency}
           {"\n"}
-          <AppText type={ELEVEN} style={{ color: "gray" }}>{item?.quote_currency}</AppText>
+          <AppText type={ELEVEN} style={{ color: "gray" }}>
+            {item?.quote_currency}
           </AppText>
+        </AppText>
       </View>
       <View style={styles.LastPrice_Conatiner}>
-        <AppText type={ELEVEN}style={{ color: "gray" }}>{item?.buy_price} {"\n"}
-       <AppText type={ELEVEN}style={{ color: "gray" }}>{item?.LastPrice_2}
-        </AppText>
+        <AppText type={ELEVEN} style={{ color: "gray" }}>
+          {item?.buy_price} {"\n"}
+          <AppText type={ELEVEN} style={{ color: "gray" }}>
+            {item?.LastPrice_2}
+          </AppText>
         </AppText>
       </View>
       <View style={styles?.Change_Container}>
-        <AppText type={TWELVE} weight={BOLD}>{item?.change_24hour}</AppText>
+        <AppText type={TWELVE} weight={BOLD}>
+          {item?.change_24hour}
+        </AppText>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 });
 
 const MarketCoinList = () => {
-  const coinData = useAppSelector(state => state.home.coinPairs);
+  const coinData = useAppSelector((state) => state.home.coinPairs);
 
   const renderItem = useCallback(({ item }) => <RenderItem item={item} />, []);
 

@@ -1,26 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { View, Text, StyleSheet, FlatList, ActivityIndicator, Alert, TouchableOpacity, Platform } from 'react-native';
-import { AppSafeAreaView, AppText, Button, Toolbar } from '../../common';
+import { AppText, Button } from '../../common'
+import AppSafeAreaView from '../../common/AppSafeAreaView';
+import ToolBar from '../../common/ToolBar';
 import { getActivityLogs } from '../../actions/homeActions';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { colors } from '../../theme/colors';
-import { twoFixedTwo, dateFormatter } from '../../helper/utility';
+import { dateFormatter } from '../../helper/utility';
 import KeyBoardAware from '../../common/KeyboardAware';
 
 const ActivityLogs = () => {
   const dispatch = useAppDispatch();
-  const [skip, setSkip] = useState(0);
-  const [limit, setLimit] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
   const flatListRef = useRef(null);
 
   useEffect(() => {
-    fetchTransactionHistory(skip);
-  }, [skip]);
+    fetchTransactionHistory();
+  }, []);
 
   const fetchTransactionHistory = (skip) => {
     setIsLoading(true);
-    dispatch(getActivityLogs(skip, limit)) 
+    dispatch(getActivityLogs()) 
       .then(response => {
         setIsLoading(false);
       })
@@ -32,12 +32,6 @@ const ActivityLogs = () => {
 
   const activityLogs = useAppSelector(state => state.home.activityLogs);
 
-  const handleListStakingHistory = (type) => {
-    setSkip(prevSkip => prevSkip + (type === "Next" ? 10 : -10)); 
-    setSerialNumber(type === "Next" ? serialNumber + 10 : serialNumber - 10);
-  };
-
-  console.log(skip, limit, 'handleListStakingHistory');
   console.log(activityLogs?.length, "transaction");
   const [serialNumber, setSerialNumber] = useState(1);
   const _RenderList = ({ item, index }) => {
@@ -45,16 +39,16 @@ const ActivityLogs = () => {
     return (
       <View style={styles.row}>
         {/* <AppText style={styles.cell}>{currentSerialNumber}</AppText> */}
-        <AppText style={[styles.cell, {marginRight: 20}]}>{dateFormatter(item?.createdAt)}</AppText>
-        <AppText style={styles.cell}>{item?.page}</AppText>
-        <AppText style={styles.cell}>{item?.ipAddress}</AppText>
+        <AppText style={[styles.cell, {marginRight: 20}]}>{dateFormatter(item?.date)}</AppText>
+        <AppText style={styles.cell}>{item?.Activity}</AppText>
+        <AppText style={styles.cell}>{item?.IP}</AppText>
       </View>
     );
   };
 
   return (
     <AppSafeAreaView>
-      <Toolbar isLogo={false} title='Activity Logs' isSecond  />
+      <ToolBar isLogo={false} title='Activity Logs' isSecond  />
       <KeyBoardAware>
       <View>
         {activityLogs?.length > 0 ? 
@@ -77,11 +71,6 @@ const ActivityLogs = () => {
         contentContainerStyle={{ marginBottom: Platform.OS === "ios" ? 50 : 0, }}
         style={styles.flatList}
       />
-      <View style={{flexDirection: "row", justifyContent: "space-around", alignItems: "center",
-    marginVertical:10}}>
-        <Button children='Previous' disabled={serialNumber<10? true:false} containerStyle={{paddingHorizontal: 10}} onPress={() => handleListStakingHistory('Previous')}/>
-        <Button children='Next'  disabled={activityLogs?.length < 10} containerStyle={{paddingHorizontal: 30}} onPress={() => handleListStakingHistory('Next')}/>
-      </View>
         </>
         : <AppText>Nothing to show</AppText>}
       

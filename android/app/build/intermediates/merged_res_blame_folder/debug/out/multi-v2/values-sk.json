@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.cryptobux.cvtrade.app-mergeDebugResources-42:/values-sk/values-sk.xml",
+            "outputFile": "com.crypto.cvtrade.app-mergeDebugResources-42:/values-sk/values-sk.xml",
             "map": [
                 {
                     "source": "/Users/purushottamrathore/.gradle/caches/transforms-3/0d5200e7c6f2e02eefb8483dce46a169/transformed/jetified-ucrop-2.2.6-native/res/values-sk/values-sk.xml",

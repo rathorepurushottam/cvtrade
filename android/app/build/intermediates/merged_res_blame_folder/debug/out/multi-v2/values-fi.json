@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.cryptobux.cvtrade.app-mergeDebugResources-42:/values-fi/values-fi.xml",
+            "outputFile": "com.crypto.cvtrade.app-mergeDebugResources-42:/values-fi/values-fi.xml",
             "map": [
                 {
                     "source": "/Users/purushottamrathore/.gradle/caches/transforms-3/e1231b5b187cb579b629117f9511a862/transformed/jetified-react-android-0.73.6-debug/res/values-fi/values-fi.xml",

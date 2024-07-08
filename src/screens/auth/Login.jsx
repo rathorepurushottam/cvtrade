@@ -237,9 +237,9 @@ const Login = () => {
             onfocus={() => setFoucsPass(true)}
             onBlur={() => setFoucsPass(false)}
           />
-          {/* <AppText onPress={() => onForgot()} style={authStyles.forgotText}>
+          <AppText onPress={() => onForgot()} style={authStyles.forgotText}>
             {checkValue(languages?.login_seven)}
-          </AppText> */}
+          </AppText>
           <View style={authStyles.forgotText}></View>
           {/* <Button
             children={checkValue(languages?.login_four)}

@@ -13,11 +13,8 @@ import {
   Refresh_Icon,
 } from "../helper/ImageAssets";
 import { AppText, TWENTY, BOLD, EIGHTEEN } from "./AppText";
-// import { universalPaddingHorizontalHigh } from "../Theme/Dimension";
-// import { Languages } from "../Helper/Languages";
 import { useNavigation } from "@react-navigation/native";
-// import Typography from "./Typography";
-// import Font from "./Font";
+import { NOTIFICATION_SCREEN } from "../navigation/routes";
 
 const ToolBar = ({
   isLogo = true,
@@ -49,24 +46,18 @@ const ToolBar = ({
       {isLogo && !isSecond && (
         <View style={styles.Logo_Container}>
           <Image source={Logo} resizeMode="contain" style={styles.Logo} />
-          {/* <Typography size={20} fontFamily={Font.bold}>
-            {Languages?.logo_Text}
-          </Typography> */}
           <AppText type={TWENTY} weight={BOLD}>Trade</AppText>
         </View>
       )}
       {isSecond && (
-        // <Typography size={18} fontFamily={Font.bold} textStyle={styles.title}>
-        //   {title}
-        // </Typography>
         <AppText type={EIGHTEEN} weight={BOLD} style={styles.title}>{title}</AppText>
       )}
       {isThird && (
         <TouchableOpacity
           style={styles.NotificationContainer}
-        //   onPress={() => {
-        //     navigation.navigate("Notification");
-        //   }}
+          onPress={() => {
+            navigation.navigate(NOTIFICATION_SCREEN);
+          }}
         >
           <Image
             source={Notification_Icon}

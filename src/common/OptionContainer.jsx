@@ -93,10 +93,10 @@ const styles = StyleSheet.create({
 
   export const MarketOptionContainer = ({
     onOptionChange = () => {},
-    firstTitle = "Buy ETH",
-    secondTitle = "Sell ETH",
+    firstTitle,
+    secondTitle,
   }) => {
-    const [selectedOption, setSelectedOption] = useState("Buy ETH");
+    const [selectedOption, setSelectedOption] = useState("Buy");
     const handleOptionPress = (option) => {
       onOptionChange(option);
       setSelectedOption(option);
@@ -106,11 +106,11 @@ const styles = StyleSheet.create({
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.optionButton}
-          onPress={() => handleOptionPress("Buy ETH")}
+          onPress={() => handleOptionPress("Buy")}
         >
           <LinearGradient
             colors={
-              selectedOption === "Buy ETH"
+              selectedOption === "Buy"
                 ? ["#57934E", "#AAE9A1"]
                 : ["transparent", "transparent"]
             }
@@ -127,16 +127,16 @@ const styles = StyleSheet.create({
             >
               {firstTitle}
             </Typography> */}
-            <AppText type={SIXTEEN} weight={BOLD} color={selectedOption === "Buy ETH" ? "black" : "white"}>{firstTitle}</AppText>
+            <AppText type={SIXTEEN} weight={BOLD} color={selectedOption === "Buy" ? "black" : "white"}>{`Buy ${firstTitle}`}</AppText>
           </LinearGradient>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.optionButton}
-          onPress={() => handleOptionPress("Sell ETH")}
+          onPress={() => handleOptionPress("Sell")}
         >
           <LinearGradient
             colors={
-              selectedOption === "Sell ETH"
+              selectedOption === "Sell"
                 ? ["#EB4335", "#EB4335"]
                 : ["transparent", "transparent"]
             }
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
             {/* <Typography size={16} fontFamily={Font.bold}>
               {secondTitle}
             </Typography> */}
-            <AppText type={SIXTEEN} weight={BOLD}>{secondTitle}</AppText>
+            <AppText type={SIXTEEN} weight={BOLD}>{`Sell ${secondTitle}`}</AppText>
           </LinearGradient>
         </TouchableOpacity>
       </View>

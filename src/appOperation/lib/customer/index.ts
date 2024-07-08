@@ -79,9 +79,9 @@ export default (appOperation: AppOperation) => ({
       CUSTOMER_TYPE,
     ),
   trade_history: (data: any) =>
-    appOperation.post(
-      'transaction/trade-history',
-      data, CUSTOMER_TYPE
+    appOperation.get(
+      `transaction/trade-history?skip=${data?.skip}&limit=${data?.limit}&mobile=${data.mobile}`,
+      undefined, undefined, CUSTOMER_TYPE
     ),
   verify_deposit: (data: any) =>
     appOperation.post(
@@ -218,9 +218,9 @@ export default (appOperation: AppOperation) => ({
       undefined,
       CUSTOMER_TYPE,
     ),
-    get_Activity_logs: (skip: number, limit: number) =>
+    get_Activity_logs: () =>
     appOperation.get(
-      `user/activity-logs?skip=${skip}&limit=${limit}`,
+      `user/get_logs`,
       undefined,
       undefined,
       CUSTOMER_TYPE,

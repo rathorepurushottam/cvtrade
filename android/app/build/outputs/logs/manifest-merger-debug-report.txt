@@ -306,7 +306,7 @@ MERGED from [com.android.installreferrer:installreferrer:1.1.2] /Users/purushott
 	android:name
 		ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:13:7-38
 		ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:13:7-38
-activity#com.cryptobux.cvtrade.MainActivity
+activity#com.crypto.cvtrade.MainActivity
 ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:22:7-34:18
 	android:screenOrientation
 		ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:27:10-46
@@ -956,7 +956,7 @@ ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/t
 		ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
 	android:name
 		ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
-permission#com.cryptobux.cvtrade.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+permission#com.crypto.cvtrade.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
 	android:protectionLevel
 		ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
@@ -966,7 +966,7 @@ uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
-uses-permission#com.cryptobux.cvtrade.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission#com.crypto.cvtrade.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
 	android:name
 		ADDED from [androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:26:22-94

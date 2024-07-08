@@ -268,7 +268,7 @@ export const languages = {
   title_amount: 'Amount',
   title_country: 'Country',
   title_kycType: 'Type of KYC',
-  title_middleName: 'Middle Name',
+  title_middleName: 'Middle Name*',
   title_address: 'Address*',
   title_state: 'State*',
   title_city: 'City*',

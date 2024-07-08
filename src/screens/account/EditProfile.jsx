@@ -1,43 +1,37 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useState, useRef } from "react";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import {
-  AppSafeAreaView,
-  Button,
-  Input,
-  PictureModal,
-  Toolbar,
-} from '../../common';
-import KeyBoardAware from '../../common/KeyboardAware';
-import {Alert, Keyboard, StyleSheet, View} from 'react-native';
-import {colors} from '../../theme/colors';
-import {borderWidth, universalPaddingHorizontal} from '../../theme/dimens';
-import {BASE_URL} from '../../helper/Constants';
-import TouchableOpacityView from '../../common/TouchableOpacityView';
-import FastImage from 'react-native-fast-image';
-import {camera_ic, profile_placeholder_ic} from '../../helper/ImageAssets';
-import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import ImagePicker from 'react-native-image-crop-picker';
+  BG_Two,
+  Back_Icon,
+  Profile_Image,
+  SelectImage_Icon,
+} from "../../helper/ImageAssets";
+import ToolBar from "../../common/ToolBar";
+import { colors } from "../../theme/colors";
+import AppBackground from "../../common/AppBackground";
+import CommonInput from "../../common/CommonInput";
+// import Font from "../../Common/Font";
+import CommonButton from "../../common/CommonButton";
+import ImageSelection from "../../common/ImageSelection";
+import { useSelector } from "react-redux";
+import { BASE_URL } from "../../helper/Constants";
 import {showError} from '../../helper/logger';
 import {editUserProfile} from '../../actions/accountActions';
-import {SpinnerSecond} from '../../common/SpinnerSecond';
 import {checkValue} from '../../helper/utility';
-import {sendOtp, verifyOtp} from '../../actions/authActions';
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 
-const EditProfile = () => {
+
+const EditProfile = ({ navigation }) => {
   const dispatch = useAppDispatch();
+  const [visible, setVisible] = useState(false);
   const [profileImage, setProfileImage] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
   const [photo, setPhoto] = useState();
   const [email, setEmail] = useState('');
-  const [otp, setOtp] = useState('');
   const [phoneOtp, setPhoneOtp] = useState('');
-  const lastNameInput = useRef(null);
-  const phoneInput = useRef(null);
-  const emailInput = useRef(null);
-  const otpInput = useRef(null);
-  const phoneOtpInput = useRef(null);
   const userData = useAppSelector(state => state.auth.userData);
   const languages = useAppSelector(state => {
     return state.account.languages;
@@ -50,8 +44,6 @@ const EditProfile = () => {
     profilepicture,
     emailId,
   } = userData ?? '';
-
-  console.log(userData, "userData");
 
   useEffect(() => {
     if (_firstName) {
@@ -68,69 +60,6 @@ const EditProfile = () => {
     }
   }, []);
 
-  const onPressCamera = () => {
-    ImagePicker.openCamera({
-      multiple: false,
-      mediaType: 'photo',
-      cropping: true,
-      compressImageQuality: 1
-    })
-      .then(image => {
-        if(image?.size < 5000000 && (image?.mime === "image/png" || image?.mime === "image/jpeg" || image?.mime === "image/jpg")) {
-          setProfileImage(image.path);
-        let mime = image?.mime?.split('/');
-        let tempphoto = {
-          uri: image?.path,
-          name: image?.path || 'profile_image',
-          type: image?.mime,
-        };
-        setPhoto(tempphoto);
-        } else {
-          setPhoto('');
-          showError("Only JPEG, PNG & JPG formats and file size upto 5MB are supported");
-          return;
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-  const onPressGallery = () => {
-    ImagePicker.openPicker({
-      multiple: false,
-      mediaType: 'photo',
-      cropping: true,
-      compressImageQuality: 0
-    })
-      .then(image => {
-        // setProfileImage(image.path);
-        // let mime = image?.mime?.split('/');
-        // let tempphoto = {
-        //   uri: image?.path,
-        //   name: image?.path || 'profile_image',
-        //   type: image?.mime,
-        // };
-        // setPhoto(tempphoto);
-        if(image?.size < 5000000 && (image?.mime === "image/png" || image?.mime === "image/jpeg" || image?.mime === "image/jpg")) {
-         setProfileImage(image.path);
-        let mime = image?.mime?.split('/');
-        let tempphoto = {
-          uri: image?.path,
-          name: image?.path || 'profile_image',
-          type: image?.mime,
-        };
-        setPhoto(tempphoto);
-        } else {
-          showError("Only JPEG, PNG & JPG formats and file size upto 5MB are supported");
-          return;
-        }
-        
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-
   const onSubmit = () => {
     if (!firstName) {
       showError(checkValue(languages?.error_firstName));
@@ -144,12 +73,7 @@ const EditProfile = () => {
     data.append('firstName', firstName);
     data.append('lastName', lastName);
     data.append('mobileNumber', phone || '');
-    if (!emailId) {
-      data.append('emailId', email || '');
-    }
-    if (!emailId) {
-      data.append('eotp', otp);
-    }
+      data.append('emailId', emailId || '');
     if (!mobileNumber) {
       data.append('motp', phoneOtp);
     }
@@ -186,194 +110,189 @@ const EditProfile = () => {
   };
 
   return (
-    <AppSafeAreaView>
-      <Toolbar isSecond title={checkValue(languages?.edit_one)} />
-      <KeyBoardAware>
-        <View style={styles.container}>
-          <Input
-            title={checkValue(languages?.title_firstName)}
-            placeholder={checkValue(languages?.place_firstName)}
-            value={firstName}
-            onChangeText={text => setFirstName(text)}
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => lastNameInput?.current?.focus()}
-            mainContainer={styles.firstNameInput}
-          />
-          <Input
-            title={checkValue(languages?.title_lastName)}
-            placeholder={checkValue(languages?.place_lastName)}
-            value={lastName}
-            onChangeText={text => setLastName(text)}
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => emailInput?.current?.focus()}
-            assignRef={input => {
-              lastNameInput.current = input;
-            }}
-          />
-          <Input
-            editable={emailId ? false : true}
-            placeholder={'Enter Email'}
-            value={email}
-            onChangeText={text => setEmail(text)}
-            title={'Email'}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => otpInput?.current?.focus()}
-            assignRef={input => {
-              emailInput.current = input;
-            }}
-            isOtp={emailId ? false : true}
-            onSendOtp={() => onGetOtpEmail()}
-            otpText={otpText}
-          />
-          {!emailId && (
-            <Input
-              placeholder={'Enter OTP'}
-              value={otp}
-              title="OTP"
-              onChangeText={text => setOtp(text)}
-              keyboardType="numeric"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => phoneInput?.current?.focus()}
-              assignRef={input => {
-                otpInput.current = input;
-              }}
-              onSubmitEditing={() => phoneOtpInput?.current?.focus()}
-            />
-          )}
-          <Input
-            title={checkValue(languages?.title_phone)}
-            placeholder={checkValue(languages?.place_userName)}
-            value={phone}
-            onChangeText={text => setPhone(text)}
-            autoCapitalize="none"
-            returnKeyType="done"
-            keyboardType="numeric"
-            isOtp={mobileNumber ? false : true}
-            editable={mobileNumber ? false : true}
-            assignRef={input => {
-              phoneInput.current = input;
-            }}
-            otpText={otpText}
-            onSendOtp={() => onGetOtpPhone()}
-          />
-          {!mobileNumber && (
-            <Input
-              placeholder={'Enter OTP'}
-              value={phoneOtp}
-              title="OTP"
-              onChangeText={text => setPhoneOtp(text)}
-              keyboardType="numeric"
-              autoCapitalize="none"
-              returnKeyType="next"
-              onSubmitEditing={() => phoneInput?.current?.focus()}
-              assignRef={input => {
-                otpInput.current = input;
-              }}
-            />
-          )}
-          <View
-            style={styles.imageContainer}>
-            <TouchableOpacityView style={styles.imageContainer2} onPress={() => setIsVisible(true)}>
-              <FastImage
-                source={
-                  profileImage
-                    ? {uri: profileImage}
-                    : profilepicture
-                    ? {uri: `${BASE_URL}${profilepicture}`}
-                    : profile_placeholder_ic
-                }
-                style={styles.profileImage}
-                resizeMode="contain"
-              />
-              <View style={styles.cameraIconContainer}>
-                <FastImage
-                  source={camera_ic}
-                  resizeMode="contain"
-                  style={styles.cameraIcon}
-                />
-              </View>
-            </TouchableOpacityView>
-          </View>
-        </View>
-        <Button
-          children={checkValue(languages?.otp_five)}
-          onPress={() => onSubmit()}
-          containerStyle={styles.button}
-        />
-      </KeyBoardAware>
-      <PictureModal
-        isVisible={isVisible}
-        onBackButtonPress={() => setIsVisible(false)}
-        onPressGallery={() => {
-          onPressGallery();
+    <AppBackground source={BG_Two}>
+      {/* <Loader loading={loading} /> */}
+      <ToolBar isLogo={false} isSecond title={"Edit Profile"} />
+      <ImageSelection
+        showModal={visible}
+        close={() => {
+          setVisible(false);
         }}
-        onPressCamera={() => {
-          onPressCamera();
+        selected={(e) => {
+          setProfileImage({
+            type: e?.mime,
+            uri: e?.path,
+            name: e?.path || "image_name",
+          });
+          // console.log(e, "===e===");
         }}
       />
-      <SpinnerSecond />
-    </AppSafeAreaView>
+      <View style={styles?.Main_Container}>
+        <TouchableOpacity
+          style={styles?.Image_Container}
+          onPress={() => {
+            setVisible(true);
+          }}
+        >
+          <Image
+            source={profileImage
+              ? {uri: profileImage}
+              : profilepicture
+              ? {uri: `${BASE_URL}${profilepicture}`}
+              : Profile_Image}
+            resizeMode="contain"
+            style={styles?.Profile_Image}
+          />
+          <View style={styles.editimg}>
+            <Image
+              source={SelectImage_Icon}
+              resizeMode="contain"
+              style={styles?.SelectImage_Icon}
+            />
+          </View>
+        </TouchableOpacity>
+        <CommonInput
+          value={firstName}
+          onChangeText={setFirstName}
+          labelStyle={{ marginHorizontal: 0 }}
+          Label="First Name"
+          placeholderText="First Name"
+          mainContainer={{ marginVertical: 5 }}
+          inputStyle={{ backgroundColor: null }}
+        />
+        <CommonInput
+          value={lastName}
+          onChangeText={setLastName}
+          mainContainer={{ marginVertical: 5 }}
+          labelStyle={{ marginHorizontal: 0 }}
+          Label="Last Name"
+          placeholderText="Last Name"
+          inputStyle={{ backgroundColor: null }}
+        />
+        <CommonInput
+          mainContainer={{ marginVertical: 5 }}
+          labelStyle={{ marginHorizontal: 0 }}
+          Label="Email Address"
+          value={email}
+          editable={(!userData?.emailId || otpText =="Resend")}
+          onChangeText={setEmail}
+          keyboardType={"email-address"}
+          placeholderText="Email Address"
+          
+          inputStyle={{ backgroundColor: null }}
+        />
+        <CommonInput
+          keyboardType={"number-pad"}
+          Label=" Mobile Number"
+          value={phone}
+          editable={!userData?.mobileNumber || otpText =="Resend"}
+          onChangeText={setPhone}
+          placeholderText="Enter Mobile Number"
+          mainContainer={{ marginVertical: 5 }}
+          labelStyle={{ marginHorizontal: 0 }}
+          inputStyle={{ backgroundColor: null }}
+        />
+        <CommonInput
+          mainContainer={{ marginVertical: 5 }}
+          labelStyle={{ marginHorizontal: 0 }}
+          Label="Enter Verification Code"
+          keyboardType={"email-address"}
+          placeholderText="Verification Code"
+          onGetOtp={onGetOtpPhone}
+          isOtp
+          value={phoneOtp}
+          onChangeText={setPhoneOtp}
+          otpText={otpText}
+          inputStyle={{ backgroundColor: null }}
+        />
+      </View>
+      <CommonButton
+        title="Submit"
+        
+        onPress={() => {
+          onSubmit()
+        }}
+      />
+    </AppBackground>
   );
 };
 
-export default EditProfile;
-
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.white_fifteen,
-    marginTop: 120,
-    padding: universalPaddingHorizontal,
-    borderWidth: borderWidth,
-    borderColor: colors.inputBorder,
+  countryPicker: {
+    height: 45,
+    width: "25%",
+    backgroundColor: null,
+    color: colors.white,
+  },
+  phoneTextInput: {
+    fontSize: 13,
+    paddingLeft: 20,
+    width: "73%",
+    alignSelf: "center",
+    height: 45,
+    // fontFamily: Font.regular,
+    color: colors.white,
+    backgroundColor: null,
+    borderRadius: 35,
+    borderWidth: 1,
+    borderColor: colors.inputBorderColor,
+  },
+  phoneText: {
+    marginLeft: 18,
+    marginVertical: 5,
+  },
+  phoneContain: {
     borderRadius: 10,
+    width: "100%",
+    alignSelf: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
   },
-  button: {marginTop: 50},
-  imageContainer: {
-    height: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
-    right: 0,
-    left: 0,
-    top: -50,
-    alignSelf: 'center'
+  Profile_Image: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
   },
-  imageContainer2: {
-    height: 100,
-    width: 100,
-    borderRadius: 200,
-    borderColor: colors.buttonBg,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
+  SelectImage_Icon: {
+    width: 25,
+    height: 25,
   },
-  firstNameInput: {
-    marginTop: 50,
-  },
-  profileImage: {
-    height: 94,
-    width: 94,
-    borderRadius: 150,
-  },
-  cameraIcon: {
-    height: 29,
-    width: 29,
-  },
-  cameraIconContainer: {
-    position: 'absolute',
-    height: 32,
-    width: 32,
-    borderWidth: 2,
-    borderColor: colors.black,
-    borderRadius: 60,
-    alignItems: 'center',
-    justifyContent: 'center',
+  editimg: {
+    width: 26,
+    height: 26,
+    position: "absolute",
     bottom: 0,
     right: 0,
+    borderWidth: 1,
+    borderColor: "#233023",
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  Image_Container: {
+    width: 88,
+  },
+  Main_Container: {
+    marginTop: 30,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    flex: 1,
+  },
+  Account_Details: {
+    marginTop: 10,
+  },
+  phone_Input: {
+    marginLeft: 10,
+    width: "66%",
+  },
+  ContainerStyle: {
+    width: "100%",
+    position: "absolute",
+    bottom: 5,
+    marginHorizontal: 20,
   },
 });
+
+export default EditProfile;

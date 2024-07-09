@@ -12,71 +12,21 @@ import {
   TWELVE,
 } from "../../common/AppText";
 import { colors } from "../../theme/Colors";
-import { useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { cancelOrder } from "../../actions/homeActions";
 import { useDispatch } from "react-redux";
+import { dateFormatter } from "../../helper/utility";
 
 const OpenOrders = ({data}) => {
+  const dispatch = useAppDispatch();
   const openOrders = useAppSelector(state => state.home.openOrders);
   const name = data?.currencyName;
-  const Data = [
-    {
-      id: 1,
-      CoinName: "BTC/USDT",
-      Date: "10-06-2024",
-      Label_One: "Price",
-      Price: "0.987656",
-      Label_Two: "Quantity",
-      Quantity: "11,87.98",
-      Label_Three: "TDS Amount",
-      TDSAmount: "129.0987",
-      Label_Four: "Total",
-      Total: "12,89,980.09",
-      Label_Five: "Status",
-      Status: "Open",
-      Label_Six: "Order Type",
-      OrderType: "-",
-    },
-    {
-      id: 2,
-      CoinName: "BTC/USDT",
-      Date: "10-06-2024",
-      Label_One: "Price",
-      Price: "0.987656",
-      Label_Two: "Quantity",
-      Quantity: "11,87.98",
-      Label_Three: "TDS Amount",
-      TDSAmount: "129.0987",
-      Label_Four: "Total",
-      Total: "12,89,980.09",
-      Label_Five: "Status",
-      Status: "Open",
-      Label_Six: "Order Type",
-      OrderType: "-",
-    },
-    {
-      id: 3,
-      CoinName: "BTC/USDT",
-      Date: "10-06-2024",
-      Label_One: "Price",
-      Price: "0.987656",
-      Label_Two: "Quantity",
-      Quantity: "11,87.98",
-      Label_Three: "TDS Amount",
-      TDSAmount: "129.0987",
-      Label_Four: "Total",
-      Total: "12,89,980.09",
-      Label_Five: "Status",
-      Status: "Open",
-      Label_Six: "Order Type",
-      OrderType: "-",
-    },
-  ];
+ 
   const onDelete = (id) => {
     let data = {
       order_id: id,
     };
-    useDispatch(cancelOrder(data));
+    dispatch(cancelOrder(data));
   };
   return (
     <ScrollView style={{ flex: 1, marginVertical: 10 }}>

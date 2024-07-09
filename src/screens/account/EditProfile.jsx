@@ -1,5 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Keyboard,
+} from "react-native";
 import {
   BG_Two,
   Back_Icon,
@@ -15,25 +21,25 @@ import CommonButton from "../../common/CommonButton";
 import ImageSelection from "../../common/ImageSelection";
 import { useSelector } from "react-redux";
 import { BASE_URL } from "../../helper/Constants";
-import {showError} from '../../helper/logger';
-import {editUserProfile} from '../../actions/accountActions';
-import {checkValue} from '../../helper/utility';
+import { showError } from "../../helper/logger";
+import { editUserProfile } from "../../actions/accountActions";
+import { checkValue } from "../../helper/utility";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-
+import { sendOtp } from "../../actions/authActions";
 
 const EditProfile = ({ navigation }) => {
   const dispatch = useAppDispatch();
   const [visible, setVisible] = useState(false);
-  const [profileImage, setProfileImage] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [profileImage, setProfileImage] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
   // const [isVisible, setIsVisible] = useState(false);
   const [photo, setPhoto] = useState();
-  const [email, setEmail] = useState('');
-  const [phoneOtp, setPhoneOtp] = useState('');
-  const userData = useAppSelector(state => state.auth.userData);
-  const languages = useAppSelector(state => {
+  const [email, setEmail] = useState("");
+  const [phoneOtp, setPhoneOtp] = useState("");
+  const userData = useAppSelector((state) => state.auth.userData);
+  const languages = useAppSelector((state) => {
     return state.account.languages;
   });
   const [otpText, setOtpText] = useState(checkValue(languages?.register_nine));
@@ -43,7 +49,7 @@ const EditProfile = ({ navigation }) => {
     mobileNumber,
     profilepicture,
     emailId,
-  } = userData ?? '';
+  } = userData ?? "";
 
   useEffect(() => {
     if (_firstName) {
@@ -70,15 +76,15 @@ const EditProfile = ({ navigation }) => {
       return;
     }
     let data = new FormData();
-    data.append('firstName', firstName);
-    data.append('lastName', lastName);
-    data.append('mobileNumber', phone || '');
-      data.append('emailId', emailId || '');
+    data.append("firstName", firstName);
+    data.append("lastName", lastName);
+    data.append("mobileNumber", phone || "");
+    data.append("emailId", emailId || "");
     if (!mobileNumber) {
-      data.append('motp', phoneOtp);
+      data.append("motp", phoneOtp);
     }
     if (photo) {
-      data?.append('profilepicture', photo);
+      data?.append("profilepicture", photo);
     }
     dispatch(editUserProfile(data));
   };
@@ -87,7 +93,7 @@ const EditProfile = ({ navigation }) => {
     let data = {
       email_or_phone: email,
       resend: true,
-      type: 'registration',
+      type: "registration",
     };
     dispatch(sendOtp(data));
     setOtpText(checkValue(languages?.register_ten));
@@ -95,20 +101,21 @@ const EditProfile = ({ navigation }) => {
   };
 
   const onGetOtpPhone = () => {
-    if(!phone) {
+    if (!phone) {
       showError(checkValue(languages?.error_Phone));
-      return
+      return;
     }
     let data = {
       email_or_phone: phone,
       resend: true,
-      type: 'registration',
+      type: "registration",
     };
     dispatch(sendOtp(data));
     setOtpText(checkValue(languages?.register_ten));
     Keyboard.dismiss();
   };
 
+  console.log(profileImage, "profileImage");
   return (
     <AppBackground source={BG_Two}>
       {/* <Loader loading={loading} /> */}
@@ -135,11 +142,13 @@ const EditProfile = ({ navigation }) => {
           }}
         >
           <Image
-            source={profileImage
-              ? {uri: profileImage}
-              : profilepicture
-              ? {uri: `${BASE_URL}${profilepicture}`}
-              : Profile_Image}
+            source={
+              profileImage
+                ? { uri: profileImage?.uri }
+                : profilepicture
+                ? { uri: `${BASE_URL}${profilepicture}` }
+                : Profile_Image
+            }
             resizeMode="contain"
             style={styles?.Profile_Image}
           />
@@ -174,43 +183,44 @@ const EditProfile = ({ navigation }) => {
           labelStyle={{ marginHorizontal: 0 }}
           Label="Email Address"
           value={email}
-          editable={(!userData?.emailId || otpText =="Resend")}
+          editable={!userData?.emailId || otpText == "Resend"}
           onChangeText={setEmail}
           keyboardType={"email-address"}
           placeholderText="Email Address"
-          
           inputStyle={{ backgroundColor: null }}
         />
         <CommonInput
           keyboardType={"number-pad"}
           Label=" Mobile Number"
           value={phone}
-          editable={!userData?.mobileNumber || otpText =="Resend"}
+          editable={!userData?.mobileNumber || otpText == "Resend"}
           onChangeText={setPhone}
           placeholderText="Enter Mobile Number"
           mainContainer={{ marginVertical: 5 }}
           labelStyle={{ marginHorizontal: 0 }}
           inputStyle={{ backgroundColor: null }}
         />
-        <CommonInput
-          mainContainer={{ marginVertical: 5 }}
-          labelStyle={{ marginHorizontal: 0 }}
-          Label="Enter Verification Code"
-          keyboardType={"email-address"}
-          placeholderText="Verification Code"
-          onGetOtp={onGetOtpPhone}
-          isOtp
-          value={phoneOtp}
-          onChangeText={setPhoneOtp}
-          otpText={otpText}
-          inputStyle={{ backgroundColor: null }}
-        />
+
+        {!mobileNumber && (
+          <CommonInput
+            mainContainer={{ marginVertical: 5 }}
+            labelStyle={{ marginHorizontal: 0 }}
+            Label="Enter Verification Code"
+            keyboardType={"email-address"}
+            placeholderText="Verification Code"
+            onGetOtp={onGetOtpPhone}
+            isOtp
+            value={phoneOtp}
+            onChangeText={setPhoneOtp}
+            otpText={otpText}
+            inputStyle={{ backgroundColor: null }}
+          />
+        )}
       </View>
       <CommonButton
         title="Submit"
-        
         onPress={() => {
-          onSubmit()
+          onSubmit();
         }}
       />
     </AppBackground>

@@ -110,7 +110,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
   const sellOrders = useAppSelector(state => state.home.sellOrders);
   const random = useAppSelector(state => state.home.random);
   const userWallet = useAppSelector(state => state.wallet.userWallet);
-  const {skip_buy_sell, id, kycVerified} = userData ?? '';
+  const {id, kycVerified} = userData ?? '';
   const amountInput = useRef(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const [price, setPrice] = useState('');
@@ -236,7 +236,6 @@ const BtcCoinDetails = ({ coinDetails }) => {
   //   dispatch(addToFavorites(data));
   //   setIsFavorite(!isFavorite);
   // };
-
   const onNavigate = () => {
     let pastData = {
       base_currency_id: base_currency_id,
@@ -255,14 +254,14 @@ const BtcCoinDetails = ({ coinDetails }) => {
        navigation.navigate(KYC_STATUS_SCREEN);
       return;
     }
-    if (skip_buy_sell) {
+  
       let data = {
         base_currency_id: base_currency_id,
         order_type: selectedOption === "Limit" ? 'LIMIT' : 'MARKET',
         price: price,
         quantity: amount,
         quote_currency_id: quote_currency_id,
-        side: isBuy ? 'BUY' : 'SELL',
+        side: option === "Buy" ? 'BUY' : 'SELL',
       };
       dispatch(placeOrder(data, refRBSheetOrder));
 
@@ -279,9 +278,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
           console.log('event name exchange emitted');
         }
       }, 2000);
-    } else {
-      // setIsConfirm(true);
-    }
+    
   };
 
   const multiply = (numOne, numTwo) => {
@@ -409,7 +406,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
           </TouchableOpacity>
         </View>
         {visible && <WebView
-          source={{ uri: `https://cvtrade.io/chart/${base_currency}_${quote_currency}` }}
+          source={{ uri: `https://cvtrade.io/chart/${base_currency}_${quote_currency}`}}
           style={styles.webViewStyle}
         />} 
         <View style={styles.availableBalance}>
@@ -595,7 +592,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   webViewStyle: {
-    height: Screen.Height / 3,
+    height: Screen.Height / 2.2,
     width: Screen.Width - 25,
     alignSelf: "center",
     marginTop: 10,

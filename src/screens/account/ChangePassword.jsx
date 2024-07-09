@@ -52,6 +52,7 @@ const ChangePassword = () => {
     Keyboard.dismiss();
   };
   const onSubmit = () => {
+    console.log(newPassword, "newPassword")
     if (!otp) {
       showError(errorText.otp);
       return;
@@ -76,13 +77,13 @@ const ChangePassword = () => {
       new_password: newPassword,
       confirm_password: confirmPassword,
       old_password: password,
-      email: emailId,
-      eotp: otp,
+      email_or_phone: emailId,
+      verification_code: otp,
     };
     dispatch(changePassword(data));
   };
 
-  console.log(userData, 'userData');
+  // console.log(userData, 'userData');
   return (
     <AppSafeAreaView>
       <ToolBar isSecond title={'Change Password'} />

@@ -122,7 +122,7 @@ const CurrencyPreference = () => {
                 ]}
                 onPress={() => handleCurrencySelection(item?.CoinName)}
               >
-                {selectCurrency === item?.Currency && (
+                {selectCurrency === item?.CoinName && (
                   <View style={styles?.Dot} />
                 )}
               </TouchableOpacity>

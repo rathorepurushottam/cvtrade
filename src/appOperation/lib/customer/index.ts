@@ -40,7 +40,7 @@ export default (appOperation: AppOperation) => ({
   get_profile: () =>
     appOperation.get(`user/profile`, undefined, undefined, CUSTOMER_TYPE),
   edit_profile: (data: FormData) =>
-    appOperation.put('user/edit_profile', data, CUSTOMER_TYPE),
+    appOperation.put('user/edit-profile', data, CUSTOMER_TYPE),
   change_password: (data: ChangePasswordProps) =>
     appOperation.post('user/change_password', data, CUSTOMER_TYPE),
   change_currency: (data: CurrencyPreferenceProps) =>

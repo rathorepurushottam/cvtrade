@@ -117,10 +117,10 @@ const Register = () => {
       showError(checkValue(languages?.error_passwordMismatch));
       return;
     }
-    if (!isCheck) {
-      showError(checkValue(languages?.error_terms));
-      return;
-    }
+    // if (!isCheck) {
+    //   showError(checkValue(languages?.error_terms));
+    //   return;
+    // }
     onVerify();
   };
   const onGetOtp = (addr, type) => {
@@ -151,17 +151,13 @@ const Register = () => {
 
   const onVerify = () => {
     let data = {
-      country_code: `+${countryCode}`,
-      email: email,
-      // mobileNumber: mobile,
-      eotp: eOtp,
-      // motp: otp,
+      email_or_phone: email,
+      verification_code: eOtp,
       password: password,
       confirm_password: confirmPassword,
-      // verification_code: otp,
-      referal: referCode,
-    };
-    console.log(data, '==data');
+      referral_code: referCode,
+    }
+    console.log(data);
 
     dispatch(register(data));
   };
@@ -195,8 +191,8 @@ const Register = () => {
               onSubmitEditing={() => passwordInput?.current?.focus()}
               maxLength={option === 'Email' ? 100 : 10}
               mainContainer={authStyles.mobileInput}
-              onfocus={() => setFoucs(true)}
-              onBlur={() => setFoucs(false)}
+              // onfocus={() => setFoucs(true)}
+              // onBlur={() => setFoucs(false)}
             />
           <Input
             placeholder={checkValue(languages?.place_otp)}

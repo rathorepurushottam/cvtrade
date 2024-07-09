@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View, Keyboard } from "react-native";
 import AppBackground from "../../common/AppBackground";
 // import Typography, { FULL_WIDTH } from "../../Common/Typography";
 import ToolBar from "../../common/ToolBar";
@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useRoute } from "@react-navigation/native";
 import { placeHolderText, titleText } from "../../helper/Constants";
 import { toFixedThree, twoFixedTwo } from "../../helper/utility";
+import { sendOtp } from "../../actions/authActions";
 
 const Withdraw = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ const Withdraw = () => {
   const {emailId} = userData ?? '';
   const [otp, setOtp] = useState('');
   const [address, setAddress] = useState('');
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [coinChain, setCoinChain] = useState(chain[0]);
   const [otpText, setOtpText] = useState('Get OTP');
   const addressInput = useRef(null);
@@ -152,8 +153,9 @@ const Withdraw = () => {
         />
         <SpaceBetweenView
           firstText={"You will get :"}
-          secondText={`${amount - walletDetail?.withdrawal_fee} ${walletDetail?.short_name}`}
+          secondText={`${amount === 0 ? 0 : amount - walletDetail?.withdrawal_fee} ${walletDetail?.short_name}`}
           containerStyle={{ marginTop: 0 }}
+          Firststyle={{fontWeight: 'bold'}}
         />
         <View
           style={{

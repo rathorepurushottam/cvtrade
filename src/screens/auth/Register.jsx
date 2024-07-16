@@ -35,6 +35,7 @@ import OptionContainer from '../../common/OptionContainer';
 import {PickerSelect} from '../../common/PickerSelect';
 import {countryCodes} from '../../helper/dummydata';
 import CommonButton from '../../common/CommonButton';
+import { colors } from '../../theme/colors';
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -56,6 +57,11 @@ const Register = () => {
   const [index, setIndex] = useState(0);
   const [countryCode, setCountryCode] = useState('91');
   const [isCheck, setIsCheck] = useState(false);
+  const [focusUserId, setFocusUserId] = useState(false);
+  const [focusCode, setFocusCode] = useState(false);
+  const [focusPass, setFocusPass] = useState(false);
+  const [focusRePass, setFocusRePass] = useState(false);
+  const [focusRefCode, setFocusRefCode] = useState(false);
 
   const otpInput = useRef(null);
   const passwordInput = useRef(null);
@@ -161,7 +167,7 @@ const Register = () => {
 
     dispatch(register(data));
   };
-  const onExpire = () => {};
+
   return (
     <AppSafeAreaView>
       <ToolBar />
@@ -191,8 +197,13 @@ const Register = () => {
               onSubmitEditing={() => passwordInput?.current?.focus()}
               maxLength={option === 'Email' ? 100 : 10}
               mainContainer={authStyles.mobileInput}
-              // onfocus={() => setFoucs(true)}
-              // onBlur={() => setFoucs(false)}
+              onfocus={() => setFocusUserId(true)}
+              onBlur={() => setFocusUserId(false)}
+              containerStyle={{
+                borderColor: !focusUserId
+                  ? colors.inputBorder
+                  : colors.focusedColor,
+              }}
             />
           <Input
             placeholder={checkValue(languages?.place_otp)}
@@ -208,6 +219,13 @@ const Register = () => {
             isOtp
             onSendOtp={() => onGetOtp(email, 'email')}
             otpText={otpText}
+            onfocus={() => setFocusCode(true)}
+            onBlur={() => setFocusCode(false)}
+            containerStyle={{
+              borderColor: !focusCode
+                ? colors.inputBorder
+                : colors.focusedColor,
+            }}
           />
           {/* <View style={authStyles.mobileContainer}>
             {index === 0 && (
@@ -263,6 +281,13 @@ const Register = () => {
             isSecure
             onSubmitEditing={() => confirmPasswordInput?.current?.focus()}
             onPressVisible={() => setIsPasswordVisible(!isPasswordVisible)}
+            onfocus={() => setFocusPass(true)}
+            onBlur={() => setFocusPass(false)}
+            containerStyle={{
+              borderColor: !focusPass
+                ? colors.inputBorder
+                : colors.focusedColor,
+            }}
           />
           <Input
             placeholder={checkValue(languages?.place_signUPConfirmPassword)}
@@ -279,6 +304,13 @@ const Register = () => {
             onPressVisible={() =>
               setIsConfirmPasswordVisible(!isConfirmPasswordVisible)
             }
+            onfocus={() => setFocusRePass(true)}
+            onBlur={() => setFocusRePass(false)}
+            containerStyle={{
+              borderColor: !focusRePass
+                ? colors.inputBorder
+                : colors.focusedColor,
+            }}
           />
           <Input
             placeholder={checkValue(languages?.place_referCode)}
@@ -287,6 +319,13 @@ const Register = () => {
             autoCapitalize="none"
             returnKeyType="done"
             onSubmitEditing={() => onSubmit()}
+            onfocus={() => setFocusRefCode(true)}
+            onBlur={() => setFocusRefCode(false)}
+            containerStyle={{
+              borderColor: !focusRefCode
+                ? colors.inputBorder
+                : colors.focusedColor,
+            }}
           />
            <CommonButton title={languages?.register_six} onPress={() => onSubmit()} containerStyle={authStyles.marginTop}/>
         </View>

@@ -162,9 +162,10 @@ import {
 } from "react-native";
 import { BASE_URL } from "../../helper/Constants";
 import { useAppSelector } from "../../store/hooks";
-import { AppText, BOLD, THIRTEEN, ELEVEN, TWELVE } from "../../common";
+import { AppText, BOLD, THIRTEEN, ELEVEN, TWELVE, FOURTEEN } from "../../common";
 import { useNavigation } from "@react-navigation/native";
 import { NAVIGATION_BOTTOM_TAB_STACK } from "../../navigation/routes";
+import { toFixedThree } from "../../helper/utility";
 
 const RenderItem = React.memo(({ item }) => {
   const navigation = useNavigation();
@@ -196,16 +197,16 @@ const RenderItem = React.memo(({ item }) => {
         </AppText>
       </View>
       <View style={styles.LastPrice_Conatiner}>
-        <AppText type={ELEVEN} style={{ color: "gray" }}>
-          {item?.buy_price} {"\n"}
-          <AppText type={ELEVEN} style={{ color: "gray" }}>
+        <AppText type={FOURTEEN} style={{ color: "gray" }}>
+          {toFixedThree(item?.buy_price)} {"\n"}
+          {/* <AppText type={ELEVEN} style={{ color: "gray" }}>
             {item?.LastPrice_2}
-          </AppText>
+          </AppText> */}
         </AppText>
       </View>
-      <View style={styles?.Change_Container}>
+      <View style={[styles?.Change_Container, {backgroundColor: item?.change > 0 ? '#38B781' : '#CF5656'}]}>
         <AppText type={TWELVE} weight={BOLD}>
-          {item?.change_24hour}
+          {toFixedThree(item?.change)}
         </AppText>
       </View>
     </TouchableOpacity>
@@ -242,11 +243,12 @@ const styles = StyleSheet.create({
   },
   Change_Container: {
     borderRadius: 44,
-    backgroundColor: "#38B78133",
+    // backgroundColor: "#38B78133",
     alignItems: "center",
     justifyContent: "center",
     width: 70,
     height: 35,
+    opacity: 0.8
   },
   LastPrice_Conatiner: {
     width: "33%",

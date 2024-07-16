@@ -15,7 +15,7 @@ import {
 } from '../theme/dimens';
 import {fontFamily} from '../theme/typography';
 import {colors} from '../theme/colors';
-import {eye_close_icon, eye_open_icon} from '../helper/ImageAssets';
+import {EYE_OFF, Eye_Icon} from '../helper/ImageAssets';
 import TouchableOpacityView from './TouchableOpacityView';
 import FastImage from 'react-native-fast-image';
 import {Button} from './Button';
@@ -89,7 +89,7 @@ const Input = ({
             style={styles.eyeIconContainer}
             onPress={onPressVisible}>
             <FastImage
-              source={secureTextEntry ? eye_open_icon : eye_close_icon}
+              source={secureTextEntry ? Eye_Icon : EYE_OFF}
               style={styles.eyeIcon}
               resizeMode="contain"
               tintColor={colors.white}
@@ -132,8 +132,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
     height: inputHeight,
     borderWidth: borderWidth,
-    borderColor: colors.inputBorder,
-    borderRadius: 5,
+    // borderColor: colors.inputBorder,
+    borderRadius: 20,
     paddingHorizontal: universalPaddingHorizontal,
     backgroundColor: colors.inputBackground,
     flexDirection: 'row',

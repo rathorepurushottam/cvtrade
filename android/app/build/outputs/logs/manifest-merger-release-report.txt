@@ -287,7 +287,7 @@ ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/Andr
 	android:launchMode
 		ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:26:9-40
 	android:windowSoftInputMode
-		ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:28:9-51
+		ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:28:9-66
 	android:exported
 		ADDED from /Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:29:9-32
 	android:configChanges

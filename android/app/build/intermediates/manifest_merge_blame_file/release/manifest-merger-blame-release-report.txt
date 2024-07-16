@@ -170,8 +170,8 @@
 80-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:26:9-40
 81            android:screenOrientation="portrait"
 81-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:27:10-46
-82            android:windowSoftInputMode="adjustResize" >
-82-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:28:9-51
+82            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
+82-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:28:9-66
 83            <intent-filter>
 83-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:30:9-33:25
 84                <action android:name="android.intent.action.MAIN" />

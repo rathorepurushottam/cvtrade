@@ -119,7 +119,7 @@ const KycStepTwo = () => {
       showError(checkValue(languages?.error_M_otp));
       return;
     }
-    if(!phoneNumber || !mobileNumber) {
+    if(!phoneNumber) {
       showError("Please Enter Mobile Number");
       return
     }

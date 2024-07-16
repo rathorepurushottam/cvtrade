@@ -14,34 +14,64 @@ import {
   Refresh_Icon,
   Tether_Icon,
   BG_Two,
-  Success_Icon
+  Success_Icon,
 } from "../../helper/ImageAssets";
 import { MarketOptionContainer } from "../../common/OptionContainer";
 import WebView from "react-native-webview";
-import { FIFTEEN, GREEN, Input, RED } from "../../common";
+import { FIFTEEN, GREEN, HISTORYTEXT, Input, RED } from "../../common";
 import RBSheet from "react-native-raw-bottom-sheet";
 import Select from "../../common/Select";
 // import { Languages } from "../../Helper/Languages";
 // import CommonInput from "../../Common/CommonInput";
 import CommonButton from "../../common/CommonButton";
 // import { useSelector } from "react-redux";
-import { Screen, smallButtonHeight, universalPaddingHorizontal } from "../../theme/dimens";
-import { AppText, SIXTEEN, MEDIUM, TWELVE, SEMI_BOLD, THIRTEEN, FOURTEEN, BOLD, TWENTY } from "../../common";
+import {
+  borderWidth,
+  Screen,
+  smallButtonHeight,
+  universalPaddingHorizontal,
+} from "../../theme/dimens";
+import {
+  AppText,
+  SIXTEEN,
+  MEDIUM,
+  TWELVE,
+  SEMI_BOLD,
+  THIRTEEN,
+  FOURTEEN,
+  BOLD,
+  TWENTY,
+} from "../../common";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { checkToFixedThree, toFixedEight, toFixedThree } from "../../helper/utility";
+import {
+  checkToFixedThree,
+  toFixedEight,
+  toFixedThree,
+  twoFixedTwo,
+} from "../../helper/utility";
 import { KYC_STATUS_SCREEN, ORDER_HISTORY } from "../../navigation/routes";
-import { getFeeDetails, getPastOrders, placeOrder } from "../../actions/homeActions";
+import {
+  getFeeDetails,
+  getPastOrders,
+  placeOrder,
+} from "../../actions/homeActions";
 import { connect } from "socket.io-client";
 import { BASE_URL, placeHolderText, titleText } from "../../helper/Constants";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { setBuyOrders, setOpenOrders, setRandom, setSellOrders, setSocket } from "../../slices/homeSlice";
+import {
+  setBuyOrders,
+  setOpenOrders,
+  setRandom,
+  setSellOrders,
+  setSocket,
+} from "../../slices/homeSlice";
 import TouchableOpacityView from "../../common/TouchableOpacityView";
 import { percentageData } from "../../helper/dummydata";
 import { SpinnerSecond } from "../../common/SpinnerSecond";
 import PairModal from "../../common/PairModal";
 
 const socket = connect(BASE_URL, {
-  transports: ['websocket'],
+  transports: ["websocket"],
   forceNew: true,
   autoConnect: true,
   upgrade: false,
@@ -50,30 +80,30 @@ const socket = connect(BASE_URL, {
 });
 export const Data = [
   {
-    label: '0.1',
-    value: '0.1',
+    label: "0.1",
+    value: "0.1",
   },
   {
-    label: '0.01',
-    value: '0.01',
+    label: "0.01",
+    value: "0.01",
   },
   {
-    label: '0.001',
-    value: '0.001',
+    label: "0.001",
+    value: "0.001",
   },
   {
-    label: '0.0001',
-    value: '0.0001',
+    label: "0.0001",
+    value: "0.0001",
   },
 ];
 export const DataLimit = [
   {
-    id: '0.1',
-    name: 'Limit',
+    id: "0.1",
+    name: "Limit",
   },
   {
-    id: '0.1',
-    name: 'Market',
+    id: "0.1",
+    name: "Market",
   },
 ];
 export const ColorData = [
@@ -100,24 +130,24 @@ export const ColorData = [
 const BtcCoinDetails = ({ coinDetails }) => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
-  const coinData = useAppSelector(state => state.home.coinData);
-  const feeDetail = useAppSelector(state => state.home.feeDetails);
+  const coinData = useAppSelector((state) => state.home.coinData);
+  const feeDetail = useAppSelector((state) => state.home.feeDetails);
 
   const coinDetail = coinDetails ? coinDetails : coinData[0];
-  const favoriteArray = useAppSelector(state => state.home.favorites);
-  const userData = useAppSelector(state => state.auth.userData);
-  const buyOrders = useAppSelector(state => state.home.buyOrders);
-  const sellOrders = useAppSelector(state => state.home.sellOrders);
-  const random = useAppSelector(state => state.home.random);
-  const userWallet = useAppSelector(state => state.wallet.userWallet);
-  const {id, kycVerified} = userData ?? '';
+  const favoriteArray = useAppSelector((state) => state.home.favorites);
+  const userData = useAppSelector((state) => state.auth.userData);
+  const buyOrders = useAppSelector((state) => state.home.buyOrders);
+  const sellOrders = useAppSelector((state) => state.home.sellOrders);
+  const random = useAppSelector((state) => state.home.random);
+  const userWallet = useAppSelector((state) => state.wallet.userWallet);
+  const { id, kycVerified } = userData ?? "";
   const amountInput = useRef(null);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [price, setPrice] = useState('');
-  const [amount, setAmount] = useState('1');
-  const [activePercentage, setActivePercentage] = useState('');
+  const [price, setPrice] = useState("");
+  const [amount, setAmount] = useState("1");
+  const [activePercentage, setActivePercentage] = useState("");
   // const [isConfirm, setIsConfirm] = useState(false);
-  const [total, setTotal] = useState('');
+  const [total, setTotal] = useState("");
   const [balance, setBalance] = useState(0);
   const [_balance, _setBalance] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -130,7 +160,8 @@ const BtcCoinDetails = ({ coinDetails }) => {
   // const lastTenObjects = sellOrders && sellOrders?.slice(-12);
   // const startingSixObjects = buyOrders && buyOrders?.slice(0, 6);
   // const startingTenObjects = buyOrders && buyOrders?.slice(0, 12);
-
+  const [focusPrice, setFocusPrice] = useState(false);
+  const [focusAmount, setFocusAmount] = useState(false);
   const [option, setOption] = useState("Buy");
   const refRBSheet = useRef();
   const refRBSheetOrder = useRef();
@@ -154,37 +185,37 @@ const BtcCoinDetails = ({ coinDetails }) => {
     setTotal(multiply(buy_price, 1)?.toString());
   }, [buy_price]);
   useEffect(() => {
-    socket?.on('connect', () => {
-      console.log('connected to detail socket server');
+    socket?.on("connect", () => {
+      console.log("connected to detail socket server");
       dispatch(setSocket(socket));
       dispatch(setRandom(Math.random()));
     });
 
     return () => {
-      socket?.off('connect');
+      socket?.off("connect");
     };
   }, []);
 
   useFocusEffect(
     React.useCallback(() => {
       let data = {
-        message: 'exchange',
+        message: "exchange",
         userId: id,
         base_currency_id: base_currency_id,
         quote_currency_id: quote_currency_id,
       };
       if (id && base_currency_id && quote_currency_id) {
-        socket?.emit('message', data);
-        console.log('event name exchange emitted');
+        socket?.emit("message", data);
+        console.log("event name exchange emitted");
         setBalance(0);
         dispatch(setOpenOrders([]));
         dispatch(setBuyOrders([]));
         dispatch(setSellOrders([]));
       }
-    }, [base_currency_id, quote_currency_id, id, random]),
+    }, [base_currency_id, quote_currency_id, id, random])
   );
   useEffect(() => {
-    socket?.on('message', res => {
+    socket?.on("message", (res) => {
       // console.log(res?.open_orders,'====res');
       setBalance(res?.balance?.quote_currency_balance);
       _setBalance(res?.balance?.base_currency_balance);
@@ -194,19 +225,19 @@ const BtcCoinDetails = ({ coinDetails }) => {
       setLoading(false);
     });
     return () => {
-      socket?.off('message');
+      socket?.off("message");
     };
   }, []);
   useEffect(() => {
     let interval = setInterval(() => {
       if (id && base_currency_id && quote_currency_id) {
         let data = {
-          message: 'exchange',
+          message: "exchange",
           userId: id,
           base_currency_id: base_currency_id,
           quote_currency_id: quote_currency_id,
         };
-        socket?.emit('message', data);
+        socket?.emit("message", data);
       }
     }, 5000);
     return () => {
@@ -224,7 +255,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
 
   useEffect(() => {
     if (base_currency) {
-      let data = {currency_id: base_currency_id};
+      let data = { currency_id: base_currency_id };
       dispatch(getFeeDetails(data));
     }
   }, [base_currency_id]);
@@ -245,40 +276,39 @@ const BtcCoinDetails = ({ coinDetails }) => {
       firstCoin: base_currency,
       secondCoin: quote_currency,
     };
-    navigation.navigate(ORDER_HISTORY, {data: pastData, currencyName});
+    navigation.navigate(ORDER_HISTORY, { data: pastData, currencyName });
     dispatch(getPastOrders(pastData));
   };
 
   const onSubmit = () => {
     if (kycVerified !== 2) {
-       navigation.navigate(KYC_STATUS_SCREEN);
+      navigation.navigate(KYC_STATUS_SCREEN);
       return;
     }
-  
-      let data = {
+
+    let data = {
+      base_currency_id: base_currency_id,
+      order_type: selectedOption === "Limit" ? "LIMIT" : "MARKET",
+      price: price,
+      quantity: amount,
+      quote_currency_id: quote_currency_id,
+      side: option === "Buy" ? "BUY" : "SELL",
+    };
+    dispatch(placeOrder(data, refRBSheetOrder));
+
+    setTimeout(() => {
+      let _data = {
+        message: "exchange",
+        userId: id,
         base_currency_id: base_currency_id,
-        order_type: selectedOption === "Limit" ? 'LIMIT' : 'MARKET',
-        price: price,
-        quantity: amount,
         quote_currency_id: quote_currency_id,
-        side: option === "Buy" ? 'BUY' : 'SELL',
       };
-      dispatch(placeOrder(data, refRBSheetOrder));
 
-      setTimeout(() => {
-        let _data = {
-          message: 'exchange',
-          userId: id,
-          base_currency_id: base_currency_id,
-          quote_currency_id: quote_currency_id,
-        };
-
-        if (id && base_currency_id && quote_currency_id) {
-          socket?.emit('exchange', _data);
-          console.log('event name exchange emitted');
-        }
-      }, 2000);
-    
+      if (id && base_currency_id && quote_currency_id) {
+        socket?.emit("exchange", _data);
+        console.log("event name exchange emitted");
+      }
+    }, 2000);
   };
 
   const multiply = (numOne, numTwo) => {
@@ -289,7 +319,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
   const percentCalculation = (balance, percentage) => {
     return (parseFloat(balance) * parseFloat(percentage)) / 100;
   };
-  const handleTotalPercentage = value => {
+  const handleTotalPercentage = (value) => {
     setActivePercentage(value);
     if (option == "Buy") {
       handleTotal(percentCalculation(balance, value));
@@ -297,16 +327,16 @@ const BtcCoinDetails = ({ coinDetails }) => {
       handleQty(percentCalculation(balance, value));
     }
   };
-  const handleAmount = text => {
+  const handleAmount = (text) => {
     setPrice(text?.toString());
     setTotal(multiply(text, amount));
   };
 
-  const handleQty = text => {
+  const handleQty = (text) => {
     setAmount(text?.toString());
     setTotal(multiply(text, price));
   };
-  const handleTotal = text => {
+  const handleTotal = (text) => {
     const qty = Number(text) / Number(price);
     setAmount(qty?.toString());
     setTotal(multiply(price, qty));
@@ -337,7 +367,6 @@ const BtcCoinDetails = ({ coinDetails }) => {
   //   }, 10000);
   // };
 
-
   const handleCloseRBSheet = () => {
     refRBSheet?.current?.close();
   };
@@ -347,12 +376,15 @@ const BtcCoinDetails = ({ coinDetails }) => {
     handleCloseRBSheet();
   };
 
-  // console.log(feeDetail, "feeDetail");
+  console.log(coinDetail, "coinDetail");
   return (
     <AppBackground source={BG_Two}>
       <ScrollView style={{ flex: 1 }}>
         <View style={styles?.HeaderCommon_Container}>
-          <TouchableOpacity style={styles?.Coin_Container} onPress={() => setShowPair(true)}>
+          <TouchableOpacity
+            style={styles?.Coin_Container}
+            onPress={() => setShowPair(true)}
+          >
             <Image
               source={Ethereum_Icon}
               resizeMode="contain"
@@ -363,7 +395,11 @@ const BtcCoinDetails = ({ coinDetails }) => {
               resizeMode="contain"
               style={[styles?.icon, { marginLeft: -8 }]}
             />
-            <AppText type={SIXTEEN} weight={MEDIUM} style={{ marginHorizontal: 10 }}>{`${base_currency}-${quote_currency}`}</AppText>
+            <AppText
+              type={SIXTEEN}
+              weight={MEDIUM}
+              style={{ marginHorizontal: 10 }}
+            >{`${base_currency}-${quote_currency}`}</AppText>
             <Image
               source={Back_Icon}
               resizeMode="contain"
@@ -381,13 +417,55 @@ const BtcCoinDetails = ({ coinDetails }) => {
             />
           </TouchableOpacity>
         </View>
-        <AppText type={SIXTEEN} weight={BOLD} style={[styles?.Text_Container, {paddingHorizontal: 20}]}>
+        <AppText
+          type={SIXTEEN}
+          weight={BOLD}
+          style={[styles?.Text_Container, { paddingHorizontal: 20 }]}
+        >
           {quote_currency} {buy_price}
-          <AppText type={TWELVE} weight={SEMI_BOLD} color={coinDetail?.change < 0 ? RED : GREEN}>
-          {" "}
+          <AppText
+            type={TWELVE}
+            weight={SEMI_BOLD}
+            color={coinDetail?.change < 0 ? RED : GREEN}
+          >
+            {" "}
             {`(${coinDetail?.change}%)`}
           </AppText>
         </AppText>
+        <View style={{ paddingHorizontal: 15, marginTop: 5 }}>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <AppText weight={SEMI_BOLD} color={HISTORYTEXT}>
+              24H High
+            </AppText>
+            <AppText weight={SEMI_BOLD} color={HISTORYTEXT}>
+              24H Low
+            </AppText>
+            <AppText weight={SEMI_BOLD} color={HISTORYTEXT}>
+              24H Volumn {base_currency}
+            </AppText>
+            <AppText weight={SEMI_BOLD} color={HISTORYTEXT}>
+              24H Change
+            </AppText>
+          </View>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <AppText weight={SEMI_BOLD} color={GREEN}>
+              {twoFixedTwo(coinDetail?.high)}
+            </AppText>
+            <AppText weight={SEMI_BOLD} color={RED}>
+              {twoFixedTwo(coinDetail?.low)}
+            </AppText>
+            <AppText weight={SEMI_BOLD}>
+              {twoFixedTwo(coinDetail?.volume)}
+            </AppText>
+            <AppText weight={SEMI_BOLD}>
+              {twoFixedTwo(coinDetail?.change_24hour)}
+            </AppText>
+          </View>
+        </View>
         <MarketOptionContainer
           onOptionChange={(e) => {
             setOption(e);
@@ -396,28 +474,54 @@ const BtcCoinDetails = ({ coinDetails }) => {
           secondTitle={quote_currency}
         />
         <View style={styles.chartContain}>
-          <AppText type={THIRTEEN} weight={MEDIUM}>Chart</AppText>
+          <AppText type={THIRTEEN} weight={MEDIUM}>
+            Chart
+          </AppText>
           <TouchableOpacity onPress={() => setVisible(!visible)}>
             <Image
               source={Back_Icon}
               resizeMode="contain"
-              style={[styles?.Back_Icon, visible && {transform: [{ rotate: "90deg" }]}]}
+              style={[
+                styles?.Back_Icon,
+                visible && { transform: [{ rotate: "90deg" }] },
+              ]}
             />
           </TouchableOpacity>
         </View>
-        {visible && <WebView
-          source={{ uri: `https://cvtrade.io/chart/${base_currency}_${quote_currency}`}}
-          style={styles.webViewStyle}
-        />} 
+        {visible && (
+          <WebView
+            source={{
+              uri: `https://cvtrade.io/chart/${base_currency}_${quote_currency}`,
+            }}
+            style={styles.webViewStyle}
+            startInLoadingState={true}
+            scalesPageToFit={true}
+            automaticallyAdjustContentInsets={true}
+            // scrollEnabled={true}
+            javaScriptEnabled={true}
+            domStorageEnabled={true}
+            bounces={false}
+            sharedCookiesEnabled={true}
+            javaScriptEnabledAndroid={true}
+          />
+        )}
         <View style={styles.availableBalance}>
-          <AppText type={THIRTEEN} weight={MEDIUM}>Available balance: {option === "Buy" ? checkToFixedThree(balance) : toFixedThree(_balance)} {option === "Buy" ? quote_currency : base_currency}</AppText>
-          <AppText type={FOURTEEN} style={styles?.Common_Margin}>Order Type</AppText>
+          <AppText type={THIRTEEN} weight={MEDIUM}>
+            Available balance:{" "}
+            {option === "Buy"
+              ? checkToFixedThree(balance)
+              : toFixedThree(_balance)}{" "}
+            {option === "Buy" ? quote_currency : base_currency}
+          </AppText>
+          <AppText type={FOURTEEN} style={styles?.Common_Margin}>
+            Order Type
+          </AppText>
 
           <TouchableOpacity
             style={styles?.Select_Container}
             onPress={() => refRBSheet?.current?.open()}
           >
-          <AppText type={FOURTEEN}>{selectedOption}</AppText>
+            <AppText type={FOURTEEN}>{selectedOption}</AppText>
 
             <Image
               source={Back_Icon}
@@ -426,73 +530,92 @@ const BtcCoinDetails = ({ coinDetails }) => {
               style={styles.ArrowIcon}
             />
           </TouchableOpacity>
-          {selectedOption === 'Limit' && (
+          {selectedOption === "Limit" && (
+            <Input
+              placeholder={placeHolderText.empty}
+              title={titleText.price}
+              value={price}
+              onChangeText={(text) => handleAmount(text)}
+              keyboardType="numeric"
+              autoCapitalize="none"
+              returnKeyType="next"
+              onfocus={() => setFocusPrice(true)}
+              onBlur={() => setFocusPrice(false)}
+              onSubmitEditing={() => amountInput?.current?.focus()}
+              currency={quote_currency}
+              editable={selectedOption === "Limit"}
+              containerStyle={[
+                styles.inputContainer,
+                {
+                  borderColor: !focusPrice
+                    ? colors.inputBorder
+                    : colors.focusedColor,
+                },
+              ]}
+              titleStyle={styles.inputContainer2}
+            />
+          )}
           <Input
             placeholder={placeHolderText.empty}
-            title={titleText.price}
-            value={price}
-            onChangeText={text => handleAmount(text)}
+            title={titleText.amount}
+            value={amount}
+            onChangeText={(text) => handleQty(text)}
             keyboardType="numeric"
-            autoCapitalize="none"
-            returnKeyType="next"
-            onSubmitEditing={() => amountInput?.current?.focus()}
-            currency={quote_currency}
-            editable={selectedOption === 'Limit'}
-            containerStyle={styles.inputContainer}
+            returnKeyType="done"
+            onSubmitEditing={() => onSubmit()}
+            assignRef={(input) => {
+              amountInput.current = input;
+            }}
+            onfocus={() => setFocusAmount(true)}
+            onBlur={() => setFocusAmount(false)}
+            currency={base_currency}
+            containerStyle={[
+              styles.inputContainer,
+              {
+                borderColor: !focusAmount
+                  ? colors.inputBorder
+                  : colors.focusedColor,
+              },
+            ]}
             titleStyle={styles.inputContainer2}
           />
-        )}
-        <Input
-          placeholder={placeHolderText.empty}
-          title={titleText.amount}
-          value={amount}
-          onChangeText={text => handleQty(text)}
-          keyboardType="numeric"
-          returnKeyType="done"
-          onSubmitEditing={() => onSubmit()}
-          assignRef={input => {
-            amountInput.current = input;
-          }}
-          currency={base_currency}
-          containerStyle={styles.inputContainer}
-          titleStyle={styles.inputContainer2}
-        />
           <View style={styles.Text_Container}>
-          {percentageData.map(e => {
-            return (
-              <TouchableOpacityView
-                onPress={() => {
-                  handleTotalPercentage(e.value);
-                }}
-                style={[
-                  styles.percentageContainer,
-                  activePercentage === e.value && {
-                    backgroundColor: colors.green_fifty,
-                  },
-                ]}>
-                <AppText type={TWELVE} weight={SEMI_BOLD}>
-                  {e.value}%
-                </AppText>
-              </TouchableOpacityView>
-            );
-          })}
+            {percentageData.map((e) => {
+              return (
+                <TouchableOpacityView
+                  onPress={() => {
+                    handleTotalPercentage(e.value);
+                  }}
+                  style={[
+                    styles.percentageContainer,
+                    activePercentage === e.value && {
+                      backgroundColor: colors.green_fifty,
+                    },
+                  ]}
+                >
+                  <AppText type={TWELVE} weight={SEMI_BOLD}>
+                    {e.value}%
+                  </AppText>
+                </TouchableOpacityView>
+              );
+            })}
           </View>
         </View>
         {option == "Buy" ? (
           <CommonButton
-            title={kycVerified !== 2 ? 'Sumbit KYC' : `Buy ${base_currency}`}
+            title={kycVerified !== 2 ? "Sumbit KYC" : `Buy ${base_currency}`}
             buttonStyle={styles?.Button}
             onPress={() => onSubmit()}
           />
         ) : (
           <CommonButton
             normalButton
-            title={kycVerified !== 2 ? 'Sumbit KYC' : `Sell ${quote_currency}`}
+            title={kycVerified !== 2 ? "Sumbit KYC" : `Sell ${quote_currency}`}
             normalButtonStyle={[{ backgroundColor: colors.red }]}
             onPress={() => onSubmit()}
           />
         )}
-        <View style={{ height: 150 }}></View>
+        {/* <View style={{ height: 150 }}></View> */}
 
         <RBSheet
           ref={refRBSheet}
@@ -506,7 +629,10 @@ const BtcCoinDetails = ({ coinDetails }) => {
           }}
         >
           <ScrollView>
-          <Select rbSheetRef={refRBSheet} onSelectOption={handleSelectOption} />
+            <Select
+              rbSheetRef={refRBSheet}
+              onSelectOption={handleSelectOption}
+            />
           </ScrollView>
         </RBSheet>
         <RBSheet
@@ -523,30 +649,65 @@ const BtcCoinDetails = ({ coinDetails }) => {
           {/* <ScrollView>
           <Select rbSheetRef={refRBSheet} onSelectOption={handleSelectOption} />
           </ScrollView> */}
-          <View style={{alignItems: "center", padding: 10}}>
-          <View style={styles?.Line} />
-            <Image source={Success_Icon} style={{width: 80, height: 80,marginVertical: 10}}/>
+          <View style={{ alignItems: "center", padding: 10 }}>
+            <View style={styles?.Line} />
+            <Image
+              source={Success_Icon}
+              style={{ width: 80, height: 80, marginVertical: 10 }}
+            />
             <AppText type={TWENTY}>Order Created Successfully!</AppText>
-            <View style={{backgroundColor: colors.blackFive, flexDirection: "row", justifyContent: "space-between", width: "70%", padding: 10, marginVertical: 10}}>
+            <View
+              style={{
+                backgroundColor: colors.blackFive,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "70%",
+                padding: 10,
+                marginVertical: 10,
+              }}
+            >
               <View>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>Quantity</AppText>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>TDS</AppText>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>FEE</AppText>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>Total</AppText>
+                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                  Quantity
+                </AppText>
+                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                  TDS
+                </AppText>
+                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                  FEE
+                </AppText>
+                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                  Total
+                </AppText>
               </View>
               <View>
-              <AppText type={THIRTEEN} weight={SEMI_BOLD}>{amount}</AppText>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>{feeDetail?.tds}</AppText>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>{feeDetail?.fee}</AppText>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>{amount*buy_price}</AppText>
+                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                  {amount}
+                </AppText>
+                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                  {feeDetail?.tds}
+                </AppText>
+                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                  {feeDetail?.fee}
+                </AppText>
+                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                  {amount * buy_price}
+                </AppText>
               </View>
             </View>
-            <AppText>Fee: Maker: {feeDetail?.maker_fee}% l Taker: {feeDetail?.taker_fee}% l TDS: {feeDetail?.tds}% l Incl. of all applicable taxes</AppText>
-            <CommonButton title="Done" onPress={() => refRBSheetOrder?.current?.close()}/>
+            <AppText>
+              Fee: Maker: {feeDetail?.maker_fee}% l Taker:{" "}
+              {feeDetail?.taker_fee}% l TDS: {feeDetail?.tds}% l Incl. of all
+              applicable taxes
+            </AppText>
+            <CommonButton
+              title="Done"
+              onPress={() => refRBSheetOrder?.current?.close()}
+            />
           </View>
         </RBSheet>
       </ScrollView>
-      <SpinnerSecond loading={loading}/>
+      <SpinnerSecond loading={loading} />
       <PairModal showPair={showPair} setShowPair={setShowPair} />
     </AppBackground>
   );
@@ -570,7 +731,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   sheetContain: {
-    backgroundColor: '#0C0C0C',
+    backgroundColor: "#0C0C0C",
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
   },
@@ -592,10 +753,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   webViewStyle: {
-    height: Screen.Height / 2.2,
+    height: Screen.Height / 2.1,
     width: Screen.Width - 25,
     alignSelf: "center",
     marginTop: 10,
+    // backgroundColor: "black"
   },
   availableBalance: {
     width: Screen.Width - 25,
@@ -616,7 +778,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: 35,
     paddingHorizontal: 20,
-    marginBottom: 10
+    marginBottom: 10,
   },
   icon: {
     resizeMode: "contain",
@@ -650,10 +812,10 @@ const styles = StyleSheet.create({
     height: 15,
   },
   Text_Container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 10,
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   chartContain: {
     width: Screen.Width - 25,
@@ -668,11 +830,11 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginTop: 5,
-    backgroundColor: colors.blackFive,
+    // backgroundColor: colors.blackFive,
     borderWidth: 0,
     fontSize: 12,
     // borderColor: colors.borderColor,
-    // borderWidth: borderWidth,
+    borderWidth: borderWidth,
   },
   inputContainer2: {
     marginTop: 5,
@@ -680,9 +842,9 @@ const styles = StyleSheet.create({
   percentageContainer: {
     height: smallButtonHeight,
     padding: universalPaddingHorizontal,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '23%',
+    alignItems: "center",
+    justifyContent: "center",
+    width: "23%",
     backgroundColor: colors.blackFive,
     borderRadius: 5,
   },

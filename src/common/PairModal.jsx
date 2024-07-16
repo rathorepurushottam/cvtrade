@@ -30,7 +30,7 @@ const PairModal = ({
 
   const handleChangePair = (item) => {
     navigation.navigate(NAVIGATION_BOTTOM_TAB_STACK, {
-          screen: "Market",
+          screen: "Trades",
           params: {
              coinDetail: item,
              path: "Spot"

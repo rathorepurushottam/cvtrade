@@ -23,6 +23,7 @@ import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {checkValue, validatePassword} from '../../helper/utility';
 import {SpinnerSecond} from '../../common/SpinnerSecond';
 import CommonButton from '../../common/CommonButton';
+import { colors } from '../../theme/colors';
 
 const ResetPassword = () => {
   const dispatch = useAppDispatch();
@@ -38,6 +39,8 @@ const ResetPassword = () => {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
   const confirmPasswordInputRef = useRef(null);
+  const [focus, setFocus] = useState(false);
+  const [reFocus, setReFocus] = useState(false);
   const onSubmit = () => {
     if (!validatePassword(password)) {
       showError(checkValue(languages?.error_passwordRegex));
@@ -77,9 +80,16 @@ const ResetPassword = () => {
             secureTextEntry={!isPasswordVisible}
             returnKeyType="next"
             isSecure
+            onfocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
             onSubmitEditing={() => confirmPasswordInputRef?.current?.focus()}
             onPressVisible={() => setIsPasswordVisible(!isPasswordVisible)}
-            containerStyle={authStyles.forgotContainer}
+            containerStyle={[authStyles.forgotContainer, {
+              borderColor: !focus
+                ? colors.inputBorder
+                : colors.focusedColor,
+            }]}
+           
           />
           <Input
             placeholder={checkValue(languages?.place_confirmNewPassword)}
@@ -90,12 +100,19 @@ const ResetPassword = () => {
             assignRef={input => {
               confirmPasswordInputRef.current = input;
             }}
+            onfocus={() => setReFocus(true)}
+            onBlur={() => setReFocus(false)}
             returnKeyType="done"
             isSecure
             onSubmitEditing={() => onSubmit()}
             onPressVisible={() =>
               setIsConfirmPasswordVisible(!isConfirmPasswordVisible)
             }
+            containerStyle={[ {
+              borderColor: !reFocus
+                ? colors.inputBorder
+                : colors.focusedColor,
+            }]}
           />
 
           <CommonButton

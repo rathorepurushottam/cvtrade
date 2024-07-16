@@ -126,7 +126,7 @@ export const kycVerification = (data: any) => async (dispatch: AppDispatch) => {
     console.log('res:::', response);
     if (response?.success) {
       showError(response?.message);
-      NavigationService.navigate(ACCOUNT_SCREEN);
+      NavigationService.navigate(NAVIGATION_BOTTOM_TAB_STACK);
     } else {
       showError(response?.message);
     }

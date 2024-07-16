@@ -77,14 +77,14 @@ const CustomTabBar = ({ state }) => {
     {
       id: 2,
       icon: Market_Icon,
-      label: "Trade",
+      label: "Market",
       screen: "Market",
     },
     {
       id: 3,
       icon: Convert_Black,
-      label: "",
-      screen: "Convert",
+      label: "Trades",
+      screen: "Trades",
     },
     {
       id: 4,
@@ -106,7 +106,7 @@ const CustomTabBar = ({ state }) => {
 
   return (
     <ImageBackground
-      source={BottomTab_BG}
+      // source={BottomTab_BG}
       resizeMode="cover"
       tintColor={colors.inputBgColor}
       style={styles?.BottomTab_BG}
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "black",
+    backgroundColor: "#111111",
     height: 65,
     paddingHorizontal: 20,
   },

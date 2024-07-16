@@ -19,13 +19,11 @@ import {showError} from '../../helper/logger';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import {sendOtp} from '../../actions/authActions';
 import {SpinnerSecond} from '../../common/SpinnerSecond';
-import {RenderTabBarAuth} from './Login';
-import {PickerSelect} from '../../common/PickerSelect';
-import {countryCodes} from '../../helper/dummydata';
 import {checkValue, validateEmail} from '../../helper/utility';
-// import { HOME_BG } from '../../helper/ImageAssets';
+import OptionContainer from "../../common/OptionContainer";
 import { Screen } from '../../theme/dimens';
 import CommonButton from '../../common/CommonButton';
+import { colors } from '../../theme/colors';
 
 const ForgotPassword = () => {
   const dispatch = useAppDispatch();
@@ -33,22 +31,22 @@ const ForgotPassword = () => {
     return state.account.languages;
   });
   const [userName, setUserName] = useState('');
-  const [index, setIndex] = useState(0);
-  const [countryCode, setCountryCode] = useState('91');
+  const [option, setOption] = useState("Email");
+  const [focus, setFocus] = useState(false);
 
-  useEffect(() => {
-    setUserName('');
-  }, [index]);
+  // useEffect(() => {
+  //   setUserName('');
+  // }, [index]);
 
   const onGetOtp = () => {
-    if (index === 0 && !userName) {
-      showError(checkValue(languages?.error_email));
-      return;
-    }
-    if (index === 1 && !validateEmail(userName)) {
-      showError(checkValue(languages?.error_email));
-      return;
-    }
+    // if (index === 0 && !userName) {
+    //   showError(checkValue(languages?.error_email));
+    //   return;
+    // }
+    // if (index === 1 && !validateEmail(userName)) {
+    //   showError(checkValue(languages?.error_email));
+    //   return;
+    // }
     let data = {
       email_or_phone: userName,
       resend: true,
@@ -74,7 +72,11 @@ const ForgotPassword = () => {
           <AppText type={FOURTEEN}>
             {checkValue(languages?.forgot_three)}
           </AppText>
-          {/* <RenderTabBarAuth index={index} setIndex={setIndex} /> */}
+          <OptionContainer
+            onOptionChange={(e) => {
+              setOption(e);
+            }}
+          />
           <View style={authStyles.mobileContainer}>
             {/* {index === 0 && (
               <PickerSelect
@@ -90,16 +92,25 @@ const ForgotPassword = () => {
             )} */}
             <Input
               placeholder={
-                checkValue(languages?.place_email)
+                option === "Email"
+                  ? checkValue(languages?.place_login_userName)
+                  : "Enter Mobile Number"
               }
               value={userName}
               onChangeText={text => setUserName(text)}
-              keyboardType={'email-address'}
+              keyboardType={option === "Email" ? "email-address" : "numeric"}
               autoCapitalize="none"
               returnKeyType="done"
               onSubmitEditing={() => onGetOtp()}
-              maxLength={100}
+              onfocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+              maxLength={option === "Email" ? 100 : 10}
               mainContainer={authStyles.mobileInput}
+              containerStyle={{
+                borderColor: !focus
+                  ? colors.inputBorder
+                  : colors.focusedColor,
+              }}
             />
           </View>
 

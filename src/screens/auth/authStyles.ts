@@ -46,12 +46,12 @@ export const authStyles = StyleSheet.create({
   bottomTextLogin: {
     textAlign: 'center',
     position: 'absolute',
-    bottom: Platform.OS === "ios" ? -50 : 10,
+    bottom: Platform.OS === "ios" ? -50 : 12,
     right: 0,
     left: 0,
   },
   forgotText: {
-    marginVertical: 12,
+    marginTop: 12,
     alignSelf: 'flex-end',
   },
   forgotContainer: {
@@ -65,7 +65,7 @@ export const authStyles = StyleSheet.create({
     height: inputHeight,
     borderWidth: borderWidth,
     backgroundColor: colors.inputBackground,
-    borderRadius: 40,
+    borderRadius: 50,
     marginTop: 50,
     borderColor: colors.inputBorder,
   },

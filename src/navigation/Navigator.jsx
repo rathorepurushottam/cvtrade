@@ -106,6 +106,7 @@ import CommitDetails from '../screens/trades/CommitDetails';
 import ActivityLogs from '../screens/account/ActivityLogs';
 import ReferralList from '../screens/account/ReferralList';
 import ComingSoon from '../common/ComingSoon';
+import Market from '../screens/Market';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -280,212 +281,6 @@ const AuthStack = () => (
   </Stack.Navigator>
 );
 
-// const TradeStack = () => (
-//   <Stack.Navigator screenOptions={options}>
-//     <Stack.Screen name={routes.TRADE_SCREEN} component={Trades} />
-//     <Stack.Screen
-//       name="P2PBottomTabNavigator"
-//       component={P2PBottomTabNavigator}
-//     />
-//     <Stack.Screen name={routes.SWAPNEXBCOIN_SCREEN} component={SwapNEXBCoin} />
-//     <Stack.Screen name={routes.COIN_DETAILS_SCREEN} component={CoinDetails} />
-//     <Stack.Screen
-//       name={routes.COIN_DETAILS_CHART_SCREEN}
-//       component={CoinDetailChart}
-//     />
-//   </Stack.Navigator>
-// );
-
-// function BottomNavigation() {
-//   return (
-//     <Tab.Navigator
-//       initialRouteName={
-//         routes.HOME_SCREEN
-//       }
-//       backBehavior={'history'}
-//       screenOptions={{
-//         headerShown: false,
-//         tabBarHideOnKeyboard: true,
-//         tabBarStyle: {
-//           backgroundColor: colors.black,
-//           height: 60,
-//           borderTopWidth: 0,
-//           paddingVertical: 10,
-//         },
-//         tabBarIconStyle: {},
-//         tabBarAllowFontScaling: false,
-//         tabBarShowLabel: true,
-//         tabBarLabelStyle: {
-//           fontSize: 12,
-//           marginBottom: 10,
-//         },
-//         tabBarActiveTintColor: colors.buttonBg,
-//         tabBarInactiveTintColor: colors.tabIcon,
-//       }}>
-//       <Tab.Screen
-//         name={routes.HOME_SCREEN}
-//         options={{
-//           tabBarLabel: '',
-//           tabBarIcon: ({focused}) => (
-//             <>
-//               {focused ? (
-//                 <TouchableOpacityView>
-//                   <View style={{alignItems: 'center'}}>
-//                     <AppText
-//                       style={{top: 5}}
-//                       weight={MEDIUM}
-//                       color={focused ? YELLOW : WHITE}>
-//                       Home
-//                     </AppText>
-//                     <View
-//                       style={{
-//                         marginTop: 12,
-//                         width: 5,
-//                         height: 5,
-//                         backgroundColor: colors.buttonBg,
-//                         borderRadius: 5,
-//                       }}></View>
-//                   </View>
-//                 </TouchableOpacityView>
-//               ) : (
-//                 <View style={{alignItems: 'center', marginTop: 10}}>
-//                   <TabIcon focused={focused} icon={home_ic} />
-//                   <AppText color={WHITE} weight={MEDIUM}
-//                       style={{top: 5}}>Home</AppText>
-//                 </View>
-//               )}
-//             </>
-//           ),
-//         }}
-//         component={Home}
-//       />
-//       <Tab.Screen
-//         name={routes.NAVIGATION_TRADE_STACK}
-//         options={{
-//           tabBarLabel: '',
-//           tabBarIcon: ({focused}) => (
-//             <>
-//               {focused ? (
-//                 <TouchableOpacityView>
-//                   <View
-//                     style={{alignItems: 'center', justifyContent: 'center'}}>
-//                     <AppText
-//                       weight={MEDIUM}
-//                       style={{top: 5}}
-//                       color={focused ? YELLOW : WHITE}>
-//                       Trades
-//                     </AppText>
-//                     <View
-//                       style={{
-//                         marginTop: 12,
-//                         width: 5,
-//                         height: 5,
-//                         backgroundColor: colors.buttonBg,
-//                         borderRadius: 5,
-//                       }}></View>
-//                   </View>
-//                 </TouchableOpacityView>
-//               ) : (
-//                 <View style={{alignItems: 'center', marginTop: 10}}>
-//                   <TabIcon focused={focused} icon={trade_ic} />
-//                   <AppText
-//                       weight={MEDIUM}
-//                       style={{top: 5}}
-//                       color={WHITE}>
-//                       Trades
-//                     </AppText>
-//                   {/* <AppText weight={MEDIUM} color={WHITE}>Trades</AppText> */}
-//                 </View>
-//               )}
-//             </>
-//           ),
-//         }}
-//         component={Trades}
-//       />
-
-//       <Tab.Screen
-//         name={routes.WALLET_SCREEN}
-//         options={{
-//           tabBarLabel: '',
-//           tabBarIcon: ({focused}) => (
-//             <>
-//               {focused ? (
-//                 <TouchableOpacityView>
-//                   <View
-//                     style={{alignItems: 'center', justifyContent: 'center'}}>
-//                     <AppText
-//                       weight={MEDIUM}
-//                       style={{top: 5}}
-//                       color={focused ? YELLOW : WHITE}>
-//                       Wallet
-//                     </AppText>
-//                     <View
-//                       style={{
-//                         marginTop: 12,
-//                         width: 5,
-//                         height: 5,
-//                         backgroundColor: colors.buttonBg,
-//                         borderRadius: 5,
-//                       }}></View>
-//                   </View>
-//                 </TouchableOpacityView>
-//               ) : (
-//                 <View style={{alignItems: 'center', marginTop: 10}}>
-//                   <TabIcon focused={focused} icon={wallet_ic} />
-//                   <AppText
-//                       weight={MEDIUM}
-//                       style={{top: 5}}
-//                       color={WHITE}>
-//                       Wallet
-//                     </AppText>
-//                 </View>
-//               )}
-//             </>
-//           ),
-//         }}
-//         component={Wallet}
-//       />
-//       <Tab.Screen
-//         name={routes.ACCOUNT_SCREEN}
-//         options={{
-//           tabBarLabel: '',
-//           tabBarIcon: ({focused}) => (
-//             <>
-//               {focused ? (
-//                 <TouchableOpacityView>
-//                   <View
-//                     style={{alignItems: 'center', justifyContent: 'center'}}>
-//                     <AppText
-//                       style={{top: 5}}
-//                       weight={MEDIUM}
-//                       color={focused ? YELLOW : WHITE}>
-//                       Account
-//                     </AppText>
-//                     <View
-//                       style={{
-//                         marginTop: 12,
-//                         width: 5,
-//                         height: 5,
-//                         backgroundColor: colors.buttonBg,
-//                         borderRadius: 5,
-//                       }}></View>
-//                   </View>
-//                 </TouchableOpacityView>
-//               ) : (
-//                 <View style={{alignItems: 'center', marginTop: 10}}>
-//                   <TabIcon focused={focused} icon={account_ic} />
-
-//                   <AppText color={WHITE} weight={MEDIUM}>Account</AppText>
-//                 </View>
-//               )}
-//             </>
-//           ),
-//         }}
-//         component={Account}
-//       />
-//     </Tab.Navigator>
-//   );
-// }
 const BottomNavigation = ({ initialRouteName = "Home" }) => {
   return (
     <Tab.Navigator
@@ -504,8 +299,8 @@ const BottomNavigation = ({ initialRouteName = "Home" }) => {
       initialRouteName={initialRouteName}
     >
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Market" component={Trades} />
-      <Tab.Screen name="Convert" component={Home} />
+      <Tab.Screen name="Market" component={Market} />
+      <Tab.Screen name="Trades" component={Trades} />
       <Tab.Screen name="Wallet" component={Wallet} />
       <Tab.Screen name="Profile" component={Account} />
     </Tab.Navigator>

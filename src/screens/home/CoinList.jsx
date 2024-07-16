@@ -30,13 +30,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: universalPaddingHorizontalHigh,
     paddingVertical: universalPaddingVertical,
-    backgroundColor: "#0C0C0C",
+    // backgroundColor: "#0C0C0C",
   },
   Heading: {
     flexDirection: "row",
     marginTop: 15,
     justifyContent: "space-between",
     marginBottom: 10,
+    marginLeft: 30
   },
   MarketCoinList: {
     marginTop: 10,

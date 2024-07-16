@@ -74,7 +74,7 @@ const KycStepFive = () => {
     formData.append("emailId", kycData?.emailId);
     formData.append("mobileNumber", kycData?.mobileNumber);
     formData.append("motp", parseInt(kycData?.mobileOtp));  
-    formData.append("eotp", emailOtp);
+    formData.append("eotp", kycData?.emailOtp);
     formData.append("document_type", kycData?.document_type);
     console.log('data::::::::', formData);
     dispatch(kycVerification(formData));

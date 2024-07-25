@@ -8,6 +8,10 @@
         "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_slider_bg_2.png"
     },
     {
+        "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_down_ic.png.flat",
+        "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_down_ic.png"
+    },
+    {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_power.png.flat",
         "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_power.png"
     },
@@ -168,6 +172,10 @@
         "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_slider_bg_5.png"
     },
     {
+        "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_referal.png.flat",
+        "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_referal.png"
+    },
+    {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_notification_icon.png.flat",
         "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_notification_icon.png"
     },
@@ -210,6 +218,10 @@
     {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_kyc_completed.png.flat",
         "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_kyc_completed.png"
+    },
+    {
+        "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_people_icon.png.flat",
+        "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_people_icon.png"
     },
     {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_market_icon.png.flat",
@@ -350,6 +362,10 @@
     {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_banner3.png.flat",
         "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_banner3.png"
+    },
+    {
+        "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_up_ic.png.flat",
+        "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_up_ic.png"
     },
     {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_china_flag.png.flat",

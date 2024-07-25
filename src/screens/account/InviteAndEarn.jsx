@@ -21,7 +21,7 @@ import Icon from "../../common/Icon";
 // import Font from "../../Common/Font";
 import { colors } from "../../theme/colors";
 import CommonInput from "../../common/CommonInput";
-import { AppText, BLACK, BLUE, FIFTEEN, THIRTEEN, WHITE, BOLD } from "../../common";
+import { AppText, BLACK, BLUE, FIFTEEN, THIRTEEN, WHITE, BOLD, GREEN } from "../../common";
 import { Screen } from "../../theme/dimens";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getUserReferCode } from "../../actions/accountActions";
@@ -72,38 +72,41 @@ const ReferAndEarn = () => {
       <ScrollView style={{ flex: 1 }}>
         <ToolBar isLogo={false} isSecond title={"Refer & Earn"} />
 
-        <Icon source={REFER} size={270} imageStyle={{ alignSelf: "center" }} />
+        
         <View
           style={{ width: Screen.Width - 20, padding: 10, alignSelf: "center" }}
         >
           <View
             style={{
-              width: "70%",
-              backgroundColor: "#afd9aa",
+              width: "80%",
+              backgroundColor: "#7ed37529",
               padding: 5,
               borderRadius: 10,
+              borderWidth: 2,
+              borderColor: "#7ed3754a",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: 20
+              marginVertical: 20,
+              alignSelf: "center"
             }}
           >
-            <AppText type={FIFTEEN} color={BLACK} weight={BOLD}>
+            <AppText type={FIFTEEN} color={WHITE} weight={BOLD}>
               Total Referal commission
             </AppText>
-            <AppText type={FIFTEEN} color={BLACK} weight={BOLD}>
+            <AppText type={FIFTEEN} color={WHITE} weight={BOLD}>
             10000 SHIB
             </AppText>
             
           </View>
           <AppText
             type={FIFTEEN}
-            color={BLUE}
+            color={GREEN}
             weight={BOLD}
             textStyle={{ marginVertical: 5 }}
           >
             Earn 5000 SHIB{" "}
             <AppText type={FIFTEEN} color={WHITE} weight={BOLD}>
-              for each friend you refer.
+              for each friend you refer!
             </AppText>{" "}
           </AppText>
 
@@ -126,15 +129,19 @@ const ReferAndEarn = () => {
             editable={false}
           />
           <CommonButton title="Invite a friend" onPress={() => onSubmit()}></CommonButton>
+          <Icon source={REFER} size={270} imageStyle={{ alignSelf: "center" }} />
+            <View style={{marginTop: 10, alignItems: "center"}}>
           <AppText
             type={THIRTEEN}
-            style={{ lineHeight: 18 }}
+            style={{ lineHeight: 18, marginBottom: 20 }}
             color={WHITE}
           >
             Or share via
           </AppText>
+          <FlatList horizontal data={shareData} renderItem={_renderItem} />
         </View>
-        <FlatList horizontal data={shareData} renderItem={_renderItem} />
+        
+        </View>
       </ScrollView>
     </AppBackground>
   );

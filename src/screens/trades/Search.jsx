@@ -22,7 +22,7 @@ import NavigationService from '../../navigation/NavigationService';
 import { NAVIGATION_BOTTOM_TAB_STACK, NAVIGATION_TRADE_STACK, TRADE_SCREEN } from '../../navigation/routes';
 import FastImage from 'react-native-fast-image';
 import {checkValue, toFixedEight} from '../../helper/utility';
-import { HOME_BG } from '../../helper/ImageAssets';
+import { BG_Two, HOME_BG } from '../../helper/ImageAssets';
 
 const Search = () => {
   const hotCoins = useAppSelector(state => state.home.coinPairs);
@@ -57,6 +57,7 @@ const Search = () => {
     return (
       <TouchableOpacityView
         key={item?._id}
+        style={styles.Min_Container}
         >
         <View style={styles.coinContainer}>
           <FastImage
@@ -79,8 +80,8 @@ const Search = () => {
   };
 
   return (
-    <AppSafeAreaView>
-      <ImageBackground  source={HOME_BG} style={styles.imgBg} >
+    <AppSafeAreaView source={BG_Two}>
+     <ToolBar isLogo={false} isSecond title='Search' />
       <SearchInput
       cancelBtn={true}
         value={value}
@@ -101,7 +102,6 @@ const Search = () => {
           return renderItem({item, index});
         })}
       </KeyBoardAware>
-    </ImageBackground>
     </AppSafeAreaView>
 
   );
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   coinContainer: {
     flexDirection: 'row',
-    marginBottom: 20,
+    // marginBottom: 20,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -126,5 +126,16 @@ const styles = StyleSheet.create({
     height: 34,
     resizeMode: 'contain',
     marginEnd: 10,
+  },
+  Min_Container: {
+    paddingVertical: 5,
+    paddingHorizontal: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#FFFFFF10",
+    marginVertical: 5,
+    borderRadius: 10,
+    // opacity: 0.6
   },
 });

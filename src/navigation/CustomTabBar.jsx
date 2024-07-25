@@ -137,22 +137,22 @@ const CustomTabBar = ({ state }) => {
                 icon={item?.icon}
                 index={index}
               />
-              {/* <Typography
-                size={12}
-                fontFamily={Font.medium}
-                textStyle={{
+              {/* <AppText
+                type={TWELVE}
+                weight={MEDIUM}
+                style={{
                   top: 5,
                   color:
-                    state.index === index ? Colors.greenShade : Colors.white,
+                    state.index === index ? colors.greenShade : colors.white,
                 }}
               >
                 {item?.label}
-              </Typography> */}
+              </AppText> */}
               <AppText type={TWELVE} weight={MEDIUM} style={{
-                top: 5,
+                top: index === 2 ? 16 : 5,
                 color:
                   state.index === index ? colors.greenShade : colors.white,
-              }}></AppText>
+              }}>{item?.label}</AppText>
             </View>
           </TouchableOpacity>
         );
@@ -177,7 +177,8 @@ const styles = StyleSheet.create({
   Shadow_Line: {
     width: 35,
     height: 3,
-    top: -5,
+    top: -8,
+    right: 3,
     position: "absolute",
   },
   TabCommon_Container: {
@@ -201,8 +202,8 @@ const styles = StyleSheet.create({
     bottom: 8,
   },
   tabIcon: {
-    width: 18,
-    height: 18,
+    width: 22,
+    height: 22,
     resizeMode: "contain",
   },
   centerTabIcon: {

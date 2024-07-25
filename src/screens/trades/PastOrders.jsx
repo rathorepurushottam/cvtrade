@@ -96,7 +96,7 @@ const PastOrders = ({data}) => {
           </View>
         );
       }): <AppText style={{alignSelf: "center", marginTop: 100}} type={SIXTEEN} weight={SEMI_BOLD}>No Data Available</AppText>}
-      {pastOrder?.length > 0 && <View style={{flexDirection: "row", justifyContent: "center"}}>
+      {pastOrder?.length > 10 && <View style={{flexDirection: "row", justifyContent: "center"}}>
         
         <CommonButton title="Previous" containerStyle={{width: "40%"}} onPress={() => handleListStakingHistory('Previous')} disabled={skip <= 0}/>
         <CommonButton title="Next" containerStyle={{width: "40%"}} onPress={() => handleListStakingHistory('Next')} disabled={pastOrder?.length < 10}/>

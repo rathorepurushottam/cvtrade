@@ -221,15 +221,15 @@ export const getTransactionHistory =
       dispatch(setLoading(true));
       const response: any = await appOperation.customer.coin_details(data);
       console.log(response, "getCoinDetails");
-      if (response.success) {
+      if (response?.success) {
         dispatch(setCoinDetails(response?.data));
-        if(type == "deposit") {
+        if(type == "Deposit") {
             if (response?.data?.deposit_status === 'ACTIVE') {
             NavigationService.navigate(DEPOSIT_SCREEN, {walletDetail: response?.data});
         } else {
           showError('Deposit is Disable for Now');
         }
-        } else if (type == "withdraw") {
+        } else if (type == "Withdraw") {
           if (response?.data?.withdrawal_status === 'ACTIVE') {
 
          NavigationService.navigate(WITHDRAW_SCREEN, {walletDetail: response?.data, balance});

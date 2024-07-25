@@ -37,7 +37,7 @@ const CommonInput = ({
         placeholderTextColor={placeholderTextColor}
         placeholder={placeholderText}
         style={{
-          fontSize: 13,
+          fontSize: 14,
           paddingLeft: 20,
           width: Screen.Width - 20,
           alignSelf: "center",

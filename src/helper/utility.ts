@@ -69,6 +69,9 @@ export const twoFixedZero = (value: string | number) => {
 };
 export const twoFixedTwo = (value: string | number) => {
   let val = Number(value);
+  if(isNaN(val)) {
+    return value;
+  }
   return val?.toFixed(2);
 };
 

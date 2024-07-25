@@ -1,35 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
+import { AppText, Button, RED, SEMI_BOLD } from "../../common";
+import AppSafeAreaView from "../../common/AppSafeAreaView";
+import ToolBar from "../../common/ToolBar";
+import { StyleSheet, View } from "react-native";
+import FastImage from "react-native-fast-image";
 import {
-  AppText,
-  Button,
-  RED,
-  SEMI_BOLD,
-} from '../../common';
-import AppSafeAreaView from '../../common/AppSafeAreaView';
-import ToolBar from '../../common/ToolBar';
-import {StyleSheet, View} from 'react-native';
-import FastImage from 'react-native-fast-image';
-import {
-  kyc_completed,
+  Kyc_Completed,
   Kyc_Due,
   KYCPending_Icon,
   kyc_rejected,
-} from '../../helper/ImageAssets';
-import KeyBoardAware from '../../common/KeyboardAware';
+} from "../../helper/ImageAssets";
+import KeyBoardAware from "../../common/KeyboardAware";
 import {
   borderWidth,
   universalPaddingHorizontal,
   universalPaddingHorizontalHigh,
-} from '../../theme/dimens';
-import {colors} from '../../theme/colors';
-import {commonStyles} from '../../theme/commonStyles';
-import NavigationService from '../../navigation/NavigationService';
-import {KYC_STEP_ONE_SCREEN, SEARCH_SCREEN, TRADE_SCREEN, NAVIGATION_BOTTOM_TAB_STACK, NAVIGATION_TRADE_STACK} from '../../navigation/routes';
-import {useAppSelector} from '../../store/hooks';
-import { useDispatch } from 'react-redux';
-import { getUserProfile } from '../../actions/accountActions';
-import { useNavigation } from '@react-navigation/native';
-import CommonButton from '../../common/CommonButton';
+} from "../../theme/dimens";
+import { colors } from "../../theme/colors";
+import { commonStyles } from "../../theme/commonStyles";
+import NavigationService from "../../navigation/NavigationService";
+import {
+  KYC_STEP_ONE_SCREEN,
+  SEARCH_SCREEN,
+  TRADE_SCREEN,
+  NAVIGATION_BOTTOM_TAB_STACK,
+  NAVIGATION_TRADE_STACK,
+} from "../../navigation/routes";
+import { useAppSelector } from "../../store/hooks";
+import { useDispatch } from "react-redux";
+import { getUserProfile } from "../../actions/accountActions";
+import { useNavigation } from "@react-navigation/native";
+import CommonButton from "../../common/CommonButton";
 
 const KycPending = () => {
   return (
@@ -40,8 +41,8 @@ const KycPending = () => {
         style={styles.icon}
       />
       <AppText weight={SEMI_BOLD} style={styles.title2}>
-        Your cvtrade Exchange Account KYC approval is pending. Please wait for the
-        approval.
+        Your cvtrade Exchange Account KYC approval is pending. Please wait for
+        the approval.
       </AppText>
       <Button
         children="Start Trading"
@@ -54,11 +55,11 @@ const KycPending = () => {
 
 const KycRejected = () => {
   const dispatch = useDispatch();
-  const userData = useAppSelector(state => state.auth.userData);
+  const userData = useAppSelector((state) => state.auth.userData);
   useEffect(() => {
-    dispatch(getUserProfile()); 
-  },[]);
-  const {kyc_reject_reason} = userData ?? '';
+    dispatch(getUserProfile());
+  }, []);
+  const { kyc_reject_reason } = userData ?? "";
   return (
     <View>
       <FastImage
@@ -68,8 +69,10 @@ const KycRejected = () => {
       />
       <AppText
         weight={SEMI_BOLD}
-        style={[styles.title, {color: colors.text_one}]}>
-        Your cvtrade Exchange Account KYC is rejected. Please complete your KYC again.
+        style={[styles.title, { color: colors.text_one }]}
+      >
+        Your cvtrade Exchange Account KYC is rejected. Please complete your KYC
+        again.
       </AppText>
       <View style={styles.reasonContainer}>
         <AppText style={commonStyles.centerText} color={RED}>
@@ -90,7 +93,8 @@ const KycDue = () => {
       <FastImage source={Kyc_Due} resizeMode="contain" style={styles.icon} />
       <AppText
         weight={SEMI_BOLD}
-        style={[styles.title, {color: colors.text_two}]}>
+        style={[styles.title, { color: colors.text_two }]}
+      >
         Your cvtrade Exchange Account KYC is Due. Please complete your KYC.
       </AppText>
       <CommonButton
@@ -106,29 +110,41 @@ const KycCompleted = () => {
   return (
     <View>
       <FastImage
-        source={kyc_completed}
+        source={Kyc_Completed}
         resizeMode="contain"
         style={styles.icon}
       />
-      <AppText weight={SEMI_BOLD} style={[styles.title, {color: colors.green}]}>
+      <AppText
+        weight={SEMI_BOLD}
+        style={[styles.title, { color: colors.green }]}
+      >
         Your cvtrade Exchange Account KYC is Completed.
       </AppText>
 
-      <Button
+      {/* <Button
         children="Start Trading"
         onPress={() =>
           navigation.navigate(NAVIGATION_BOTTOM_TAB_STACK, {
              screen: "Market",
            })}
         containerStyle={styles.button}
-      />
+      /> */}
+      <CommonButton
+        onPress={() =>
+          navigation.navigate(NAVIGATION_BOTTOM_TAB_STACK, {
+            screen: "Trades",
+          })
+        }
+        title="Start Trading"
+        containerStyle={styles.button}
+      ></CommonButton>
     </View>
   );
 };
 
 const KycStatus = () => {
-  const userData = useAppSelector(state => state.auth.userData);
-  const {kycVerified} = userData ?? '';
+  const userData = useAppSelector((state) => state.auth.userData);
+  const { kycVerified } = userData ?? "";
 
   const kycStatus = () => {
     if (kycVerified === 0) {
@@ -143,7 +159,7 @@ const KycStatus = () => {
   };
   return (
     <AppSafeAreaView>
-      <ToolBar isSecond title={'KYC'} />
+      <ToolBar isSecond title={"KYC"} />
       <KeyBoardAware>{kycStatus()}</KeyBoardAware>
     </AppSafeAreaView>
   );
@@ -154,15 +170,15 @@ const styles = StyleSheet.create({
   icon: {
     height: 200,
     width: 250,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginTop: 50,
   },
   title: {
-    textAlign: 'center',
+    textAlign: "center",
     marginHorizontal: universalPaddingHorizontalHigh,
   },
   title2: {
-    textAlign: 'center',
+    textAlign: "center",
     marginHorizontal: universalPaddingHorizontalHigh,
     marginTop: 20,
     color: colors.text_three,

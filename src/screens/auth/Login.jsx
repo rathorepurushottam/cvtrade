@@ -173,7 +173,6 @@ const Login = () => {
     dispatch(login(data));
   };
 
-  const onExpire = () => {};
 
   return (
     <AppSafeAreaView>

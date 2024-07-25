@@ -12,7 +12,7 @@ import {
   Notification_Icon,
   Refresh_Icon,
 } from "../helper/ImageAssets";
-import { AppText, TWENTY, BOLD, EIGHTEEN } from "./AppText";
+import { AppText, TWENTY, BOLD, EIGHTEEN, BLUE, TWENTY_TWO } from "./AppText";
 import { useNavigation } from "@react-navigation/native";
 import { NOTIFICATION_SCREEN } from "../navigation/routes";
 
@@ -46,7 +46,7 @@ const ToolBar = ({
       {isLogo && !isSecond && (
         <View style={styles.Logo_Container}>
           <Image source={Logo} resizeMode="contain" style={styles.Logo} />
-          <AppText type={TWENTY} weight={BOLD}>Trade</AppText>
+          <AppText type={TWENTY_TWO} weight={BOLD} color={BLUE}>Trade</AppText>
         </View>
       )}
       {isSecond && (

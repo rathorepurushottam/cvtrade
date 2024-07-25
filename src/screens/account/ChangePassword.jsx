@@ -35,6 +35,10 @@ const ChangePassword = () => {
   const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
     useState(false);
+    const [codeFocus, setCodeFocus] = useState(false);
+    const [curPassFocus, setCurPassFocus] = useState(false);
+    const [newPassFocus, setNewPassFocus] = useState(false);
+    const [conPassFocus, setconPassFocus] = useState(false);
   const [otpText, setOtpText] = useState('Get OTP');
   const passwordInput = useRef(null);
   const newPasswordInput = useRef(null);
@@ -99,8 +103,18 @@ const ChangePassword = () => {
             returnKeyType="next"
             onSubmitEditing={() => passwordInput?.current?.focus()}
             isOtp
+            onfocus={() => setCodeFocus(true)}
+            onBlur={() => setCodeFocus(false)}
             onSendOtp={() => onGetOtp()}
             otpText={otpText}
+            containerStyle={[
+              styles.inputContainer,
+              {
+                borderColor: !codeFocus
+                  ? colors.inputBorder
+                  : colors.focusedColor,
+              },
+            ]}
           />
           <Input
             title={titleText.password}
@@ -112,10 +126,20 @@ const ChangePassword = () => {
             assignRef={input => {
               passwordInput.current = input;
             }}
+            onfocus={() => setCurPassFocus(true)}
+            onBlur={() => setCurPassFocus(false)}
             returnKeyType="next"
             isSecure
             onSubmitEditing={() => newPasswordInput?.current?.focus()}
             onPressVisible={() => setIsPasswordVisible(!isPasswordVisible)}
+            containerStyle={[
+              styles.inputContainer,
+              {
+                borderColor: !curPassFocus
+                  ? colors.inputBorder
+                  : colors.focusedColor,
+              },
+            ]}
           />
           <Input
             title={titleText.newPassword}
@@ -127,12 +151,22 @@ const ChangePassword = () => {
             assignRef={input => {
               newPasswordInput.current = input;
             }}
+            onfocus={() => setNewPassFocus(true)}
+            onBlur={() => setNewPassFocus(false)}
             returnKeyType="next"
             isSecure
             onSubmitEditing={() => confirmPasswordInput?.current?.focus()}
             onPressVisible={() =>
               setIsNewPasswordVisible(!isNewPasswordVisible)
             }
+            containerStyle={[
+              styles.inputContainer,
+              {
+                borderColor: !newPassFocus
+                  ? colors.inputBorder
+                  : colors.focusedColor,
+              },
+            ]}
           />
           <Input
             title={titleText.confirmPassword}
@@ -144,12 +178,22 @@ const ChangePassword = () => {
             assignRef={input => {
               confirmPasswordInput.current = input;
             }}
+            onfocus={() => setconPassFocus(true)}
+            onBlur={() => setconPassFocus(false)}
             returnKeyType="done"
             isSecure
             onSubmitEditing={() => onSubmit()}
             onPressVisible={() =>
               setIsConfirmPasswordVisible(!isConfirmPasswordVisible)
             }
+            containerStyle={[
+              styles.inputContainer,
+              {
+                borderColor: !conPassFocus
+                  ? colors.inputBorder
+                  : colors.focusedColor,
+              },
+            ]}
           />
         </View>
         <CommonButton
@@ -169,7 +213,7 @@ const ChangePassword = () => {
 export default ChangePassword;
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.white_fifteen,
+    backgroundColor: "#FFFFFF10",
     marginTop: universalPaddingTop,
     padding: universalPaddingHorizontal,
     borderWidth: borderWidth,
@@ -180,5 +224,13 @@ const styles = StyleSheet.create({
   info: {
     textAlign: 'center',
     marginVertical: 10,
+  },
+  inputContainer: {
+    marginTop: 5,
+    backgroundColor: colors.blackFive,
+    borderWidth: 0,
+    fontSize: 12,
+    // borderColor: colors.borderColor,
+    borderWidth: borderWidth,
   },
 });

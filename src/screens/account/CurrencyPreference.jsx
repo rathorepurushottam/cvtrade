@@ -7,7 +7,7 @@ import {
   CVToken_Icon,
   Ethereum_Icon,
   Solana_Icon,
-  USDCoin_Icon,
+  Tether_Icon,
   XRP_Icon,
 } from "../../helper/ImageAssets";
 import ToolBar from "../../common/ToolBar";
@@ -32,7 +32,7 @@ const CurrencyPreference = () => {
   const Data = [
     {
       id: 1,
-      image: Bitcoin_Icon,
+      image: Tether_Icon,
       CoinName: "Tether USD",
       Currency: "USDT",
     },
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   Data_Container: {
     paddingHorizontal: 20,
     paddingVertical: 15,
-    backgroundColor: colors.inputBgColor,
+    backgroundColor: "#FFFFFF10",
     borderRadius: 12,
     alignItems: "center",
     flexDirection: "row",

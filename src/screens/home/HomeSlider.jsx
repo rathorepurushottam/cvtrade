@@ -36,10 +36,10 @@ const HomeSlider = () => {
       id: 3,
       image: BANNER_4,
     },
-    {
-      id: 4,
-      image: BANNER_2,
-    },
+    // {
+    //   id: 4,
+    //   image: BANNER_2,
+    // },
     
   ];
 
@@ -64,7 +64,7 @@ const HomeSlider = () => {
   }, []);
 
   return (
-    <View style={{ height: 325, alignSelf: "center", alignItems: "center" }}>
+    <View style={{ height: 250, alignSelf: "center", alignItems: "center" }}>
       <Carousel
         ref={ref}
         data={BannerList}

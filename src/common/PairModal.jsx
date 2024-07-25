@@ -41,13 +41,14 @@ const PairModal = ({
  
   return (
     <Modal transparent visible={showPair}>
-      <TouchableOpacity style={styles.modalBackGround} onPress={() => setShowPair(false)}>
+      <View style={styles.modalBackGround} >
         <View style={styles.modalContainer}>
           <View style={styles.mainContainer}>
             {coinData?.length !== 0 ? (
    <>
       <FlatList
       data={coinData}
+      showsVerticalScrollIndicator={false}
       renderItem={({item, index})=>{
         let url = `${BASE_URL}${item?.icon_path}`;
         return(
@@ -103,7 +104,7 @@ const PairModal = ({
   )}
           </View>
         </View>
-      </TouchableOpacity>
+      </View>
     </Modal>
   );
 };
@@ -116,11 +117,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: '90%',
-    backgroundColor: colors.disabledText,
+    width: '100%',
+    backgroundColor: "#202224",
     paddingHorizontal: 15,
     paddingVertical: 25,
-    borderRadius: 20,
+    // borderRadius: 20,
     elevation: 20,
     zIndex: 999
   },

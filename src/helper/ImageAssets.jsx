@@ -13,8 +13,8 @@ export const Search_Icon = require("../../assets/images/Search_Icon.png");
 export const Notification_Icon = require("../../assets/images/Notification_Icon.png");
 export const Bitcoin_Icon = require("../../assets/images/Bitcoin_Icon.png");
 export const Ethereum_Icon = require("../../assets/images/Ethereum_Icon.png");
-export const up_Icon = require("../../assets/images/Up_Icon.png");
-export const Down_Icon = require("../../assets/images/Down_Icon.png");
+export const up_Icon = require("../../assets/images/up_ic.png");
+export const Down_Icon = require("../../assets/images/down_ic.png");
 export const UpGraph_Icon = require("../../assets/images/UpGraph_Icon.png");
 export const DownGraph_Icon = require("../../assets/images/DownGraph_Icon.png");
 export const Deposit_Icon = require("../../assets/images/Deposit_Icon.png");
@@ -110,7 +110,7 @@ export const BANNER_2 = require("../../assets/images/banner2.png");
 export const BANNER_3 = require("../../assets/images/banner3.png");
 
 export const BANNER_4 = require("../../assets/images/banner4.png");
-export const REFER = require("../../assets/images/refer.png");
+export const REFER = require("../../assets/images/referal.png");
 export const FB = require("../../assets/images/facebook.png");
 export const TWITTER = require("../../assets/images/twitter.png");
 export const TELEGRAM = require("../../assets/images/telegram.png");
@@ -120,6 +120,7 @@ export const qr_Code = require("../../assets/images/qrCode.png");
 
 
 export const menuIcon = require('../../assets/images/menu_ic.png');
+export const peopleIcon = require('../../assets/images/people_icon.png');
 
 
 

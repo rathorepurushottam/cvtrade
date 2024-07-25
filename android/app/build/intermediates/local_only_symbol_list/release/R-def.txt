@@ -40,6 +40,7 @@ drawable assets_images_copy_icon
 drawable assets_images_currency
 drawable assets_images_cvtoken_icon
 drawable assets_images_deposit_icon
+drawable assets_images_down_ic
 drawable assets_images_down_icon
 drawable assets_images_downgraph_icon
 drawable assets_images_downimg
@@ -73,6 +74,7 @@ drawable assets_images_more_icon
 drawable assets_images_news_icon
 drawable assets_images_nft_slider_icon
 drawable assets_images_notification_icon
+drawable assets_images_people_icon
 drawable assets_images_power
 drawable assets_images_processing_icon
 drawable assets_images_profile_icon
@@ -81,6 +83,7 @@ drawable assets_images_qr_icon
 drawable assets_images_qrcode
 drawable assets_images_rate_icon
 drawable assets_images_refer
+drawable assets_images_referal
 drawable assets_images_referandearn_icon
 drawable assets_images_refresh_icon
 drawable assets_images_remove
@@ -108,6 +111,7 @@ drawable assets_images_tradestack_icon
 drawable assets_images_trading_icon
 drawable assets_images_twitter
 drawable assets_images_unchecked
+drawable assets_images_up_ic
 drawable assets_images_up_icon
 drawable assets_images_upgraph_icon
 drawable assets_images_upload_icon

@@ -376,7 +376,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
     handleCloseRBSheet();
   };
 
-  console.log(coinDetail, "coinDetail");
+  // console.log(coinDetail, "coinDetail");
   return (
     <AppBackground source={BG_Two}>
       <ScrollView style={{ flex: 1 }}>
@@ -386,15 +386,15 @@ const BtcCoinDetails = ({ coinDetails }) => {
             onPress={() => setShowPair(true)}
           >
             <Image
-              source={Ethereum_Icon}
+               source={{ uri: `${BASE_URL}${coinDetail?.icon_path}` }}
               resizeMode="contain"
               style={styles?.icon}
             />
-            <Image
-              source={Tether_Icon}
+            {/* <Image
+              source={{ uri: `${BASE_URL}${coinDetail?.icon_path}` }}
               resizeMode="contain"
               style={[styles?.icon, { marginLeft: -8 }]}
-            />
+            /> */}
             <AppText
               type={SIXTEEN}
               weight={MEDIUM}
@@ -455,13 +455,13 @@ const BtcCoinDetails = ({ coinDetails }) => {
             <AppText weight={SEMI_BOLD} color={GREEN}>
               {twoFixedTwo(coinDetail?.high)}
             </AppText>
-            <AppText weight={SEMI_BOLD} color={RED}>
+            <AppText weight={SEMI_BOLD} color={RED} style={{paddingRight: 0}}>
               {twoFixedTwo(coinDetail?.low)}
             </AppText>
-            <AppText weight={SEMI_BOLD}>
+            <AppText weight={SEMI_BOLD} style={{paddingRight: 0}}>
               {twoFixedTwo(coinDetail?.volume)}
             </AppText>
-            <AppText weight={SEMI_BOLD}>
+            <AppText weight={SEMI_BOLD} style={{paddingRight: 50}}>
               {twoFixedTwo(coinDetail?.change_24hour)}
             </AppText>
           </View>
@@ -670,9 +670,9 @@ const BtcCoinDetails = ({ coinDetails }) => {
                 <AppText type={THIRTEEN} weight={SEMI_BOLD}>
                   Quantity
                 </AppText>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                {/* <AppText type={THIRTEEN} weight={SEMI_BOLD}>
                   TDS
-                </AppText>
+                </AppText> */}
                 <AppText type={THIRTEEN} weight={SEMI_BOLD}>
                   FEE
                 </AppText>
@@ -684,9 +684,9 @@ const BtcCoinDetails = ({ coinDetails }) => {
                 <AppText type={THIRTEEN} weight={SEMI_BOLD}>
                   {amount}
                 </AppText>
-                <AppText type={THIRTEEN} weight={SEMI_BOLD}>
+                {/* <AppText type={THIRTEEN} weight={SEMI_BOLD}>
                   {feeDetail?.tds}
-                </AppText>
+                </AppText> */}
                 <AppText type={THIRTEEN} weight={SEMI_BOLD}>
                   {feeDetail?.fee}
                 </AppText>
@@ -697,8 +697,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
             </View>
             <AppText>
               Fee: Maker: {feeDetail?.maker_fee}% l Taker:{" "}
-              {feeDetail?.taker_fee}% l TDS: {feeDetail?.tds}% l Incl. of all
-              applicable taxes
+              {feeDetail?.taker_fee}% l
             </AppText>
             <CommonButton
               title="Done"
@@ -776,7 +775,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 35,
+    marginTop: 50,
     paddingHorizontal: 20,
     marginBottom: 10,
   },

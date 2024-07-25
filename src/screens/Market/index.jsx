@@ -7,19 +7,22 @@ import MarketCoinList from "../home/MarketCoinList";
 import { universalPaddingHorizontalHigh, universalPaddingVertical } from "../../theme/dimens";
 import { AppText, TWELVE } from "../../common";
 import { colors } from "../../theme/colors";
+import HomeCoinTabs from "../home/HomeCoinTabs";
 
 const Market = () => {
+  const [activeTab, setActiveTab] = useState('spot');
   return (
     <AppSafeAreaView source={BG_Two}>
       <ToolBar isLogo={false} isSecond title={"Market"} />
-      <View style={[styles?.Main_Container, { marginBottom: 50 }]}>
+      <View style={[styles?.Main_Container, { marginBottom: 200 }]}>
+      <HomeCoinTabs activeTab={activeTab} setActiveTab={setActiveTab}/>
       <View style={styles?.Heading}>
         <AppText type={TWELVE} color={colors.textGray} style={{width: '33%'}}>Asset</AppText>
         <AppText type={TWELVE} color={colors.textGray} style={{width: '33%'}}>Last Price</AppText>
         <AppText type={TWELVE} color={colors.textGray} style={{width: '33%'}}>24H Change</AppText>
       </View>
       <View style={styles?.MarketCoinList}>
-        <MarketCoinList />
+        <MarketCoinList activeTab={activeTab} setActiveTab={setActiveTab}/>
       </View>
     </View>
     </AppSafeAreaView>

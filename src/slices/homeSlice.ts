@@ -48,6 +48,9 @@ export const initialState: HomeSliceProps = {
   commitDetails: [],
   activityLogs: [],
   referralList: [],
+  trendingList: [],
+  gainerList: [],
+  loserList: [],
 };
 export const homeSlice = createSlice({
   name: 'home',
@@ -200,6 +203,15 @@ export const homeSlice = createSlice({
     },
     setReferralList: (state, {payload}) => {
       state.referralList = payload;
+    },
+    setTrendingList: (state, {payload}) => {
+      state.trendingList = payload;
+    },
+    setGainerList: (state, {payload}) => {
+      state.gainerList = payload;
+    },
+    setLoserList: (state, {payload}) => {
+      state.loserList = payload;
     }
   },
 });
@@ -243,6 +255,9 @@ export const {
   setUserProjectUpdateCommit,
   setCommitDetails,
   setActivityLogs,
-  setReferralList
+  setReferralList,
+  setTrendingList,
+  setGainerList,
+  setLoserList
 } = homeSlice.actions;
 export const homeReducer = homeSlice.reducer;

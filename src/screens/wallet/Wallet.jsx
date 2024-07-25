@@ -1,754 +1,284 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  FlatList,
   Image,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
-  useWindowDimensions,
 } from "react-native";
-import { Arrow_Icon, REMOVE } from "../../helper/ImageAssets";
+import AppSafeAreaView from "../../common/AppSafeAreaView";
+import {
+  Arrow_Icon,
+  BG_Two,
+  Back_Icon,
+  Binance_Icon,
+  Bitcoin_Icon,
+  Tether_Icon,
+  CVToken_Icon,
+  Ethereum_Icon,
+  Solana_Icon,
+  USDCoin_Icon,
+  XRP_Icon,
+} from "../../helper/ImageAssets";
 import ToolBar from "../../common/ToolBar";
 import {
-  useNavigation,
-  useRoute,
-  useIsFocused,
-} from "@react-navigation/native";
-import AppBackground from "../../common/AppBackground";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { colors } from "../../theme/colors";
-import { SceneMap, TabBar, TabView } from "react-native-tab-view";
-import LinearGradient from "react-native-linear-gradient";
-import {
   AppText,
-  MEDIUM,
-  TEN,
-  FOURTEEN,
   BOLD,
-  TWENTY_TWO,
+  EIGHTEEN,
+  ELEVEN,
+  FOURTEEN,
+  SEMI_BOLD,
   SIXTEEN,
-  THIRTEEN,
-  CustomMaterialMenu,
-  BLACK,
-  KYCDARKBLUE,
-} from "../../common";
+  THIRTY_FOUR,
+  TWELVE,
+  TWENTY,
+  TEXTCOLOR,
+} from "../../common/AppText";
+// import {borderWidth} from '../../theme/Dimension';
 import {
-  TRADE_HISTORY_DETAILS_SCREEN,
-  WALLET_HISTORY_DETAILS_SCREEN,
-  WALLET_DETAIL_SCREEN,
+  BITCOIN_SCREEN,
   DEPOSIT_SCREEN,
+  WALLET_DETAIL_SCREEN,
   WITHDRAW_SCREEN,
 } from "../../navigation/routes";
-import {
-  getUserWallet,
-  getWalletHistory,
-  verifyWithdraw,
-  getTradeHistory,
-  getCoinDetails,
-} from "../../actions/walletActions";
-import { ListEmptyComponent } from "../home/MarketCoinList";
-import {
-  setSelectedTradeHistory,
-  setSelectedWalletHistory,
-} from "../../slices/walletSlice";
-import moment from "moment";
-import Icon from "../../common/Icon";
-import SimpleModal from "../../common/SimpleModal";
-import { dateFormatter, toFixedEight, twoFixedTwo } from "../../helper/utility";
+import { useAppSelector } from "../../store/hooks";
+import { BASE_URL } from "../../helper/Constants";
+import WalletModal from "../../common/WalletModal";
+import { getCoinDetails, getWalletHistory } from "../../actions/walletActions";
+import NavigationService from "../../navigation/NavigationService";
+import { dateFormatter, twoFixedTwo } from "../../helper/utility";
+import { colors } from "../../theme/colors";
+import FastImage from "react-native-fast-image";
 
-const FirstRoute = () => {
-  const dispatch = useAppDispatch();
-  const navigation = useNavigation();
-  const userWallet = useAppSelector((state) => state.wallet.userWallet);
-  const [secondVisible, setSecondVisible] = useState(false);
-  const [currentItem, setCurrentItem] = useState("");
-  const onNavigate = async (type) => {
-    let data = {
-      currency_id: currentItem?.currency_id,
-    };
-    await dispatch(getCoinDetails(data, type, currentItem?.balance));
-    setSecondVisible(false);
-  };
+const Wallet = () => {
+  const walletBalance = useAppSelector((state) => {
+    return state.wallet.walletBalance;
+  });
+  const userWallet = useAppSelector((state) => {
+    return state.wallet.userWallet;
+  });
+  const walletHistory = useAppSelector((state) => {
+    return state.wallet.walletHistory;
+  });
+  const [isVissible, setIsVissible] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
-  return (
-    <ScrollView style={styles.routeScroll}>
-      <View style={styles.firstRouteContain}>
-        <FlatList
-          numColumns={2}
-          data={userWallet}
-          renderItem={({ item, index }) => {
-            return (
-              <TouchableOpacity
-                activeOpacity={0.7}
-                style={styles.fundListContain}
-                onPress={() => {
-                  setCurrentItem(item), setSecondVisible(true);
-                }}
-              >
-                {/* <View style={{flexDirection: "row", justifyContent: "flex-end", paddingRight: 10}}>
-                <CustomMaterialMenu
-                walletDetail={item}
-              />
-              </View> */}
-                {/* <AppText color={colors.white} weight={MEDIUM} style={styles.fundAsset}>
-                Sr No : {index+ 1}
-                </AppText> */}
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Assets : {item?.short_name}
-                </AppText>
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Available Balance : {item?.balance?.toFixed(8)}
-                </AppText>
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Locked Balance : {item?.locked_balance?.toFixed(8)}
-                </AppText>
-              </TouchableOpacity>
-            );
-          }}
-        />
-        <SimpleModal
-          visible={secondVisible}
-          close={() => {
-            setSecondVisible(false);
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => {
-              setSecondVisible(false);
-            }}
-          >
-            <Icon source={REMOVE} size={20} imageStyle={styles.removeImg} />
-          </TouchableOpacity>
-
-          <View style={styles.modalActionContain}>
-            <View style={[styles.buttonContain, { width: "65%" }]}>
-              <TouchableOpacity
-                style={[
-                  styles.updateBtn,
-                  { backgroundColor: colors.belowText },
-                ]}
-                onPress={() => onNavigate("deposit")}
-              >
-                <AppText color={KYCDARKBLUE} weight={BOLD}>
-                  Deposit
-                </AppText>
-              </TouchableOpacity>
-            </View>
-            <View style={[styles.buttonContain, { width: "65%" }]}>
-              <TouchableOpacity
-                style={[
-                  styles.updateBtn,
-                  { backgroundColor: colors.buyBtnGreen },
-                ]}
-                onPress={() => onNavigate("withdraw")}
-              >
-                <AppText color={KYCDARKBLUE} weight={BOLD}>
-                  WithDraw
-                </AppText>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </SimpleModal>
-      </View>
-    </ScrollView>
-  );
-};
-const SecondRoute = () => {
-  const [secondVisible, setSecondVisible] = useState(false);
-  const [currentItem, setCurrentItem] = useState({});
-  const dispatch = useAppDispatch();
-  const walletHistory = useAppSelector((state) => state.wallet.walletHistory);
-  return (
-    <ScrollView style={styles.routeScroll}>
-      <View style={styles.firstRouteContain}>
-        <SimpleModal
-          visible={secondVisible}
-          close={() => {
-            setSecondVisible(false);
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => {
-              setSecondVisible(false);
-            }}
-          >
-            <Icon source={REMOVE} size={20} imageStyle={styles.removeImg} />
-          </TouchableOpacity>
-          <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
-            <AppText color={BLACK} weight={BOLD} style={styles.fundAsset}>
-              {moment(currentItem?.createdAt).format("DD MMM, YYYY hh:mm a")}
-            </AppText>
-          </View>
-          <AppText
-            type={FOURTEEN}
-            color={BLACK}
-            weight={BOLD}
-            style={styles.modalData}
-          >
-            {currentItem?.short_name}
-          </AppText>
-          <AppText
-            type={FOURTEEN}
-            color={BLACK}
-            weight={BOLD}
-            style={styles.modalData}
-          >
-            {currentItem?.chain}
-          </AppText>
-          <AppText
-            type={FOURTEEN}
-            color={BLACK}
-            weight={BOLD}
-            style={styles.modalData}
-          >
-            {currentItem?.transaction_type}
-          </AppText>
-          <AppText
-            type={FOURTEEN}
-            color={BLACK}
-            weight={BOLD}
-            style={styles.modalData}
-          >
-            {currentItem?.amount}
-          </AppText>
-          <View style={styles.modalActionContain}>
-            <View style={[styles.actiontxt, { width: "35%" }]}>
-              <AppText
-                type={FOURTEEN}
-                color={BLACK}
-                weight={BOLD}
-                style={styles.txtModalStyle}
-              >
-                Status :
-              </AppText>
-            </View>
-            <View style={[styles.buttonContain, { width: "65%" }]}>
-              <TouchableOpacity style={styles.withdrawBtn}>
-                <AppText weight={BOLD} color={BLACK}>
-                  {currentItem?.status}
-                </AppText>
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View style={styles.modalActionContain}>
-            <View style={[styles.actiontxt, { width: "35%" }]}>
-              <AppText
-                type={FOURTEEN}
-                color={BLACK}
-                style={styles.txtModalStyle}
-              >
-                Cancel Withdrawl :
-              </AppText>
-            </View>
-            <View style={[styles.buttonContain, { width: "65%" }]}>
-              <TouchableOpacity style={styles.updateBtn}>
-                <AppText color={KYCDARKBLUE} weight={BOLD}>
-                  Updated
-                </AppText>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </SimpleModal>
-        <FlatList
-          numColumns={2}
-          data={walletHistory}
-          renderItem={({ item, index }) => {
-            return (
-              <TouchableOpacity
-                onPress={() => {
-                  setCurrentItem(item), setSecondVisible(true);
-                }}
-                activeOpacity={0.7}
-                style={styles.fundListContain}
-              >
-                {/* <AppText color={colors.white} weight={MEDIUM} style={styles.fundAsset}>
-                Sr No : {index+1}
-                </AppText> */}
-                <View
-                  style={{ flexDirection: "row", alignItems: "flex-start" }}
-                >
-                  <AppText
-                    color={colors.white}
-                    weight={MEDIUM}
-                    style={styles.fundAsset}
-                  >
-                    Date & Time : {"\n"}
-                    {moment(item?.createdAt).format("DD MMM, YYYY hh:mm a")}
-                  </AppText>
-
-                  <View></View>
-                </View>
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Coin : {item?.short_name}
-                </AppText>
-              </TouchableOpacity>
-            );
-          }}
-        />
-      </View>
-    </ScrollView>
-  );
-};
-const ThirdRoute = () => {
-  const [thirdVisible, setThirdVisible] = useState(false);
-  const dispatch = useAppDispatch();
-  const tradeHistory = useAppSelector((state) => state.wallet.tradeHistory);
-  const [skip, setSkip] = useState(0);
-  const [limit, setLimit] = useState(10);
-  // console.log(tradeHistory, "tradeHistory");
   useEffect(() => {
-    let data = {
-      skip: skip,
-      limit: limit,
-      mobile: true,
-    };
-    dispatch(getTradeHistory(data));
-  }, [skip]);
+    getWalletHistory();
+  }, []);
 
   return (
-    <ScrollView style={styles.routeScroll}>
-      <View style={styles.firstRouteContain}>
-        {/* <SimpleModal
-          visible={thirdVisible}
-          close={() => {
-            setThirdVisible(false);
-          }}
-        >
+    <AppSafeAreaView source={BG_Two}>
+      <ToolBar isLogo={false} isSecond title="Wallet" />
+      <ScrollView style={styles?.Main_Container}>
+        <AppText type={EIGHTEEN}>Your Overall Balance</AppText>
+        <View style={styles?.Currency_Container}>
+          <AppText type={THIRTY_FOUR} style={{ fontWeight: "700" }}>
+            $ {walletBalance?.dollarPrice?.toFixed(2)}
+            {/* <AppText type={THIRTY_FOUR} style={{color: '#FFFFFF99'}}>
+              08
+            </AppText> */}
+          </AppText>
           <TouchableOpacity
             onPress={() => {
-              setThirdVisible(false);
+              setIsVissible(!isVissible);
             }}
           >
-            <Icon source={REMOVE} size={20} imageStyle={styles.removeImg} />
+            <Image
+              source={Back_Icon}
+              resizeMode="contain"
+              style={[
+                styles?.Back_Icon,
+                { transform: [{ rotate: isVissible ? "90deg" : "-90deg" }] },
+              ]}
+            />
           </TouchableOpacity>
-          <Typography
-            size={13}
-            color={Colors.black}
-            fontFamily={Font.bold}
-            textStyle={styles.modalData}
-          >
-            Sr No : 1
-          </Typography>
-          <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
-            <Typography
-              color={Colors.black}
-              fontFamily={Font.bold}
-              size={13}
-              textStyle={styles.fundAsset}
-            >
-              Date & Time : 11/06/2024{" "}
-              <Typography
-                size={13}
-                color={Colors.black}
-                fontFamily={Font.medium}
-                textStyle={styles.modalData}
-              >
-                (11:55 PM)
-              </Typography>
-            </Typography>
-          </View>
-
-          <Typography
-            size={13}
-            color={Colors.black}
-            fontFamily={Font.bold}
-            textStyle={styles.modalData}
-          >
-            Currency Pair : CVT/BTC
-          </Typography>
-          <Typography
-            size={13}
-            color={Colors.black}
-            fontFamily={Font.bold}
-            textStyle={styles.modalData}
-          >
-            Credited Currency : USDT
-          </Typography>
-
-          <Typography
-            size={13}
-            color={Colors.black}
-            fontFamily={Font.bold}
-            textStyle={styles.modalData}
-          >
-            Side : SELL
-          </Typography>
-          <Typography
-            size={13}
-            color={Colors.black}
-            fontFamily={Font.bold}
-            textStyle={styles.modalData}
-          >
-            Price : 3.000
-          </Typography>
-          <Typography
-            size={13}
-            color={Colors.black}
-            fontFamily={Font.bold}
-            textStyle={styles.modalData}
-          >
-            Executed Quantity : 3.000
-          </Typography>
-          <Typography
-            size={13}
-            color={Colors.black}
-            fontFamily={Font.bold}
-            textStyle={styles.modalData}
-          >
-            Total : 3.000
-          </Typography>
-          <Typography
-            size={13}
-            color={Colors.black}
-            fontFamily={Font.bold}
-            textStyle={styles.modalData}
-          >
-            Fee : 3.000
-          </Typography>
-        </SimpleModal> */}
-        <FlatList
-          numColumns={2}
-          data={tradeHistory}
-          renderItem={({ item, index }) => {
-            return (
-              <TouchableOpacity
-                onPress={() => {
-                  setThirdVisible(true);
-                }}
-                activeOpacity={0.7}
-                style={styles.fundListContain}
-              >
-                {/* <Typography
-                  color={Colors.white}
-                  fontFamily={Font.medium}
-                  textStyle={styles.fundAsset}
+        </View>
+        {isVissible ? (
+          <View style={styles?.CoinData_Container}>
+            {userWallet?.slice(4, 8)?.map((item, index) => {
+              return (
+                <TouchableOpacity
+                  key={index}
+                  style={styles?.CoinDataMain_Container}
+                  // onPress={() => setShowModal(true)}
                 >
-                  Sr No : 1
-                </Typography> */}
-                {/* <AppText color={colors.white} weight={MEDIUM} style={styles.fundAsset}>
-                Sr No : 1
-                </AppText> */}
-                <View
-                  style={{ flexDirection: "row", alignItems: "flex-start" }}
-                >
-                  {/* <Typography
-                    color={Colors.white}
-                    fontFamily={Font.medium}
-                    textStyle={styles.fundAsset}
-                  >
-                    Date & Time :
-                  </Typography> */}
+                  <View style={styles?.CoinDataHeader_Container}>
+                    {/* <View style={styles?.CoinDataHeaderPart_Container}> */}
+                    <Image
+                      source={{ uri: `${BASE_URL}${item?.image_path}` }}
+                      resizeMode="contain"
+                      style={styles?.CoinIcon}
+                    />
+                    <View style={{ alignItems: "center", paddingRight: 10 }}>
+                      <View
+                        style={[
+                          {
+                            backgroundColor:
+                              item?.change < 0 ? colors.red : colors.green,
+                          },
+                          {
+                            paddingHorizontal: 5,
+                            paddingVertical: 2,
+                            borderRadius: 10,
+                          },
+                        ]}
+                      >
+                        <AppText type={FOURTEEN} style={{ color: "#FFFFFF88" }}>
+                          {twoFixedTwo(item?.change)}
+                        </AppText>
+                      </View>
+
+                      <AppText
+                        type={FOURTEEN}
+                        // weight={}
+                        style={{ color: "#FFFFFF88" }}
+                      >
+                        {"   "}$
+                        {twoFixedTwo(item?.price)}
+                      </AppText>
+                    </View>
+
+                    {/* </View> */}
+                  </View>
                   <AppText
-                    color={colors.white}
-                    weight={MEDIUM}
-                    style={styles.fundAsset}
+                    type={TWENTY}
+                    weight={BOLD}
+                    style={{ color: "#A7E69E", marginTop: 10 }}
                   >
-                    Date & Time :
+                    {item?.balance?.toFixed(6)}
+                  </AppText>
+                  <AppText
+                    type={FOURTEEN}
+                    weight={SEMI_BOLD}
+                    style={{ color: "#FFFFFF99" }}
+                  >
+                    {item?.currency}
+                  </AppText>
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        ) : null}
+        <View style={styles?.Common_Container}>
+          <TouchableOpacity
+            style={styles?.Deposit_Withdraw_Container}
+            onPress={() =>
+              NavigationService?.navigate("CurrencyList", { type: "Deposit" })
+            }
+          >
+            <Image
+              source={Arrow_Icon}
+              resizeMode="contain"
+              style={styles?.Arrow_Icon}
+            />
+            <AppText type={FOURTEEN} weight={SEMI_BOLD}>
+              {" "}
+              Deposit
+            </AppText>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles?.Deposit_Withdraw_Container}
+            onPress={() =>
+              NavigationService?.navigate("CurrencyList", { type: "Withdraw" })
+            }
+          >
+            <Image
+              source={Arrow_Icon}
+              resizeMode="contain"
+              style={[styles?.Arrow_Icon, { transform: [{ rotate: "35deg" }] }]}
+            />
+            <AppText type={FOURTEEN} weight={SEMI_BOLD}>
+              {" "}
+              Withdraw
+            </AppText>
+          </TouchableOpacity>
+        </View>
+        <View style={styles?.RecentTransactions_Container}>
+          <View style={styles?.RecentText_Container}>
+            <AppText type={EIGHTEEN} style={{ fontWeight: "700" }}>
+              Recent Transactions
+            </AppText>
+            <TouchableOpacity>
+              <AppText
+                type={FOURTEEN}
+                weight={BOLD}
+                style={{ color: "#AAE9A1" }}
+                onPress={() => NavigationService.navigate(WALLET_DETAIL_SCREEN)}
+              >
+                View All
+              </AppText>
+            </TouchableOpacity>
+          </View>
+          {walletHistory?.slice(0, 10)?.map((item, index) => {
+            let bgColor;
+            switch (item.status) {
+              case "CANCELLED":
+                bgColor = "#FDB64A";
+                break;
+              case "REJECTED":
+                bgColor = "#CF5757";
+                break;
+              default:
+                bgColor = "#38B781";
+                break;
+            }
+            let url = `${BASE_URL}${item?.icon_path}`;
+            return (
+              <View key={index}>
+                <View style={styles?.Map_Container}>
+                  <View style={styles?.CoinInfo_Container}>
+                  <FastImage
+          source={{ uri: url }}
+          resizeMode="contain"
+          style={styles.icon}
+        />
+                    <View>
+                      <AppText type={SIXTEEN} weight={BOLD}>
+                        {"   "}
+                        {item?.short_name}
+                      </AppText>
+                      <AppText
+                        type={TWELVE}
+                        weight={SEMI_BOLD}
+                        style={{ color: "#FFFFFF99" }}
+                      >
+                        {"   "} {dateFormatter(item?.createdAt)}
+                      </AppText>
+                    </View>
+                  </View>
+                  <AppText type={TWELVE} weight={SEMI_BOLD} color={TEXTCOLOR}>
+                    {"   "}
+                    {item?.transaction_type}
                   </AppText>
                   <View>
-                    {/* <Typography color={Colors.white} fontFamily={Font.medium}>
-                      {" "}
-                      11/06/2024
-                    </Typography>
-                    <Typography
-                      color={Colors.textColor}
-                      size={10}
-                      textAlign={"right"}
-                      fontFamily={Font.medium}
-                      textStyle={{ lineHeight: 18 }}
-                    >
-                      {" "}
-                      11:55 PM
-                    </Typography> */}
-                    <AppText
-                      color={colors.white}
-                      weight={MEDIUM}
-                      style={styles.fundAsset}
-                    >
-                      {" "}
-                      {dateFormatter(item?.createdAt)}
+                    <AppText type={EIGHTEEN} weight={BOLD}>
+                      {item?.amount}
                     </AppText>
+                    <View
+                      style={[
+                        styles?.Process_Container,
+                        { backgroundColor: bgColor },
+                      ]}
+                    >
+                      <AppText type={ELEVEN} weight={SEMI_BOLD}>
+                        {item?.status}
+                      </AppText>
+                    </View>
                   </View>
                 </View>
-                {/* <Typography
-                  color={Colors.white}
-                  fontFamily={Font.medium}
-                  textStyle={styles.fundAsset}
-                >
-                  Currency Pair : CVT/BTC
-                </Typography> */}
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Currency Pair : {item?.base_currency_name}/
-                  {item?.quote_currency_name}
-                </AppText>
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Credited Currency : {item?.currency}
-                </AppText>
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Side : {item?.side}
-                </AppText>
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Price : {item?.price}
-                </AppText>
-                <AppText
-                  color={colors.white}
-                  weight={MEDIUM}
-                  style={styles.fundAsset}
-                >
-                  Quantityrice : {item?.quantity}
-                </AppText>
-              </TouchableOpacity>
+                <View style={styles?.Line} />
+              </View>
             );
-          }}
-        />
-      </View>
-    </ScrollView>
-  );
-};
-
-const renderScene = SceneMap({
-  first: FirstRoute,
-  second: SecondRoute,
-  third: ThirdRoute,
-
-});
-const Wallet = () => {
-  const navigation = useNavigation();
-  const [isVissible, setIsVissible] = useState(false);
-  const layout = useWindowDimensions();
-  const dispatch = useAppDispatch();
-  const walletBalance = useAppSelector((state) => state.wallet.walletBalance);
-  const isFocus = useIsFocused();
-
-  useEffect(() => {
-    if (isFocus) {
-      setIndex(0);
-      dispatch(getUserWallet());
-      dispatch(getWalletHistory());
-    }
-  }, [isFocus]);
-
-  useEffect(() => {
-    dispatch(getUserWallet());
-    dispatch(getWalletHistory());
-  }, [isFocus]);
-  const [index, setIndex] = useState(0);
-  const [routes] = useState([
-    { key: "first", title: "Funds" },
-    { key: "second", title: "Wallet History" },
-    { key: "third", title: "Trade History" },
-  ]);
-
-  const [active, setActive] = useState("Funds");
-  return (
-    <AppBackground>
-      <ToolBar isLogo={false} isSecond title="Wallet" />
-      <AppText type={SIXTEEN} style={{ marginLeft: 18, marginTop: 15 }}>
-        Total Portfolio Value
-      </AppText>
-      <View style={styles?.Currency_Container}>
-        <AppText type={TWENTY_TWO} weight={BOLD}>{`${
-          walletBalance?.Currency
-        } ${toFixedEight(walletBalance?.currencyPrice)}`}</AppText>
-        <AppText
-          type={FOURTEEN}
-          color={colors.textColor}
-          weight={BOLD}
-        >{`$${toFixedEight(walletBalance?.dollarPrice)}`}</AppText>
-      </View>
-      <TabView
-        navigationState={{ index, routes }}
-        renderScene={renderScene}
-        onIndexChange={setIndex}
-        initialLayout={{ width: layout.width }}
-        renderTabBar={(props) => (
-          <RenderTabBar
-            {...props}
-            onTabChange={(tabIndex) => {
-              setActive(tabIndex);
-            }}
-          />
-        )}
-      />
-    </AppBackground>
-  );
-};
-const RenderTabBar = (props) => {
-  const { onTabChange } = props;
-  return (
-    <>
-      <TabBar
-        {...props}
-        onTabPress={(e) => {
-          onTabChange(e.route.key);
-        }}
-        scrollEnabled={false}
-        tabStyle={[{ flex: 1 }, props.tabStyle]}
-        renderLabel={({ route, focused }) => (
-          <View style={styles.customTabView}>
-            <AppText
-              type={THIRTEEN}
-              style={{ textAlign: "center" }}
-              color={focused ? colors.white : colors.inputBorderColor}
-              weight={MEDIUM}
-            >
-              {route?.title}
-            </AppText>
-          </View>
-        )}
-        indicatorStyle={{ backgroundColor: colors.inputBorderColor }}
-        pressColor="transparent"
-        style={[
-          { width: "100%", backgroundColor: "transparent", elevation: 0 },
-        ]}
-      />
-    </>
+          })}
+        </View>
+      </ScrollView>
+      <WalletModal showModal={showModal} setShowModal={setShowModal} />
+    </AppSafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  updateBtn: {
-    width: "45%",
-    paddingVertical: 8,
-    borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 0.7,
-    borderColor: colors.inputBorderColor,
-  },
-  emptyView: {
-    height: 110,
-    backgroundColor: "transparent",
-  },
-  customTabView: {
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 5,
-  },
-  fundAsset: {
-    marginLeft: 10,
-    lineHeight: 18,
-  },
-  fundListContain: {
-    width: "45%",
-    margin: 10,
-    paddingVertical: 10,
-    alignSelf: "center",
-    backgroundColor: colors.inputBgColor,
-    borderRadius: 15,
-    borderWidth: 0.5,
-    borderColor: colors.inputBorderColor,
-    marginVertical: 10,
-  },
-  withdrawBtn: {
-    width: "45%",
-    paddingVertical: 8,
-    backgroundColor: colors.red,
-    borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  depositeBtn: {
-    width: "45%",
-    height: 45,
-    backgroundColor: colors.green,
-    borderRadius: 5,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonContain: {
-    flexDirection: "row",
-    width: "85%",
-    justifyContent: "space-between",
-    paddingHorizontal: 20,
-  },
-  txtModalStyle: {
-    marginLeft: 10,
-    lineHeight: 18,
-    marginTop: 5,
-  },
-  actiontxt: {
-    width: "25%",
-  },
-  modalActionContain: {
-    width: "100%",
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 5,
-  },
-  modalData: {
-    marginLeft: 10,
-    lineHeight: 18,
-    marginTop: 5,
-  },
-  removeImg: {
-    alignSelf: "flex-end",
-    bottom: 10,
-    left: 5,
-  },
-  routeScroll: {
-    flex: 1,
-    backgroundColor: "transparent",
-  },
-  firstRouteContain: {
-    width: "100%",
-    padding: 5,
-    alignSelf: "center",
-    alignItems: "center",
-  },
-
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  headerCell: {
-    width: 120,
-    textAlign: "center",
-    padding: 10,
-    color: colors.inputBorderColor,
-  },
-  tableContainer: {
-    flex: 1,
-    flexDirection: "column",
-  },
-  tableHeader: {
-    borderBottomWidth: 1,
-    borderColor: "#000",
-  },
   Main_Container: {
     paddingHorizontal: 20,
     paddingVertical: 20,
@@ -758,10 +288,11 @@ const styles = StyleSheet.create({
     width: 20,
     height: 15,
     marginLeft: 10,
-    tintColor: "#FFF",
+    tintColor: "#FFFFFF99",
   },
   Currency_Container: {
-    marginLeft: 18,
+    flexDirection: "row",
+    alignItems: "center",
   },
   Arrow_Icon: {
     width: 15,
@@ -769,10 +300,11 @@ const styles = StyleSheet.create({
     transform: [{ rotate: "-135deg" }],
   },
   Deposit_Withdraw_Container: {
-    paddingVertical: 10,
+    // width: 180,
+    height: 48,
     borderRadius: 29,
     borderWidth: 1,
-    backgroundColor: colors.linearGreen,
+    backgroundColor: "#2330237A",
     borderColor: "#FFFFFF7A",
     alignItems: "center",
     justifyContent: "center",
@@ -783,43 +315,48 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 10,
+    marginTop: 20,
   },
   RecentTransactions_Container: {
     paddingHorizontal: 20,
-    paddingVertical: 10,
-    marginTop: 5,
+    paddingVertical: 20,
+    backgroundColor: "#0C0C0C",
+    marginTop: 20,
     marginHorizontal: -20,
-    backgroundColor: "#111111",
   },
   image: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
+    width: 38,
+    height: 38,
   },
   RecentText_Container: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    marginBottom: 5,
   },
   Process_Container: {
-    paddingVertical: 5,
+    width: 75,
+    height: 25,
     borderRadius: 16,
     alignItems: "center",
     justifyContent: "center",
-    padding: 10,
     backgroundColor: "#38B781",
-    marginTop: 3,
+    alignSelf: "flex-end",
   },
   CoinInfo_Container: {
     flexDirection: "row",
     alignItems: "center",
   },
   Map_Container: {
+    // marginTop: ,
+    paddingVertical: 12,
+    paddingHorizontal: 8,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 20,
+    backgroundColor: "#FFFFFF10",
+    // marginVertical: 5,
+    borderRadius: 10,
   },
   Line: {
     backgroundColor: "#FFFFFF99",
@@ -827,9 +364,10 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   CoinDataMain_Container: {
-    height: 120,
+    // width: 180,
+    height: 140,
     borderRadius: 12,
-    backgroundColor: "#FFFFFF15",
+    backgroundColor: "#FFFFFF10",
     paddingHorizontal: 15,
     paddingVertical: 15,
     marginTop: 15,
@@ -838,6 +376,7 @@ const styles = StyleSheet.create({
   CoinIcon: {
     width: 34,
     height: 34,
+    // borderRadius: 10
   },
   ThreeDots: {
     width: 18,
@@ -859,6 +398,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignItems: "center",
     justifyContent: "space-between",
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
   },
 });
 

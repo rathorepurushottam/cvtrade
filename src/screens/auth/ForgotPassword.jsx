@@ -59,7 +59,7 @@ const ForgotPassword = () => {
   return (
     <AppSafeAreaView>
     <ImageBackground style={{ height:Screen.Height,width:Screen.Width}}>
-      <ToolBar />
+      <ToolBar isThird={false}/>
       <KeyBoardAware>
         <View style={authStyles.forgotContainer}>
           <AppText type={TWENTY}>

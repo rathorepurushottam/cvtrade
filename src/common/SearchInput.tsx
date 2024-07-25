@@ -17,7 +17,7 @@ import {
 } from '../theme/dimens';
 import {fontFamily} from '../theme/typography';
 import {colors} from '../theme/colors';
-import {eye_close_icon, eye_open_icon, searchIcon} from '../helper/ImageAssets';
+import {eye_close_icon, eye_open_icon, Search_Icon} from '../helper/ImageAssets';
 import TouchableOpacityView from './TouchableOpacityView';
 import FastImage from 'react-native-fast-image';
 import {Button} from './Button';
@@ -75,14 +75,14 @@ const SearchInput = ({
     <View style={(styles.mainViewStyle, [containerStyle])}>
       <View style={[styles.container, {marginLeft: 10,...searchContainStyle}]}>
         <FastImage
-          source={searchIcon}
+          source={Search_Icon}
           resizeMode="contain"
           style={styles.searchIcon}
         />
         <TextInput
           {...props}
           placeholder={placeholder}
-          placeholderTextColor={colors.secondaryText}
+          placeholderTextColor={colors.white}
           autoCorrect={false}
           style={[styles.inputF, inputStyle]}
           value={value}
@@ -98,7 +98,7 @@ const SearchInput = ({
           secureTextEntry={secureTextEntry}
         />
       </View>
-      {cancelBtn && (
+      {/* {cancelBtn && (
         <TouchableOpacityView
           style={styles.cancelButton}
           onPress={() => {
@@ -109,7 +109,7 @@ const SearchInput = ({
             Cancel
           </AppText>
         </TouchableOpacityView>
-      )}
+      )} */}
 
 {sheetDownButton && (
         <TouchableOpacityView
@@ -139,10 +139,10 @@ const styles = StyleSheet.create({
     borderWidth: borderWidth,
     borderColor: colors.inputBorder,
     borderRadius: 8,
-    backgroundColor: colors.inputBackground,
+    backgroundColor: '#FFFFFF10',
     flexDirection: 'row',
     alignItems: 'center',
-    width: Dimensions.get('screen').width - 100,
+    width: Dimensions.get('screen').width - 30,
     // marginHorizontal: universalPaddingHorizontalHigh,
     paddingHorizontal: universalPaddingHorizontal,
     alignSelf: 'flex-start',
@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
   searchIcon: {
     height: 20,
     width: 20,
+    marginRight: 10
   },
   cancelButton: {
     position: 'absolute',

@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     height: inputHeight,
     borderWidth: borderWidth,
     // borderColor: colors.inputBorder,
-    borderRadius: 20,
+    borderRadius: 40,
     paddingHorizontal: universalPaddingHorizontal,
     backgroundColor: colors.inputBackground,
     flexDirection: 'row',

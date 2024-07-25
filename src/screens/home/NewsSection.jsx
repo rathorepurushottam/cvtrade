@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 import {
   Airdrops_Icon,
   HotCoin_Icon,
   InviteEarn_Icon,
-  Kwizz_Icon,
+  peopleIcon,
   Launchpad_Icon,
   More_Icon,
   News_Icon,
@@ -15,9 +16,10 @@ import { colors } from "../../theme/colors";
 import { useNavigation } from "@react-navigation/native";
 import { AppText, TWELVE, MEDIUM } from "../../common";
 import { Screen } from "../../theme/dimens";
-import { INVITE_AND_EARN_SCREEN } from "../../navigation/routes";
+import { INVITE_AND_EARN_SCREEN, TRADE, TRADE_SCREEN } from "../../navigation/routes";
 
 const NewsSection = () => {
+  const ref = useRef(null);
   const navigation = useNavigation();
 
   const Data = [
@@ -41,15 +43,15 @@ const NewsSection = () => {
     },
     {
       id: 4,
-      image: Kwizz_Icon,
-      title: "Kwizz",
+      image: peopleIcon,
+      title: "People",
       onPress: () => navigation.navigate("ComingSoon"),
     },
     {
       id: 5,
       image: Trading_Icon,
       title: "Trading",
-      onPress: () => navigation.navigate("ComingSoon"),
+      onPress: () => navigation.navigate("Trades"),
     },
     {
       id: 6,
@@ -71,6 +73,8 @@ const NewsSection = () => {
     },
   ];
 
+  const news = [' Welome to CVTrade.io community.', 'Get 5000 SHIB coin on SignUp Check your Wallet.', 'CVTrade.io is the Gateway of the Crypto World!'];
+
   return (
     <View style={styles.Main_Container}>
       <View style={styles.Min_Container}>
@@ -79,16 +83,26 @@ const NewsSection = () => {
           resizeMode="contain"
           style={styles.News_Icon}
         />
-        {/* <Typography
-          size={12}
-          fontFamily={Font.medium}
-          textStyle={{ marginLeft: 15 }}
-        >
-          We’ll display the current and upcoming news here in this section.
-        </Typography> */}
-        <AppText type={TWELVE} weight={MEDIUM} style={{ marginLeft: 15 }}>
-        We’ll display the current and upcoming news here in this section.
-        </AppText>
+        <Carousel
+        ref={ref}
+        data={news}
+        renderItem={({item}) => {
+          return (
+            <AppText type={TWELVE} weight={MEDIUM} style={{ marginLeft: 15 }}>
+            {item}
+            </AppText>
+          );
+         
+        }}
+        vertical={true}
+        sliderHeight={20}
+        itemHeight={20}
+        autoplay={true}
+        autoplayDelay={500}
+        autoplayInterval={2500}
+        loop={true}
+      />
+        
       </View>
       <View style={styles.Common_Container}>
         {Data.map((item) => (
@@ -141,8 +155,9 @@ const styles = StyleSheet.create({
       marginTop: -30,
     },
     icon: {
-      width: 18,
-      height: 18,
+      width: 25,
+      height: 25,
+      marginLeft: 10
     },
     Common_Container: {
       flexDirection: "row",

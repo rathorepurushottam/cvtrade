@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: borderWidth,
     borderRadius: 10,
-    backgroundColor: colors.inputBackground,
+    backgroundColor: "#FFFFFF10",
     borderColor: colors.inputBorder,
     // elevation: 0.5,
   },

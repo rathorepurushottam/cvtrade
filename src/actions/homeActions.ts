@@ -48,7 +48,10 @@ import {
   setUserProjectUpdateCommit,
   setCommitDetails,
   setActivityLogs,
-  setReferralList
+  setReferralList,
+  setTrendingList,
+  setGainerList,
+  setLoserList
 } from '../slices/homeSlice';
 import {AppDispatch} from '../store/store';
 import {getUserWallet} from './walletActions';
@@ -85,6 +88,32 @@ export const getFavorites = () => async (dispatch: AppDispatch) => {
     if (response.success) {
       dispatch(setFavorites(response?.data));
     }
+  } catch (e) {
+    logger(e);
+  }
+};
+
+export const getTrending = () => async (dispatch: AppDispatch) => {
+  try {
+    const response: any = await appOperation.customer.trending_list();
+    if (response.success) {
+      dispatch(setTrendingList(response?.data));
+    }
+  } catch (e) {
+    logger(e);
+  }
+};
+
+export const getGainerList = () => async (dispatch: AppDispatch) => {
+  try {
+    const response: any = await appOperation.customer.gainer_list();
+    // console.log(response, "getGainerList");
+    dispatch(setGainerList(response?.topGainers));
+    dispatch(setLoserList(response?.topLosers));
+    
+    // if (response.success) {
+    //   // dispatch(setGainerList(response?.data));
+    // }
   } catch (e) {
     logger(e);
   }

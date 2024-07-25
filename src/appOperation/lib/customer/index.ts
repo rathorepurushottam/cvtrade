@@ -119,6 +119,20 @@ export default (appOperation: AppOperation) => ({
       undefined,
       CUSTOMER_TYPE,
     ),
+    trending_list: () =>
+    appOperation.get(
+      'coin/get_trending',
+      undefined,
+      undefined,
+      CUSTOMER_TYPE,
+    ),
+    gainer_list: () =>
+    appOperation.get(
+      'coin/get_top_GL',
+      undefined,
+      undefined,
+      CUSTOMER_TYPE,
+    ),
   user_bank_detail: () =>
     appOperation.get(
       'user/get_user_bank_details',

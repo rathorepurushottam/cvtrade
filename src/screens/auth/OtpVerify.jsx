@@ -42,7 +42,7 @@ const OtpVerify = () => {
   };
   return (
     <AppSafeAreaView>
-      <ToolBar />
+      <ToolBar isThird={false}/>
       <KeyBoardAware>
         <View style={authStyles.forgotContainer}>
           <AppText type={TWENTY}>

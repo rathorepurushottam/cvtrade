@@ -47,6 +47,9 @@ export interface HomeSliceProps {
   commitDetails: any;
   activityLogs: any;
   referralList: any;
+  trendingList: any;
+  gainerList: any;
+  loserList: any;
 }
 
 export interface WalletSliceProps {

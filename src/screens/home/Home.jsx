@@ -15,7 +15,7 @@ import {
   setSocketLoading,
 } from '../../slices/homeSlice';
 import { BASE_URL } from '../../helper/Constants';
-import { getBannerList, getCoinList, getFavorites, getNotificationList } from '../../actions/homeActions';
+import { getBannerList, getCoinList, getFavorites, getNotificationList, getTrending, getGainerList } from '../../actions/homeActions';
 import { getAdminBankDetails, getTradeHistory, getUserPortfolio, getUserWallet, getWalletHistory } from '../../actions/walletActions';
 import {mainBg, searchIcon, Notification_Icon} from '../../helper/ImageAssets';
 import { colors } from '../../theme/colors';
@@ -106,6 +106,8 @@ const Home = () => {
     dispatch(getWalletHistory());
     dispatch(getFavorites());
     dispatch(getNotificationList());
+    dispatch(getTrending());
+    dispatch(getGainerList());
   }, []);
 
   return (

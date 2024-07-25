@@ -107,6 +107,7 @@ import ActivityLogs from '../screens/account/ActivityLogs';
 import ReferralList from '../screens/account/ReferralList';
 import ComingSoon from '../common/ComingSoon';
 import Market from '../screens/Market';
+import CurrencyList from '../screens/wallet/CurrencyList';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -261,6 +262,8 @@ const MyAuthLoadingStack = () => {
       <Stack.Screen name={routes.ACTIVITY_LOGS} component={ActivityLogs} />
       <Stack.Screen name={routes.REFERRAL_LIST} component={ReferralList} />
       <Stack.Screen name={"ComingSoon"} component={ComingSoon} />
+      <Stack.Screen name={"CurrencyList"} component={CurrencyList} />
+      
     </Stack.Navigator>
   );
 };

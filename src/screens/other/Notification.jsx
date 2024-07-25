@@ -81,6 +81,8 @@ const styles = StyleSheet.create({
     marginVertical: universalPaddingHorizontal,
     borderBottomWidth: 0.4,
     borderBottomColor: colors.thirdBg,
+    backgroundColor: "#FFFFFF10",
+    
   },
   icon: {
     height: 50,

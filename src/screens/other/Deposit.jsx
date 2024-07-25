@@ -34,8 +34,6 @@ const Deposit = ({ navigation }) => {
     dispatch(generateAddress(data));
   }, [coinChain]);
 
-  console.log(walletDetail, "chain");
-
   return (
     <AppBackground>
       <ToolBar isLogo={false} isSecond title={"Deposit"} />
@@ -77,7 +75,7 @@ const Deposit = ({ navigation }) => {
             isOtp
             Label=""
             labelStyle={{ marginHorizontal: 0 }}
-            placeholderText={walletAddress}
+            placeholderText={walletAddress?.slice(0,7)+'**************'+walletAddress?.slice(35)}
             otpText="Copy"
           />
 

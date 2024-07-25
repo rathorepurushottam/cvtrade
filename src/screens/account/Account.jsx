@@ -99,7 +99,7 @@ const Profile = () => {
           onPress={() => navigation.navigate(EDIT_PROFILE_SCREEN)}
         >
           <Image
-            source={profilepicture ? profilepicture : Profile_Image}
+            source={profilepicture ? { uri: `${BASE_URL}${profilepicture}` } : Profile_Image}
             resizeMode="contain"
             style={styles?.Profile_Image}
           />

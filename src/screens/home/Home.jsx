@@ -106,7 +106,7 @@ const Home = () => {
     dispatch(getWalletHistory());
     dispatch(getFavorites());
     dispatch(getNotificationList());
-    dispatch(getTrending());
+    // dispatch(getTrending());
     dispatch(getGainerList());
   }, []);
 

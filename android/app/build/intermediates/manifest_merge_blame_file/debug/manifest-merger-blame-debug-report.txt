@@ -9,38 +9,38 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:3:5-67
-11-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:3:22-64
+11-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:3:5-67
+11-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:3:22-64
 12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-12-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:4:1-76
-12-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:4:18-73
+12-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:4:1-76
+12-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:4:18-73
 13    <uses-permission android:name="android.permission.CAMERA" />
-13-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:5:2-62
-13-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:5:19-59
+13-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:5:2-62
+13-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:5:19-59
 14    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-14-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:6:3-73
-14-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:6:20-71
+14-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:6:3-73
+14-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:6:20-71
 15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-15-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:7:3-79
-15-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:7:20-76
+15-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:7:3-79
+15-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:7:20-76
 16
 17    <uses-feature android:name="android.hardware.camera" />
-17-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:9:2-57
-17-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:9:16-54
+17-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:9:2-57
+17-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:9:16-54
 18    <uses-feature android:name="android.hardware.camera.autofocus" />
-18-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:10:2-67
-18-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:10:16-64
+18-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:10:2-67
+18-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:10:16-64
 19    <uses-feature android:name="android.hardware.camera" />
-19-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:9:2-57
-19-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:9:16-54
+19-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:9:2-57
+19-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:9:16-54
 20
 21    <queries>
-21-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-11:15
+21-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-11:15
 22        <intent>
-22-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-10:18
+22-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-10:18
 23            <action android:name="android.media.action.IMAGE_CAPTURE" />
-23-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-73
-23-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:21-70
+23-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-73
+23-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:21-70
 24        </intent>
 25    </queries>
 26    <!--
@@ -143,98 +143,98 @@
 66-->[me.leolin:ShortcutBadger:1.1.22] /Users/purushottamrathore/.gradle/caches/transforms-3/d12a6bdad71b6851c31ee718e01584f6/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
 67
 68    <application
-68-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:12:5-35:19
+68-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:12:5-35:19
 69        android:name="com.crypto.cvtrade.MainApplication"
-69-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:13:7-38
+69-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:13:7-38
 70        android:allowBackup="false"
-70-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:17:7-34
+70-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:17:7-34
 71        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 71-->[androidx.core:core:1.9.0] /Users/purushottamrathore/.gradle/caches/transforms-3/13659b94c66de92d98d7f8af61234b95/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 72        android:debuggable="true"
 73        android:extractNativeLibs="true"
 74        android:icon="@mipmap/ic_launcher_round"
-74-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:15:7-47
+74-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:15:7-47
 75        android:label="@string/app_name"
-75-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:14:7-39
+75-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:14:7-39
 76        android:largeHeap="true"
-76-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:21:7-31
+76-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:21:7-31
 77        android:requestLegacyExternalStorage="true"
-77-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:20:7-50
+77-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:20:7-50
 78        android:roundIcon="@mipmap/ic_launcher_round"
-78-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:16:7-52
+78-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:16:7-52
 79        android:theme="@style/AppTheme"
-79-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:18:7-38
+79-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:18:7-38
 80        android:usesCleartextTraffic="true" >
-80-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:19:7-42
+80-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:19:7-42
 81        <activity
-81-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:22:7-34:18
+81-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:22:7-34:18
 82            android:name="com.crypto.cvtrade.MainActivity"
-82-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:23:9-37
+82-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:23:9-37
 83            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-83-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:25:9-118
+83-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:25:9-118
 84            android:exported="true"
-84-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:29:9-32
+84-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:29:9-32
 85            android:label="@string/app_name"
-85-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:24:9-41
+85-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:24:9-41
 86            android:launchMode="singleTask"
-86-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:26:9-40
+86-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:26:9-40
 87            android:screenOrientation="portrait"
-87-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:27:10-46
+87-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:27:10-46
 88            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" >
-88-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:28:9-66
+88-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:28:9-66
 89            <intent-filter>
-89-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:30:9-33:25
+89-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:30:9-33:25
 90                <action android:name="android.intent.action.MAIN" />
-90-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:31:13-65
-90-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:31:21-62
+90-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:31:13-65
+90-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:31:21-62
 91
 92                <category android:name="android.intent.category.LAUNCHER" />
-92-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:32:13-73
-92-->/Users/purushottamrathore/Documents/CVTrade/android/app/src/main/AndroidManifest.xml:32:23-70
+92-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:32:13-73
+92-->/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/AndroidManifest.xml:32:23-70
 93            </intent-filter>
 94        </activity>
 95
 96        <provider
-96-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-24:20
+96-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:9-24:20
 97            android:name="com.reactnative.ivpusic.imagepicker.IvpusicImagePickerFileProvider"
-97-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-94
+97-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-94
 98            android:authorities="com.crypto.cvtrade.provider"
-98-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-60
+98-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-60
 99            android:exported="false"
-99-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-37
+99-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-37
 100            android:grantUriPermissions="true" >
-100-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-47
+100-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-47
 101            <meta-data
-101-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-23:78
+101-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-23:78
 102                android:name="android.support.FILE_PROVIDER_PATHS"
-102-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:17-67
+102-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:17-67
 103                android:resource="@xml/ivpusic_imagepicker_provider_paths" />
-103-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:17-75
+103-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:17-75
 104        </provider>
 105
 106        <activity
-106-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:9-28:72
+106-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:9-28:72
 107            android:name="com.yalantis.ucrop.UCropActivity"
-107-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-60
+107-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-60
 108            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-108-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-69
+108-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-69
 109
 110        <provider
-110-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
+110-->[:react-native-webview] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
 111            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
-111-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-83
+111-->[:react-native-webview] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-83
 112            android:authorities="com.crypto.cvtrade.fileprovider"
-112-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-64
+112-->[:react-native-webview] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-64
 113            android:exported="false"
-113-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
+113-->[:react-native-webview] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
 114            android:grantUriPermissions="true" >
-114-->[:react-native-webview] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-47
+114-->[:react-native-webview] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-47
 115            <meta-data
-115-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-23:78
+115-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-23:78
 116                android:name="android.support.FILE_PROVIDER_PATHS"
-116-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:17-67
+116-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:17-67
 117                android:resource="@xml/file_provider_paths" />
-117-->[:react-native-image-crop-picker] /Users/purushottamrathore/Documents/CVTrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:17-75
+117-->[:react-native-image-crop-picker] /Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:17-75
 118        </provider>
 119
 120        <activity

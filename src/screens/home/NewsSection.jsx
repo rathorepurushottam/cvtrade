@@ -44,7 +44,7 @@ const NewsSection = () => {
     {
       id: 4,
       image: peopleIcon,
-      title: "People",
+      title: "Partnership",
       onPress: () => navigation.navigate("ComingSoon"),
     },
     {

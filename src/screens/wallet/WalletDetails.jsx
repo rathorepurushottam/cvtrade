@@ -27,6 +27,7 @@ import {colors} from '../../theme/colors';
 import { BG_Two } from '../../helper/ImageAssets';
 import { dateFormatter } from '../../helper/utility';
 import FastImage from 'react-native-fast-image';
+import { BASE_URL } from '../../helper/Constants';
 
 
 
@@ -122,8 +123,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   Line: {
-    backgroundColor: '#FFFFFF99',
-    borderWidth: 1,
+    // backgroundColor: '#FFFFFF99',
+    // borderWidth: 1,
     marginTop: 12,
   },
   CoinDataMain_Container: {

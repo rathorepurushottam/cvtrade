@@ -66,5 +66,6 @@ export const colors = {
   KycDarkBlue: "#18191D",
   changeText: '#04A544',
   belowText: '#A383DC',
-  historyText: '#FFFFFF88'
+  historyText: '#FFFFFF88',
+  orderBookText: '#B0B0B2'
 };

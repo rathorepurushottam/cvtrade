@@ -24,6 +24,7 @@ import { useRoute } from "@react-navigation/native";
 import { changePassword } from "../../actions/accountActions";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ToolBar from "../../common/ToolBar";
+import { SpinnerSecond } from "../../common/SpinnerSecond";
 
 const CurrencyList = () => {
   const route = useRoute();
@@ -32,7 +33,9 @@ const CurrencyList = () => {
   const userWallet = useAppSelector((state) => {
     return state.wallet.userWallet;
   });
-
+  const loading = useAppSelector(state => {
+    return state.auth.isLoading;
+  })
   const [value, setValue] = useState("");
   const [list, setList] = useState([]);
 
@@ -111,6 +114,7 @@ const CurrencyList = () => {
             return renderItem({ item, index });
           })}
         </KeyBoardAware>
+        <SpinnerSecond loading={loading}></SpinnerSecond>
     </AppSafeAreaView>
   );
 };

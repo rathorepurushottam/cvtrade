@@ -35,6 +35,8 @@ interface InputProps extends TextInputProps {
   currency?: string;
   onfocus?:any;
   assignRef?:any;
+  isMax?: any;
+  onMaxAmount?: () => void;
 }
 
 const Input = ({
@@ -59,6 +61,8 @@ const Input = ({
   currency,
   onfocus,
   onBlur,
+  isMax,
+  onMaxAmount,
   ...props
 }: InputProps) => {
   return (
@@ -113,6 +117,17 @@ const Input = ({
             {currency}
           </AppText>
         )}
+        {
+          isMax && (
+            <Button
+            children={'Max'}
+            titleStyle={styles.titleStyle}
+            containerStyle={styles.containerStyle}
+            onPress={onMaxAmount}
+            bgColor={"#A383DC"}
+          />
+          )
+        }
       </View>
     </View>
   );

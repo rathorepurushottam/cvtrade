@@ -96,7 +96,7 @@ const Wallet = () => {
         </View>
         {isVissible ? (
           <View style={styles?.CoinData_Container}>
-            {userWallet?.slice(4, 8)?.map((item, index) => {
+            {userWallet?.slice(6, 10)?.map((item, index) => {
               return (
                 <TouchableOpacity
                   key={index}
@@ -134,8 +134,7 @@ const Wallet = () => {
                         // weight={}
                         style={{ color: "#FFFFFF88" }}
                       >
-                        {"   "}$
-                        {twoFixedTwo(item?.price)}
+                        {"   "}${twoFixedTwo(item?.price)}
                       </AppText>
                     </View>
 
@@ -216,6 +215,9 @@ const Wallet = () => {
               case "CANCELLED":
                 bgColor = "#FDB64A";
                 break;
+              case "PENDING":
+                bgColor = "#FDB64A";
+                break;
               case "REJECTED":
                 bgColor = "#CF5757";
                 break;
@@ -228,11 +230,11 @@ const Wallet = () => {
               <View key={index}>
                 <View style={styles?.Map_Container}>
                   <View style={styles?.CoinInfo_Container}>
-                  <FastImage
-          source={{ uri: url }}
-          resizeMode="contain"
-          style={styles.icon}
-        />
+                    <FastImage
+                      source={{ uri: url }}
+                      resizeMode="contain"
+                      style={styles.icon}
+                    />
                     <View>
                       <AppText type={SIXTEEN} weight={BOLD}>
                         {"   "}
@@ -320,7 +322,7 @@ const styles = StyleSheet.create({
   RecentTransactions_Container: {
     paddingHorizontal: 20,
     paddingVertical: 20,
-    backgroundColor: "#0C0C0C",
+    // backgroundColor: "#0C0C0C",
     marginTop: 20,
     marginHorizontal: -20,
   },
@@ -359,8 +361,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   Line: {
-    backgroundColor: "#FFFFFF99",
-    borderWidth: 1,
+    // backgroundColor: "#FFFFFF99",
+    // borderWidth: 1,
     marginTop: 12,
   },
   CoinDataMain_Container: {

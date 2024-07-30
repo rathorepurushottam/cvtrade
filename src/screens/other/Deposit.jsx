@@ -10,13 +10,13 @@ import AppBackground from "../../common/AppBackground";
 import ToolBar from "../../common/ToolBar";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { colors } from "../../theme/colors";
-import Icon from "../../common/Icon";
-import { qr_Code } from "../../helper/ImageAssets";
+import QRCode from 'react-native-qrcode-svg';
 import { AppText, BOLD, FIFTEEN, Input, WHITE } from "../../common";
 import { Screen } from "../../theme/dimens";
 import CommonInput from "../../common/CommonInput";
 import {useRoute} from '@react-navigation/native';
 import {generateAddress} from '../../actions/walletActions';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 const Deposit = ({ navigation }) => {
     const dispatch = useAppDispatch();
@@ -33,6 +33,10 @@ const Deposit = ({ navigation }) => {
     };
     dispatch(generateAddress(data));
   }, [coinChain]);
+
+  const copyToClipboard = () => {
+    Clipboard.setString(walletAddress);
+  };
 
   return (
     <AppBackground>
@@ -57,12 +61,15 @@ const Deposit = ({ navigation }) => {
               <AppText>No chain Availbale</AppText>
             )}
         </View>
-        <Icon
-          source={qr_Code}
-          size={130}
-          imageStyle={{ alignSelf: "center", marginVertical: 10 }}
-          tintColor={colors.white}
-        />
+        <View style={styles.qrCodeContainer}>
+        {walletAddress && (
+                <QRCode
+                  value={walletAddress}
+                  size={220}
+                  logoBackgroundColor="white"
+                />
+              )}
+              </View>
         <View
           style={{
             width: Screen.Width - 30,
@@ -77,6 +84,8 @@ const Deposit = ({ navigation }) => {
             labelStyle={{ marginHorizontal: 0 }}
             placeholderText={walletAddress?.slice(0,7)+'**************'+walletAddress?.slice(35)}
             otpText="Copy"
+            onGetOtp={copyToClipboard}
+            
           />
 
         </View>
@@ -125,5 +134,9 @@ const styles = StyleSheet.create({
   },
   selectedNetwork: {
     backgroundColor: colors.purple,
+  },
+  qrCodeContainer: {
+    marginVertical: 10,
+    alignItems: 'center',
   },
 });

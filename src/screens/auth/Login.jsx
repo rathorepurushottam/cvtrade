@@ -212,13 +212,13 @@ const Login = () => {
           </AppText>
           {/* <RenderTabBarAuth index={index} setIndex={setIndex} />
            */}
-          <OptionContainer
+          {/* <OptionContainer
             onOptionChange={(e) => {
               setOption(e);
               setPassword("");
               setUserName("");
             }}
-          />
+          /> */}
           <View style={[authStyles.mobileContainer, authStyles.marginUp]}>
             <Input
               placeholder={

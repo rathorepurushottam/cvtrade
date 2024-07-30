@@ -1,10 +1,10 @@
 import {
   Image,
-  ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
 } from "react-native";
+import { ScrollView } from 'react-native-gesture-handler';
 import React, { useEffect, useRef, useState } from "react";
 import AppBackground from "../../common/AppBackground";
 import { colors } from "../../theme/colors";
@@ -18,7 +18,15 @@ import {
 } from "../../helper/ImageAssets";
 import { MarketOptionContainer } from "../../common/OptionContainer";
 import WebView from "react-native-webview";
-import { FIFTEEN, GREEN, HISTORYTEXT, Input, RED } from "../../common";
+import {
+  FIFTEEN,
+  GREEN,
+  HISTORYTEXT,
+  Input,
+  ORDERTEXT,
+  RED,
+  WHITE,
+} from "../../common";
 import RBSheet from "react-native-raw-bottom-sheet";
 import Select from "../../common/Select";
 // import { Languages } from "../../Helper/Languages";
@@ -46,6 +54,8 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   checkToFixedThree,
   toFixedEight,
+  toFixedFive,
+  toFixedFour,
   toFixedThree,
   twoFixedTwo,
 } from "../../helper/utility";
@@ -375,8 +385,6 @@ const BtcCoinDetails = ({ coinDetails }) => {
     setSelectedOption(option);
     handleCloseRBSheet();
   };
-
-  // console.log(coinDetail, "coinDetail");
   return (
     <AppBackground source={BG_Two}>
       <ScrollView style={{ flex: 1 }}>
@@ -386,7 +394,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
             onPress={() => setShowPair(true)}
           >
             <Image
-               source={{ uri: `${BASE_URL}${coinDetail?.icon_path}` }}
+              source={{ uri: `${BASE_URL}${coinDetail?.icon_path}` }}
               resizeMode="contain"
               style={styles?.icon}
             />
@@ -455,13 +463,13 @@ const BtcCoinDetails = ({ coinDetails }) => {
             <AppText weight={SEMI_BOLD} color={GREEN}>
               {twoFixedTwo(coinDetail?.high)}
             </AppText>
-            <AppText weight={SEMI_BOLD} color={RED} style={{paddingRight: 0}}>
+            <AppText weight={SEMI_BOLD} color={RED} style={{ paddingRight: 0 }}>
               {twoFixedTwo(coinDetail?.low)}
             </AppText>
-            <AppText weight={SEMI_BOLD} style={{paddingRight: 0}}>
+            <AppText weight={SEMI_BOLD} style={{ paddingRight: 0 }}>
               {twoFixedTwo(coinDetail?.volume)}
             </AppText>
-            <AppText weight={SEMI_BOLD} style={{paddingRight: 50}}>
+            <AppText weight={SEMI_BOLD} style={{ paddingRight: 50 }}>
               {twoFixedTwo(coinDetail?.change_24hour)}
             </AppText>
           </View>
@@ -475,7 +483,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
         />
         <View style={styles.chartContain}>
           <AppText type={THIRTEEN} weight={MEDIUM}>
-            Chart
+            {visible ? "Chart" : "Order Book"}
           </AppText>
           <TouchableOpacity onPress={() => setVisible(!visible)}>
             <Image
@@ -488,7 +496,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
             />
           </TouchableOpacity>
         </View>
-        {visible && (
+        {visible ? (
           <WebView
             source={{
               uri: `https://cvtrade.io/chart/${base_currency}_${quote_currency}`,
@@ -504,6 +512,53 @@ const BtcCoinDetails = ({ coinDetails }) => {
             sharedCookiesEnabled={true}
             javaScriptEnabledAndroid={true}
           />
+        ) : (
+          <View style={styles.orderBook}>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: colors.dividerColor, padding: 8, borderRadius: 10 }}
+            >
+              <AppText color={ORDERTEXT}>Price({quote_currency})</AppText>
+              <AppText color={ORDERTEXT}>Quantity({base_currency})</AppText>
+              <AppText color={ORDERTEXT}>Total({quote_currency})</AppText>
+            </View>
+            <ScrollView style={{height: 50}} showsVerticalScrollIndicator={true}>
+            {sellOrders?.map((item) => (
+                <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  marginTop: 5,
+                  paddingHorizontal: 20,
+                }}
+              >
+                  <AppText color={RED}>{toFixedFour(item?.price)}</AppText>
+                  <AppText color={WHITE}>{toFixedFour(item?.quantity)}</AppText>
+                  <AppText color={RED}>{toFixedFour(item?.price * item?.quantity)}</AppText>
+                  </View>
+              ))}
+              </ScrollView>
+              
+              <View style={{ flexDirection: "row", justifyContent: "space-around", backgroundColor: colors.linearGreen, padding: 5, borderRadius: 10, marginVertical:5 }}>
+                <AppText type={FOURTEEN} color={GREEN}>{buy_price}</AppText>
+                <AppText>{`${coinDetail?.change}%`}</AppText>
+              </View>
+              <ScrollView style={{height: 50}} showsVerticalScrollIndicator={true}>
+              {buyOrders?.map((item) => (
+                <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  marginTop: 5,
+                  paddingHorizontal: 20
+                }}
+              >
+                  <AppText color={GREEN}>{toFixedFour(item?.price)}</AppText>
+                  <AppText color={WHITE}>{toFixedFour(item?.quantity)}</AppText>
+                  <AppText color={GREEN}>{toFixedFour(item?.price * item?.quantity)}</AppText>
+                  </View>
+              ))}
+           </ScrollView>
+          </View>
         )}
         <View style={styles.availableBalance}>
           <AppText type={THIRTEEN} weight={MEDIUM}>
@@ -767,6 +822,17 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginTop: 10,
   },
+  orderBook: {
+    width: Screen.Width - 25,
+    alignSelf: "center",
+    backgroundColor: "#FFFFFF10",
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    marginTop: 10,
+    height: Screen.Height / 2.1,
+  },
+
   Common_Margin: {
     marginTop: 5,
     marginHorizontal: 0,

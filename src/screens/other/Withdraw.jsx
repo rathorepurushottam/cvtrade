@@ -12,9 +12,11 @@ import { AppText, Input, SIXTEEN } from "../../common";
 import { Screen } from "../../theme/dimens";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useRoute } from "@react-navigation/native";
-import { placeHolderText, titleText } from "../../helper/Constants";
+import { errorText, placeHolderText, titleText } from "../../helper/Constants";
 import { toFixedThree, twoFixedTwo } from "../../helper/utility";
 import { sendOtp } from "../../actions/authActions";
+import { showError } from "../../helper/logger";
+import { withdrawCoin } from "../../actions/walletActions";
 
 const Withdraw = () => {
   const dispatch = useAppDispatch();
@@ -29,6 +31,9 @@ const Withdraw = () => {
   const [amount, setAmount] = useState(0);
   const [coinChain, setCoinChain] = useState(chain[0]);
   const [otpText, setOtpText] = useState('Get OTP');
+  const [focusCode, setFocusCode] = useState(false);
+  const [focusAddr, setFocusAddr] = useState(false);
+  const [focusAmount, setFocusAmount] = useState(false);
   const addressInput = useRef(null);
   const amountInput = useRef(null);
   const onGetOtp = () => {
@@ -76,6 +81,10 @@ const Withdraw = () => {
     Keyboard.dismiss();
     dispatch(withdrawCoin(data));
   };
+
+  const handleMaxAmount = () => {
+    setAmount(balance);
+  };
   return (
     <AppBackground>
       <ScrollView style={styles.scrollView}>
@@ -112,8 +121,15 @@ const Withdraw = () => {
             returnKeyType="next"
             onSubmitEditing={() => addressInput?.current?.focus()}
             isOtp
+            onfocus={() => setFocusCode(true)}
+              onBlur={() => setFocusCode(false)}
             onSendOtp={() => onGetOtp()}
             otpText={otpText}
+            containerStyle={{
+              borderColor: !focusCode
+                ? colors.inputBorder
+                : colors.focusedColor,
+            }}
           />
           <Input
             title={titleText.wallet}
@@ -127,6 +143,13 @@ const Withdraw = () => {
               addressInput.current = input;
             }}
             onSubmitEditing={() => amountInput?.current?.focus()}
+            onfocus={() => setFocusAddr(true)}
+            onBlur={() => setFocusAddr(false)}
+            containerStyle={{
+              borderColor: !focusAddr
+                ? colors.inputBorder
+                : colors.focusedColor,
+            }}
           />
           <Input
             title={titleText.amount}
@@ -138,6 +161,15 @@ const Withdraw = () => {
             onSubmitEditing={() => onSubmit()}
             assignRef={input => {
               amountInput.current = input;
+            }}
+            isMax
+            onMaxAmount={handleMaxAmount}
+            onfocus={() => setFocusAmount(true)}
+            onBlur={() => setFocusAmount(false)}
+            containerStyle={{
+              borderColor: !focusAmount
+                ? colors.inputBorder
+                : colors.focusedColor,
             }}
           />
         </View>

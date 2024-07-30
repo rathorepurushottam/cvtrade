@@ -17,7 +17,7 @@ import {
 import { BASE_URL } from '../../helper/Constants';
 import { getBannerList, getCoinList, getFavorites, getNotificationList, getTrending, getGainerList } from '../../actions/homeActions';
 import { getAdminBankDetails, getTradeHistory, getUserPortfolio, getUserWallet, getWalletHistory } from '../../actions/walletActions';
-import {mainBg, searchIcon, Notification_Icon} from '../../helper/ImageAssets';
+import {mainBg, searchIcon, Notification_Icon, Logo} from '../../helper/ImageAssets';
 import { colors } from '../../theme/colors';
 import { Screen } from '../../theme/dimens';
 import { useNavigation } from '@react-navigation/native';
@@ -115,6 +115,13 @@ const Home = () => {
       <ScrollView>
         <HomeSlider />
         <View style={[styles.Main_Container, { width: Screen.Width }]}>
+        <TouchableOpacity style={styles?.icon_Container}>
+              <Image
+                source={Logo}
+                resizeMode="contain"
+                style={styles.Common_Icon}
+              />
+            </TouchableOpacity>
           <TouchableOpacity
             style={styles?.Search_Container}
             onPress={() => navigation.navigate(SEARCH_SCREEN)}
@@ -158,7 +165,7 @@ const styles = StyleSheet.create({
   },
   Search_Container: {
     // width: 184,
-    width: "75%",
+    width: "65%",
     height: 40,
     borderRadius: 25,
     backgroundColor: "#FFFFFF47",
@@ -173,16 +180,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  icon_Container: {
+    width: 35,
+    height: 35,
+    backgroundColor: "#FFFFFF47",
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 20,
+    marginLeft: 8,
+  },
   Common_Icon: {
-    width: 13,
-    height: 13,
-    tintColor: colors.black,
+    width: 18,
+    height: 18,
+    // tintColor: colors.black,
   },
   Min_Container: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     width: "35%",
-    marginLeft: 44
+    marginLeft: 22
   },
 });

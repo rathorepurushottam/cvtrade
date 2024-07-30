@@ -13,7 +13,7 @@ import { Screen } from "../../theme/dimens";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useRoute } from "@react-navigation/native";
 import { errorText, placeHolderText, titleText } from "../../helper/Constants";
-import { toFixedThree, twoFixedTwo } from "../../helper/utility";
+import { checkValidAmount, toFixedThree, twoFixedTwo } from "../../helper/utility";
 import { sendOtp } from "../../actions/authActions";
 import { showError } from "../../helper/logger";
 import { withdrawCoin } from "../../actions/walletActions";

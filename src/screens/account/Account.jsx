@@ -25,6 +25,7 @@ import { ACTIVITY_LOGS, CHANGE_PASSWORD_SCREEN, CURRENCY_PREFERENCE_SCREEN, EDIT
 import {logoutAction} from '../../actions/authActions';
 import { Screen } from "../../theme/dimens";
 import { AppText, THIRTEEN, BOLD, FOURTEEN } from "../../common";
+import { BASE_URL } from "../../helper/Constants";
 
 const Profile = () => {
   const navigation = useNavigation();

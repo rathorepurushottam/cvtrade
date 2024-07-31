@@ -69,6 +69,10 @@ const Withdraw = () => {
       showError('You do not have sufficent balance!');
       return;
     }
+    if(walletDetail?.min_withdrawal < amount) {
+      showError(`Minimum withdrawal amount should be ${walletDetail?.min_withdrawal} USDT`);
+      return;
+    }
     
     let data = {
       otp: otp,

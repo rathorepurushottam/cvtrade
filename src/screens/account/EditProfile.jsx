@@ -115,7 +115,7 @@ const EditProfile = ({ navigation }) => {
     Keyboard.dismiss();
   };
 
-  console.log(profileImage, "profileImage");
+  console.log(userData, "profileImage");
   return (
     <AppBackground source={BG_Two}>
       {/* <Loader loading={loading} /> */}

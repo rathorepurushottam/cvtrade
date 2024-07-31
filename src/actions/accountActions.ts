@@ -65,7 +65,7 @@ export const editUserProfile =
       // console.log('res:::', response);
       if (response?.success) {
         showError(response?.message);
-        dispatch(getUserProfile(true));
+        dispatch(getUserProfile());
       } else {
         showError(response?.message);
       }

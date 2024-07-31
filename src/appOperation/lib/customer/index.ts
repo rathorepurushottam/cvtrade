@@ -57,7 +57,7 @@ export default (appOperation: AppOperation) => ({
   generate_address: (data: GenerateAddressProps) =>
     appOperation.put('wallet/generate-address', data, CUSTOMER_TYPE),
   withdraw_currency: (data: WithdrawCurrencyProps) =>
-    appOperation.post('wallet/withdrawal-currency', data, CUSTOMER_TYPE),
+    appOperation.post('wallet/withdrawal', data, CUSTOMER_TYPE),
   admin_bank_details: () =>
     appOperation.get(
       'admin/admin_bank_details',

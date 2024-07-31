@@ -74,7 +74,7 @@ export const withdrawCoin =
     try {
       dispatch(setLoading(true));
       const response: any = await appOperation.customer.withdraw_currency(data);
-      // console.log('rs', response);
+      console.log('rs', response);
 
       if (response.success) {
         showError(response?.message);

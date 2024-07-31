@@ -1,4 +1,4 @@
-#Tue Jul 30 17:09:08 IST 2024
+#Wed Jul 31 10:53:37 IST 2024
 base.2=/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/build/intermediates/dex/release/mergeDexRelease/classes3.dex
 path.2=classes3.dex
 base.1=/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/build/intermediates/dex/release/mergeDexRelease/classes2.dex

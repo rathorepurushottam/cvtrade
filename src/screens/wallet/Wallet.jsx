@@ -33,6 +33,7 @@ import {
   TWELVE,
   TWENTY,
   TEXTCOLOR,
+  HISTORYTEXT
 } from "../../common/AppText";
 // import {borderWidth} from '../../theme/Dimension';
 import {
@@ -68,7 +69,7 @@ const Wallet = () => {
   }, []);
 
   return (
-    <AppSafeAreaView source={BG_Two}>
+    <AppSafeAreaView >
       <ToolBar isLogo={false} isSecond title="Wallet" />
       <ScrollView style={styles?.Main_Container}>
         <AppText type={EIGHTEEN}>Your Overall Balance</AppText>
@@ -119,20 +120,22 @@ const Wallet = () => {
                           },
                           {
                             paddingHorizontal: 5,
-                            paddingVertical: 2,
+                            // paddingVertical: 2,
+                            paddingTop: 1.5,
                             borderRadius: 10,
+                            justifyContent: "center"
                           },
                         ]}
                       >
-                        <AppText type={FOURTEEN} style={{ color: "#FFFFFF88" }}>
-                          {twoFixedTwo(item?.change)}
+                        <AppText type={FOURTEEN} color={HISTORYTEXT}>
+                          {twoFixedTwo(item?.change)}%
                         </AppText>
                       </View>
 
                       <AppText
-                        type={FOURTEEN}
-                        // weight={}
-                        style={{ color: "#FFFFFF88" }}
+                       type={FOURTEEN}
+                       weight={SEMI_BOLD}
+                      color={TEXTCOLOR}
                       >
                         {"   "}${twoFixedTwo(item?.price)}
                       </AppText>

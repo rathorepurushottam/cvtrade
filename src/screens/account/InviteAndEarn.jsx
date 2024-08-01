@@ -21,7 +21,7 @@ import Icon from "../../common/Icon";
 // import Font from "../../Common/Font";
 import { colors } from "../../theme/colors";
 import CommonInput from "../../common/CommonInput";
-import { AppText, BLACK, BLUE, FIFTEEN, THIRTEEN, WHITE, BOLD, GREEN } from "../../common";
+import { AppText, BLACK, BLUE, FIFTEEN, THIRTEEN, WHITE, BOLD, GREEN, INVITETEXT } from "../../common";
 import { Screen } from "../../theme/dimens";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getUserReferCode } from "../../actions/accountActions";
@@ -31,6 +31,7 @@ import { shareToAny } from "../../helper/utility";
 const ReferAndEarn = () => {
   const referCode = useAppSelector(state => state.home.referCode);
   const dispatch = useAppDispatch();
+  const [copyText, setCopyText] = useState('Copy');
   const [shareData, setShareData] = useState([
     { id: 0, icon: FB, url: "https://www.facebook.com/" },
     { id: 1, icon: WHATSAPP, url: "https://www.whatsapp.com/" },
@@ -93,7 +94,7 @@ const ReferAndEarn = () => {
             <AppText type={FIFTEEN} color={WHITE} weight={BOLD}>
               Total Referal commission
             </AppText>
-            <AppText type={FIFTEEN} color={WHITE} weight={BOLD}>
+            <AppText type={FIFTEEN} color={INVITETEXT} weight={BOLD}>
             10000 SHIB
             </AppText>
             
@@ -125,7 +126,8 @@ const ReferAndEarn = () => {
             labelStyle={{ marginHorizontal: 0 }}
             mainContainer={{ marginVertical: 10 }}
             value={referCode}
-            otpText="Copy"
+            otpText={copyText}
+            onGetOtp={() => setCopyText('Copied!')}
             editable={false}
           />
           <CommonButton title="Invite a friend" onPress={() => onSubmit()}></CommonButton>

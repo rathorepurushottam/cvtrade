@@ -48,6 +48,7 @@ export const TEXTCOLOR = "TEXTCOLOR";
 export const KYCDARKBLUE = 'KYCDARKBLUE';
 export const HISTORYTEXT = "HISTORYTEXT";
 export const ORDERTEXT = "ORDERTEXT";
+export const INVITETEXT = "INVITETEXT";
 
 const AppText = ({
   type,
@@ -182,6 +183,9 @@ const AppText = ({
         break;
         case ORDERTEXT:
         style['color'] = colors.orderBookText;
+        break;
+        case INVITETEXT:
+        style['color'] = colors.inviteText;
         break;
 
       default:

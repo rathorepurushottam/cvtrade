@@ -50,7 +50,7 @@ const CurrencyPreference = () => {
     },
   ];
   const animatedValues = useRef(Data?.map(() => new Animated.Value(0))).current;
-  const [selectCurrency, setSelectCurrency] = useState("Bitcoin");
+  const [selectCurrency, setSelectCurrency] = useState(currency_prefrence);
 
   const handleCurrencySelection = (currency) => {
     setSelectCurrency(currency);
@@ -77,6 +77,8 @@ const CurrencyPreference = () => {
     });
     Animated.stagger(100, animations).start();
   }, []);
+
+  console.log(currency_prefrence, "currency_prefrence")
 
   return (
     <AppSafeAreaView source={BG_Two}>
@@ -116,13 +118,13 @@ const CurrencyPreference = () => {
               <TouchableOpacity
                 style={[
                   styles?.Dot_Container,
-                  selectCurrency === item?.CoinName && {
+                  selectCurrency === item?.Currency && {
                     borderColor: "#A7E69E",
                   },
                 ]}
-                onPress={() => handleCurrencySelection(item?.CoinName)}
+                onPress={() => handleCurrencySelection(item?.Currency)}
               >
-                {selectCurrency === item?.CoinName && (
+                {selectCurrency === item?.Currency && (
                   <View style={styles?.Dot} />
                 )}
               </TouchableOpacity>

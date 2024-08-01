@@ -407,7 +407,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
               type={SIXTEEN}
               weight={MEDIUM}
               style={{ marginHorizontal: 10 }}
-            >{`${base_currency}-${quote_currency}`}</AppText>
+            >{`${base_currency}/${quote_currency}`}</AppText>
             <Image
               source={Back_Icon}
               resizeMode="contain"

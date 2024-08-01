@@ -111,7 +111,7 @@ const Home = () => {
   }, []);
 
   return (
-    <AppSafeAreaView source={mainBg} barStyle={"dark-content"}>
+    <AppSafeAreaView  barStyle={"dark-content"}>
       <ScrollView>
         <HomeSlider />
         <View style={[styles.Main_Container, { width: Screen.Width }]}>

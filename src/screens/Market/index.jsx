@@ -12,9 +12,9 @@ import HomeCoinTabs from "../home/HomeCoinTabs";
 const Market = () => {
   const [activeTab, setActiveTab] = useState('spot');
   return (
-    <AppSafeAreaView source={BG_Two}>
+    <AppSafeAreaView >
       <ToolBar isLogo={false} isSecond title={"Market"} />
-      <View style={[styles?.Main_Container, { marginBottom: 200 }]}>
+      <View style={[styles?.Main_Container, { marginBottom: 290 }]}>
       <HomeCoinTabs activeTab={activeTab} setActiveTab={setActiveTab}/>
       <View style={styles?.Heading}>
         <AppText type={TWELVE} color={colors.textGray} style={{width: '33%'}}>Asset</AppText>

@@ -66,6 +66,7 @@ const Notification = () => {
         keyExtractor={item => item._id}
         ListEmptyComponent={ListEmptyComponent}
         contentContainerStyle={commonStyles.flexGrow}
+        style={{paddingHorizontal: 10, borderRadius: 10}}
       />
     </AppSafeAreaView>
   );
@@ -79,10 +80,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: universalPaddingHorizontalHigh,
     paddingVertical: universalPaddingHorizontal,
     marginVertical: universalPaddingHorizontal,
-    borderBottomWidth: 0.4,
-    borderBottomColor: colors.thirdBg,
+    // borderBottomWidth: 0.4,
+    // borderBottomColor: colors.thirdBg,
     backgroundColor: "#FFFFFF10",
-    
+    borderRadius: 10
   },
   icon: {
     height: 50,

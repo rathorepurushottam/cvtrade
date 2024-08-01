@@ -67,5 +67,6 @@ export const colors = {
   changeText: '#04A544',
   belowText: '#A383DC',
   historyText: '#FFFFFF88',
-  orderBookText: '#B0B0B2'
+  orderBookText: '#B0B0B2',
+  inviteText: '#7ED375'
 };

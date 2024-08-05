@@ -6,9 +6,7 @@ import {
   Bitcoin_Icon,
   CVToken_Icon,
   Ethereum_Icon,
-  Solana_Icon,
   Tether_Icon,
-  XRP_Icon,
 } from "../../helper/ImageAssets";
 import ToolBar from "../../common/ToolBar";
 import {
@@ -36,17 +34,29 @@ const CurrencyPreference = () => {
       CoinName: "Tether USD",
       Currency: "USDT",
     },
-    {
-      id: 2,
-      image: Ethereum_Icon,
-      CoinName: "Ethereum",
-      Currency: "ETH",
-    },
+    // {
+    //   id: 2,
+    //   image: Ethereum_Icon,
+    //   CoinName: "Ethereum",
+    //   Currency: "ETH",
+    // },
     {
       id: 3,
       image: Binance_Icon,
       CoinName: "Binance",
       Currency: "BNB",
+    },
+    {
+      id: 4,
+      image: Bitcoin_Icon,
+      CoinName: "Bitcoin",
+      Currency: "BTC",
+    },
+    {
+      id: 5,
+      image: CVToken_Icon,
+      CoinName: "CV Token",
+      Currency: "CVT",
     },
   ];
   const animatedValues = useRef(Data?.map(() => new Animated.Value(0))).current;
@@ -78,10 +88,8 @@ const CurrencyPreference = () => {
     Animated.stagger(100, animations).start();
   }, []);
 
-  console.log(currency_prefrence, "currency_prefrence")
-
   return (
-    <AppSafeAreaView source={BG_Two}>
+    <AppSafeAreaView>
       <ToolBar isLogo={false} isSecond title={"Currency Preference"} />
       <View style={styles?.Main_Container}>
         {Data?.map((item, index) => {

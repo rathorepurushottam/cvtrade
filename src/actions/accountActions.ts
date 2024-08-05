@@ -115,6 +115,7 @@ export const changeCurrencyPreference =
       }
     } catch (e) {
       logger(e);
+      showError(e?.message);
     } finally {
       dispatch(setLoading(false));
     }

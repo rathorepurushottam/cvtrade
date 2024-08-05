@@ -35,7 +35,7 @@ const EditProfile = ({ navigation }) => {
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   // const [isVisible, setIsVisible] = useState(false);
-  const [photo, setPhoto] = useState();
+  // const [photo, setPhoto] = useState();
   const [email, setEmail] = useState("");
   const [phoneOtp, setPhoneOtp] = useState("");
   const userData = useAppSelector((state) => state.auth.userData);
@@ -43,6 +43,11 @@ const EditProfile = ({ navigation }) => {
     return state.account.languages;
   });
   const [otpText, setOtpText] = useState(checkValue(languages?.register_nine));
+  const [firstFocus, setFirstFocus] = useState(false);
+  const [secondFocus, setSecondFocus] = useState(false);
+  const [emailFocus,setEmailFocus] = useState(false);
+  const [mobileFocus, setMobileFocus] = useState(false);
+  const [otpFocus, setOtpFocus] = useState(false);
   const {
     firstName: _firstName,
     lastName: _lastName,
@@ -83,8 +88,8 @@ const EditProfile = ({ navigation }) => {
     if (!mobileNumber) {
       data.append("motp", phoneOtp);
     }
-    if (photo) {
-      data?.append("profilepicture", photo);
+    if (profileImage) {
+      data?.append("profilepicture", profileImage);
     }
     dispatch(editUserProfile(data));
   };
@@ -115,7 +120,7 @@ const EditProfile = ({ navigation }) => {
     Keyboard.dismiss();
   };
 
-  console.log(userData, "profileImage");
+  console.log(BASE_URL, userData?.profilepicture, "profileImage");
   return (
     <AppBackground source={BG_Two}>
       {/* <Loader loading={loading} /> */}
@@ -166,8 +171,15 @@ const EditProfile = ({ navigation }) => {
           labelStyle={{ marginHorizontal: 0 }}
           Label="First Name"
           placeholderText="First Name"
-          mainContainer={{ marginVertical: 5 }}
-          inputStyle={{ backgroundColor: null }}
+          mainContainer={{
+            marginVertical: 5,
+          }}
+          onfocus={() => setFirstFocus(true)}
+          onBlur={() => setFirstFocus(false)}
+          inputStyle={{
+            backgroundColor: null,
+            borderColor: !firstFocus ? colors.inputBorder : colors.focusedColor,
+          }}
         />
         <CommonInput
           value={lastName}
@@ -176,7 +188,12 @@ const EditProfile = ({ navigation }) => {
           labelStyle={{ marginHorizontal: 0 }}
           Label="Last Name"
           placeholderText="Last Name"
-          inputStyle={{ backgroundColor: null }}
+          onfocus={() => setSecondFocus(true)}
+          onBlur={() => setSecondFocus(false)}
+          inputStyle={{
+            backgroundColor: null,
+            borderColor: !secondFocus ? colors.inputBorder : colors.focusedColor,
+          }}
         />
         <CommonInput
           mainContainer={{ marginVertical: 5 }}
@@ -187,7 +204,12 @@ const EditProfile = ({ navigation }) => {
           onChangeText={setEmail}
           keyboardType={"email-address"}
           placeholderText="Email Address"
-          inputStyle={{ backgroundColor: null }}
+          onfocus={() => setEmailFocus(true)}
+          onBlur={() => setEmailFocus(false)}
+          inputStyle={{
+            backgroundColor: null,
+            borderColor: !emailFocus ? colors.inputBorder : colors.focusedColor,
+          }}
         />
         <CommonInput
           keyboardType={"number-pad"}
@@ -198,7 +220,12 @@ const EditProfile = ({ navigation }) => {
           placeholderText="Enter Mobile Number"
           mainContainer={{ marginVertical: 5 }}
           labelStyle={{ marginHorizontal: 0 }}
-          inputStyle={{ backgroundColor: null }}
+          onfocus={() => setMobileFocus(true)}
+          onBlur={() => setMobileFocus(false)}
+          inputStyle={{
+            backgroundColor: null,
+            borderColor: !mobileFocus ? colors.inputBorder : colors.focusedColor,
+          }}
         />
 
         {!mobileNumber && (
@@ -213,7 +240,12 @@ const EditProfile = ({ navigation }) => {
             value={phoneOtp}
             onChangeText={setPhoneOtp}
             otpText={otpText}
-            inputStyle={{ backgroundColor: null }}
+            onfocus={() => setOtpFocus(true)}
+            onBlur={() => setOtpFocus(false)}
+            inputStyle={{
+              backgroundColor: null,
+              borderColor: !otpFocus ? colors.inputBorder : colors.focusedColor,
+            }}
           />
         )}
       </View>

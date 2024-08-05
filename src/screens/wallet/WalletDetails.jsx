@@ -17,9 +17,9 @@ import {
 } from '../../common';
 import AppSafeAreaView from '../../common/AppSafeAreaView';
 import ToolBar from '../../common/ToolBar';
-import {useAppSelector} from '../../store/hooks';
+import {useAppDispatch, useAppSelector} from '../../store/hooks';
 import KeyBoardAware from '../../common/KeyboardAware';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {
   universalPaddingTop,
 } from '../../theme/dimens';
@@ -28,15 +28,24 @@ import { BG_Two } from '../../helper/ImageAssets';
 import { dateFormatter } from '../../helper/utility';
 import FastImage from 'react-native-fast-image';
 import { BASE_URL } from '../../helper/Constants';
+import { setSelectedWalletHistory } from '../../slices/walletSlice';
+import NavigationService from '../../navigation/NavigationService';
+import { WALLET_HISTORY_DETAILS_SCREEN } from '../../navigation/routes';
 
 
 
 const WalletDetails = () => {
+  const dispatch = useAppDispatch();
   const walletHistory = useAppSelector(state => {
     return state.wallet.walletHistory;
   });
+
+  const handleWalletHistoryDetail = (item) => {
+    dispatch(setSelectedWalletHistory(item));
+    NavigationService?.navigate(WALLET_HISTORY_DETAILS_SCREEN);
+  }
   return (
-    <AppSafeAreaView source={BG_Two}>
+    <AppSafeAreaView>
       <ToolBar isLogo={false} isSecond title="Wallet" />
       <KeyBoardAware>
       <View style={styles?.RecentTransactions_Container}>
@@ -56,7 +65,7 @@ const WalletDetails = () => {
             let url = `${BASE_URL}${item?.icon_path}`;
             return (
               <View key={index}>
-                <View style={styles?.Map_Container}>
+                <TouchableOpacity style={styles?.Map_Container} onPress={() => handleWalletHistoryDetail(item)}>
                   <View style={styles?.CoinInfo_Container}>
                   <FastImage
           source={{ uri: url }}
@@ -94,7 +103,7 @@ const WalletDetails = () => {
                       </AppText>
                     </View>
                   </View>
-                </View>
+                </TouchableOpacity>
                 <View style={styles?.Line} />
               </View>
             );

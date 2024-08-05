@@ -80,7 +80,7 @@ const Search = () => {
   };
 
   return (
-    <AppSafeAreaView source={BG_Two}>
+    <AppSafeAreaView>
      <ToolBar isLogo={false} isSecond title='Search' />
       <SearchInput
       cancelBtn={true}
@@ -91,8 +91,8 @@ const Search = () => {
         returnKeyType="done"
         onSubmitEditing={() => getData()}
         onFocus={true}
-        containerStyle={{paddingTop: Platform.OS === 'ios' ? 25 : 0}}
-        inputStyle={{paddingHorizontal: Platform.OS === 'ios' ? 5 : 0}}
+        containerStyle={{paddingTop: Platform.OS === 'ios' ? 25 : 0}, {marginRight: 10}}
+        // inputStyle={{paddingHorizontal: Platform.OS === 'ios' ? 5 : 0}}
       />
       <KeyBoardAware>
         <AppText weight={SEMI_BOLD} type={SIXTEEN} style={styles.text}>

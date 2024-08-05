@@ -92,7 +92,7 @@ const CurrencyList = () => {
   };
 
   return (
-    <AppSafeAreaView source={BG_Two}>
+    <AppSafeAreaView>
        <ToolBar isLogo={false} isSecond title={type} />
         <SearchInput
           cancelBtn={true}
@@ -103,7 +103,8 @@ const CurrencyList = () => {
           returnKeyType="done"
           onSubmitEditing={() => getData()}
           onFocus={true}
-          //   containerStyle={{paddingTop: Platform.OS === 'ios' ? 25 : 0}}
+            // containerStyle={{paddingTop: Platform.OS === 'ios' ? 25 : 0}}
+            containerStyle={{marginRight: 10}}
           //   inputStyle={{paddingHorizontal: Platform.OS === 'ios' ? 5 : 0}}
         />
         <KeyBoardAware>

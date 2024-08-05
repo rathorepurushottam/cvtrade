@@ -230,8 +230,8 @@ const BtcCoinDetails = ({ coinDetails }) => {
       setBalance(res?.balance?.quote_currency_balance);
       _setBalance(res?.balance?.base_currency_balance);
       dispatch(setOpenOrders(res?.open_orders ? res?.open_orders : []));
-      dispatch(setBuyOrders(res?.buy_order ? res?.buy_order : []));
-      dispatch(setSellOrders(res?.sell_order ? res?.sell_order : []));
+      dispatch(setBuyOrders(res?.buy_order ? res?.buy_order?.reverse() : []));
+      dispatch(setSellOrders(res?.sell_order ? res?.sell_order?.reverse() : []));
       setLoading(false);
     });
     return () => {

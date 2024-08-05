@@ -17,7 +17,7 @@ import {
 import { BASE_URL } from '../../helper/Constants';
 import { getBannerList, getCoinList, getFavorites, getNotificationList, getTrending, getGainerList } from '../../actions/homeActions';
 import { getAdminBankDetails, getTradeHistory, getUserPortfolio, getUserWallet, getWalletHistory } from '../../actions/walletActions';
-import {mainBg, searchIcon, Notification_Icon, Logo} from '../../helper/ImageAssets';
+import {mainBg, Search_Icon, Notification_Icon, Logo} from '../../helper/ImageAssets';
 import { colors } from '../../theme/colors';
 import { Screen } from '../../theme/dimens';
 import { useNavigation } from '@react-navigation/native';
@@ -127,11 +127,11 @@ const Home = () => {
             onPress={() => navigation.navigate(SEARCH_SCREEN)}
           >
             <Image
-              source={searchIcon}
+              source={Search_Icon}
               resizeMode="contain"
               style={[styles.Common_Icon, { marginLeft: 15 }]}
             />
-            <AppText type={THIRTEEN} color={colors.black} style={{ marginLeft: 5 }} weight={MEDIUM}>Search</AppText>
+            <AppText type={THIRTEEN} color={colors.black} style={{ marginLeft: 10 }} weight={MEDIUM}>Search</AppText>
           </TouchableOpacity>
           <View style={styles.Min_Container}>
             <TouchableOpacity style={styles?.Common_Container}  onPress={() => navigation.navigate(NOTIFICATION_SCREEN)}>

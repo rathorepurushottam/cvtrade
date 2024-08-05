@@ -28,7 +28,7 @@ const Withdraw = () => {
   const {emailId} = userData ?? '';
   const [otp, setOtp] = useState('');
   const [address, setAddress] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [coinChain, setCoinChain] = useState(chain[0]);
   const [otpText, setOtpText] = useState('Get OTP');
   const [focusCode, setFocusCode] = useState(false);
@@ -77,7 +77,7 @@ const Withdraw = () => {
     let data = {
       otp: otp,
       address: address,
-      amount: amount,
+      amount: parseFloat(amount),
       email_or_phone: emailId,
       chain: coinChain,
       currency_id: walletDetail?._id
@@ -87,7 +87,8 @@ const Withdraw = () => {
   };
 
   const handleMaxAmount = () => {
-    setAmount(balance);
+    const bal = String(balance);
+    setAmount(bal);
   };
   return (
     <AppBackground>

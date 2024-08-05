@@ -137,22 +137,21 @@ export default NewsSection;
 
 const styles = StyleSheet.create({
     Min_Container: {
-      backgroundColor: colors.InputBackground,
       justifyContent: "center",
       flexDirection: "row",
       alignItems: "center",
       paddingVertical: 15,
       paddingHorizontal: 22,
       width: Screen.Width,
-      borderTopLeftRadius: 15,
-      borderTopRightRadius: 15,
+     
     },
     News_Icon: {
       width: 20,
       height: 20,
     },
     Main_Container: {
-      marginTop: -30,
+      borderTopLeftRadius: 15,
+      borderTopRightRadius: 15,
     },
     icon: {
       width: 25,

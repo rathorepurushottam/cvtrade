@@ -40,9 +40,10 @@ import {
   BITCOIN_SCREEN,
   DEPOSIT_SCREEN,
   WALLET_DETAIL_SCREEN,
+  WALLET_HISTORY_DETAILS_SCREEN,
   WITHDRAW_SCREEN,
 } from "../../navigation/routes";
-import { useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { BASE_URL } from "../../helper/Constants";
 import WalletModal from "../../common/WalletModal";
 import { getCoinDetails, getWalletHistory } from "../../actions/walletActions";
@@ -50,8 +51,10 @@ import NavigationService from "../../navigation/NavigationService";
 import { dateFormatter, twoFixedTwo } from "../../helper/utility";
 import { colors } from "../../theme/colors";
 import FastImage from "react-native-fast-image";
+import { setSelectedWalletHistory } from "../../slices/walletSlice";
 
 const Wallet = () => {
+  const dispatch = useAppDispatch();
   const walletBalance = useAppSelector((state) => {
     return state.wallet.walletBalance;
   });
@@ -67,6 +70,11 @@ const Wallet = () => {
   useEffect(() => {
     getWalletHistory();
   }, []);
+
+  const handleWalletHistoryDetail = (item) => {
+    dispatch(setSelectedWalletHistory(item));
+    NavigationService?.navigate(WALLET_HISTORY_DETAILS_SCREEN);
+  }
 
   return (
     <AppSafeAreaView >
@@ -164,7 +172,7 @@ const Wallet = () => {
         ) : null}
         <View style={styles?.Common_Container}>
           <TouchableOpacity
-            style={styles?.Deposit_Withdraw_Container}
+           style={[styles?.Deposit_Withdraw_Container, {backgroundColor: '#38B781'}]}
             onPress={() =>
               NavigationService?.navigate("CurrencyList", { type: "Deposit" })
             }
@@ -180,7 +188,7 @@ const Wallet = () => {
             </AppText>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles?.Deposit_Withdraw_Container}
+            style={[styles?.Deposit_Withdraw_Container, {backgroundColor: colors.red}]}
             onPress={() =>
               NavigationService?.navigate("CurrencyList", { type: "Withdraw" })
             }
@@ -231,7 +239,7 @@ const Wallet = () => {
             let url = `${BASE_URL}${item?.icon_path}`;
             return (
               <View key={index}>
-                <View style={styles?.Map_Container}>
+                <TouchableOpacity style={styles?.Map_Container} onPress={() => handleWalletHistoryDetail(item)}>
                   <View style={styles?.CoinInfo_Container}>
                     <FastImage
                       source={{ uri: url }}
@@ -271,7 +279,7 @@ const Wallet = () => {
                       </AppText>
                     </View>
                   </View>
-                </View>
+                </TouchableOpacity>
                 <View style={styles?.Line} />
               </View>
             );
@@ -309,7 +317,7 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 29,
     borderWidth: 1,
-    backgroundColor: "#2330237A",
+    // backgroundColor: "#2330237A",
     borderColor: "#FFFFFF7A",
     alignItems: "center",
     justifyContent: "center",

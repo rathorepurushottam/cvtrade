@@ -19,7 +19,9 @@ const CommonInput = ({
   isOtp,
   onGetOtp,
   otpText = " GET OTP",
-  editable=true
+  editable=true,
+  onfocus,
+  onBlur,
 }) => {
   return (
     <View style={mainContainer}>
@@ -36,6 +38,8 @@ const CommonInput = ({
         keyboardType={keyboardType}
         placeholderTextColor={placeholderTextColor}
         placeholder={placeholderText}
+        onFocus={onfocus}
+        onBlur={onBlur}
         style={{
           fontSize: 14,
           paddingLeft: 20,

@@ -90,6 +90,7 @@ const Profile = () => {
       },
       { text: "NO", onPress: () => console.log("OK Pressed") },
     ]);
+
   return (
     <AppBackground>
       <ToolBar isLogo={false} isSecond title="Profile" />
@@ -181,16 +182,21 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
   logoutBtn: {
-    width: Screen.Width,
+    width: Screen.Width- 20,
     height: 45,
     backgroundColor: "#FFFFFF18",
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
+    // marginHorizontal: 10,
+    borderRadius: 10,
+    marginVertical: 5
+
   },
   Profile_Image: {
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
+    borderRadius: 40
   },
   Back_Icon: {
     width: 15,
@@ -231,6 +237,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderWidth: 1,
     borderColor: "#FFFFFF07",
+    marginHorizontal: 10,
+    borderRadius: 10,
+    marginVertical: 5
   },
   Icon: {
     width: 20,

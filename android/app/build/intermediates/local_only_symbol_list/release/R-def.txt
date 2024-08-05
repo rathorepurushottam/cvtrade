@@ -17,6 +17,7 @@ drawable assets_images_banx_icon
 drawable assets_images_bg_two
 drawable assets_images_binance_icon
 drawable assets_images_bitcoin_graph
+drawable assets_images_bitcoin_ic
 drawable assets_images_bitcoin_icon
 drawable assets_images_bitcoin_icon_2
 drawable assets_images_bitcoingraph_backline

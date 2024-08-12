@@ -1,5 +1,6 @@
 import {
   Image,
+  Modal,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -79,7 +80,7 @@ import TouchableOpacityView from "../../common/TouchableOpacityView";
 import { percentageData } from "../../helper/dummydata";
 import { SpinnerSecond } from "../../common/SpinnerSecond";
 import PairModal from "../../common/PairModal";
-
+import { SubregionList } from "react-native-country-picker-modal";
 const socket = connect(BASE_URL, {
   transports: ["websocket"],
   forceNew: true,
@@ -163,6 +164,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
   const [visible, setVisible] = useState(true);
   const [loading, setLoading] = useState(true);
   const [showPair, setShowPair] = useState(false);
+  const [showTradeModal,setShowTradeModal] = useState(false);
   // const [colorId, setColorId] = useState('1');
   // const [numberSelect, setNumberSelect] = useState('0.0001');
   // const [numberSelectLimit, setNumberLimit] = useState('Limit');
@@ -293,6 +295,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
   const onSubmit = () => {
     if (kycVerified !== 2) {
       navigation.navigate(KYC_STATUS_SCREEN);
+      setShowTradeModal(false);
       return;
     }
 
@@ -305,7 +308,7 @@ const BtcCoinDetails = ({ coinDetails }) => {
       side: option === "Buy" ? "BUY" : "SELL",
     };
     dispatch(placeOrder(data, refRBSheetOrder));
-
+    setShowTradeModal(false);
     setTimeout(() => {
       let _data = {
         message: "exchange",
@@ -385,6 +388,11 @@ const BtcCoinDetails = ({ coinDetails }) => {
     setSelectedOption(option);
     handleCloseRBSheet();
   };
+
+  handleOpenTradeModal = (type) =>{
+    setOption(type);
+    setShowTradeModal(true);
+  }
   return (
     <AppBackground source={BG_Two}>
       <ScrollView style={{ flex: 1 }}>
@@ -474,14 +482,14 @@ const BtcCoinDetails = ({ coinDetails }) => {
             </AppText>
           </View>
         </View>
-        <MarketOptionContainer
+        {/* <MarketOptionContainer
           onOptionChange={(e) => {
             setOption(e);
           }}
           firstTitle={base_currency}
           secondTitle={quote_currency}
-        />
-        <View style={styles.chartContain}>
+        /> */}
+        {/* <View style={styles.chartContain}>
           <AppText type={THIRTEEN} weight={MEDIUM}>
             {visible ? "Chart" : "Order Book"}
           </AppText>
@@ -495,8 +503,8 @@ const BtcCoinDetails = ({ coinDetails }) => {
               ]}
             />
           </TouchableOpacity>
-        </View>
-        {visible ? (
+        </View> */}
+        
           <WebView
             source={{
               uri: `https://cvtrade.io/chart/${base_currency}_${quote_currency}`,
@@ -512,7 +520,6 @@ const BtcCoinDetails = ({ coinDetails }) => {
             sharedCookiesEnabled={true}
             javaScriptEnabledAndroid={true}
           />
-        ) : (
           <View style={styles.orderBook}>
             <View
               style={{ flexDirection: "row", justifyContent: "space-between", backgroundColor: colors.dividerColor, padding: 8, borderRadius: 10 }}
@@ -559,8 +566,40 @@ const BtcCoinDetails = ({ coinDetails }) => {
               ))}
            </ScrollView>
           </View>
-        )}
-        <View style={styles.availableBalance}>
+        
+        
+        <View style={{flexDirection: "row", justifyContent: "space-around"}}>
+        <CommonButton
+            title={kycVerified !== 2 ? "Sumbit KYC" : `Buy ${base_currency}`}
+            buttonStyle={styles?.Button}
+            onPress={() => handleOpenTradeModal('Buy')}
+            containerStyle={{width: 170}}
+          />
+          <CommonButton
+            normalButton
+            title={kycVerified !== 2 ? "Sumbit KYC" : `Sell ${quote_currency}`}
+            normalButtonStyle={[{ backgroundColor: colors.red }]}
+            onPress={() => handleOpenTradeModal('Sell')}
+            containerStyle={{width: 170}}
+          />
+        </View>
+        <Modal
+        transparent
+        statusBarTranslucent={true}
+        animationType="none"
+        visible={showTradeModal}
+      >
+        <TouchableOpacity
+          onPress={setShowTradeModal}
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(0,0,0,0.5)",
+          }}
+          activeOpacity={1}
+        >
+          <View style={styles.availableBalance}>
           <AppText type={THIRTEEN} weight={MEDIUM}>
             Available balance:{" "}
             {option === "Buy"
@@ -655,22 +694,16 @@ const BtcCoinDetails = ({ coinDetails }) => {
               );
             })}
           </View>
-        </View>
-        {option == "Buy" ? (
           <CommonButton
             title={kycVerified !== 2 ? "Sumbit KYC" : `Buy ${base_currency}`}
             buttonStyle={styles?.Button}
             onPress={() => onSubmit()}
+            // containerStyle={{width: 170}}
           />
-        ) : (
-          <CommonButton
-            normalButton
-            title={kycVerified !== 2 ? "Sumbit KYC" : `Sell ${quote_currency}`}
-            normalButtonStyle={[{ backgroundColor: colors.red }]}
-            onPress={() => onSubmit()}
-          />
-        )}
-        {/* <View style={{ height: 150 }}></View> */}
+        </View>
+       
+        </TouchableOpacity>
+      </Modal>
 
         <RBSheet
           ref={refRBSheet}
@@ -771,7 +804,7 @@ export default BtcCoinDetails;
 
 const styles = StyleSheet.create({
   Button: {
-    marginVertical: 20,
+    marginVertical: 10,
   },
   inputStyle: {
     backgroundColor: "#141414",
@@ -816,7 +849,7 @@ const styles = StyleSheet.create({
   availableBalance: {
     width: Screen.Width - 25,
     alignSelf: "center",
-    backgroundColor: "#FFFFFF1A",
+    backgroundColor: "#202224",
     borderRadius: 10,
     paddingHorizontal: 16,
     paddingVertical: 20,

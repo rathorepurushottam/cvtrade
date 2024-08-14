@@ -62,7 +62,7 @@ const HomeSlider = () => {
       ref?.current?.startAutoplay();
     }
   }, []);
-
+  console.log(Screen.Width, "width");
   return (
     <View style={{ height: 250, alignSelf: "center", alignItems: "center" }}>
       <Carousel

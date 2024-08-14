@@ -121,6 +121,7 @@ export const qr_Code = require("../../assets/images/qrCode.png");
 
 export const menuIcon = require('../../assets/images/menu_ic.png');
 export const peopleIcon = require('../../assets/images/people_icon.png');
+export const augBanner = require('../../assets/images/augBanner.png');
 
 
 

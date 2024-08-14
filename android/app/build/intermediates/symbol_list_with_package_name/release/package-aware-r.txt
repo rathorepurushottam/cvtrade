@@ -2529,6 +2529,7 @@ drawable assets_images_afg_flag
 drawable assets_images_airdrops_icon
 drawable assets_images_arabic_flag
 drawable assets_images_arrow_icon
+drawable assets_images_augbanner
 drawable assets_images_back
 drawable assets_images_back_icon
 drawable assets_images_banner1

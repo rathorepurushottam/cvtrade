@@ -240,6 +240,10 @@
         "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_eye_icon.png"
     },
     {
+        "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_augbanner.png.flat",
+        "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_augbanner.png"
+    },
+    {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_profile_icon.png.flat",
         "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_profile_icon.png"
     },

@@ -17,11 +17,12 @@ import {
 import { BASE_URL } from '../../helper/Constants';
 import { getBannerList, getCoinList, getFavorites, getNotificationList, getTrending, getGainerList } from '../../actions/homeActions';
 import { getAdminBankDetails, getTradeHistory, getUserPortfolio, getUserWallet, getWalletHistory } from '../../actions/walletActions';
-import {mainBg, Search_Icon, Notification_Icon, Logo} from '../../helper/ImageAssets';
+import {augBanner, Search_Icon, Notification_Icon, Logo} from '../../helper/ImageAssets';
 import { colors } from '../../theme/colors';
 import { Screen } from '../../theme/dimens';
 import { useNavigation } from '@react-navigation/native';
 import { NOTIFICATION_SCREEN, SEARCH_SCREEN } from '../../navigation/routes';
+import FastImage from 'react-native-fast-image';
 
 // Create a socket instance and ensure correct connection options
 const socket = connect(BASE_URL, {
@@ -144,6 +145,10 @@ const Home = () => {
           </View>
         </View>
         <NewsSection />
+        <View style={{width: Screen.Width-40, height: 120, alignSelf: "center"}}>
+          <FastImage source={augBanner} resizeMode='contain' style={{width: Screen.Width-40, height: 120}}/>
+
+        </View>
         <CoinSlider />
         <CoinList />
       </ScrollView>

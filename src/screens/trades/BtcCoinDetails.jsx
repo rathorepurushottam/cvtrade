@@ -514,6 +514,8 @@ const BtcCoinDetails = ({ coinDetails }) => {
             scalesPageToFit={true}
             automaticallyAdjustContentInsets={true}
             // scrollEnabled={true}
+            androidLayerType={'hardware'}
+            cacheEnabled={true}
             javaScriptEnabled={true}
             domStorageEnabled={true}
             bounces={false}

@@ -305,7 +305,7 @@
     },
     {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_banner2.png.flat",
-        "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_banner2.png"
+        "source": "com.crypto.cvtrade.app-main-45:/drawable-mdpi/assets_images_banner2.png"
     },
     {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_bitcoin_icon.png.flat",
@@ -365,7 +365,7 @@
     },
     {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_banner3.png.flat",
-        "source": "com.crypto.cvtrade.app-res-39:/drawable-mdpi/assets_images_banner3.png"
+        "source": "com.crypto.cvtrade.app-main-45:/drawable-mdpi/assets_images_banner3.png"
     },
     {
         "merged": "com.crypto.cvtrade.app-merged_res-44:/drawable-mdpi_assets_images_up_ic.png.flat",

@@ -28,7 +28,7 @@ const Withdraw = () => {
   const {emailId} = userData ?? '';
   const [otp, setOtp] = useState('');
   const [address, setAddress] = useState('');
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [coinChain, setCoinChain] = useState(chain[0]);
   const [otpText, setOtpText] = useState('Get OTP');
   const [focusCode, setFocusCode] = useState(false);
@@ -190,7 +190,7 @@ const Withdraw = () => {
         />
         <SpaceBetweenView
           firstText={"You will get :"}
-          secondText={`${amount === 0 ? 0 : amount - walletDetail?.withdrawal_fee} ${walletDetail?.short_name}`}
+          secondText={`${amount === 0 ? 0 : parseFloat(amount - walletDetail?.withdrawal_fee)} ${walletDetail?.short_name}`}
           containerStyle={{ marginTop: 0 }}
           Firststyle={{fontWeight: 'bold'}}
         />

@@ -3,8 +3,6 @@ import { Image, ImageBackground, StyleSheet, View } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import {
   BANNER_1,
-  BANNER_2,
-  BANNER_3,
   BANNER_4,
   Gift_Icon,
   NFT_Slider_Icon,
@@ -28,10 +26,10 @@ const HomeSlider = () => {
       image: BANNER_1,
     },
     
-    {
-      id: 2,
-      image: BANNER_3,
-    },
+    // {
+    //   id: 2,
+    //   image: BANNER_3,
+    // },
     {
       id: 3,
       image: BANNER_4,

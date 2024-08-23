@@ -105,9 +105,9 @@ export const GALLARY = require("../../assets/images/gallary.png");
 export const CAMERA = require("../../assets/images/camera.png");
 export const REMOVE = require("../../assets/images/remove.png");
 export const BANNER_1 = require("../../assets/images/banner1.png");
-export const BANNER_2 = require("../../assets/images/banner2.png");
+// export const BANNER_2 = require("../../assets/images/banner2.png");
 
-export const BANNER_3 = require("../../assets/images/banner3.png");
+// export const BANNER_3 = require("../../assets/images/banner3.png");
 
 export const BANNER_4 = require("../../assets/images/banner4.png");
 export const REFER = require("../../assets/images/referal.png");

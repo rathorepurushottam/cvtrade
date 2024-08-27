@@ -1,9 +1,9 @@
 <libraries>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-pager-view::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-pager-view/android/build/.transforms/7ff45a112e6bcc6d8b13b0efc13c2e68/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-pager-view/android/build/.transforms/7ff45a112e6bcc6d8b13b0efc13c2e68/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-pager-view::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-pager-view/android/build/.transforms/0410c89a7a596a1ed552273a4a579b27/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-pager-view/android/build/.transforms/0410c89a7a596a1ed552273a4a579b27/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-pager-view:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-pager-view/android/build/.transforms/7ff45a112e6bcc6d8b13b0efc13c2e68/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-pager-view/android/build/.transforms/0410c89a7a596a1ed552273a4a579b27/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -26,10 +26,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-screens::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-screens/android/build/.transforms/58173cb2d735503aa22a050ca87e1f3f/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-screens/android/build/.transforms/58173cb2d735503aa22a050ca87e1f3f/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-screens::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-screens/android/build/.transforms/4e3f7dc538d3838a6ac1dc839c85d6e9/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-screens/android/build/.transforms/4e3f7dc538d3838a6ac1dc839c85d6e9/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-screens:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-screens/android/build/.transforms/58173cb2d735503aa22a050ca87e1f3f/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-screens/android/build/.transforms/4e3f7dc538d3838a6ac1dc839c85d6e9/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -449,10 +449,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-version-check::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-version-check/android/build/.transforms/6b6dbdf404cb65dc7d7c237fc89cccb0/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-version-check/android/build/.transforms/6b6dbdf404cb65dc7d7c237fc89cccb0/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-version-check::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-version-check/android/build/.transforms/adb8153d17f4ffbea76b5e3e716f29c4/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-version-check/android/build/.transforms/adb8153d17f4ffbea76b5e3e716f29c4/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-version-check:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-version-check/android/build/.transforms/6b6dbdf404cb65dc7d7c237fc89cccb0/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-version-check/android/build/.transforms/adb8153d17f4ffbea76b5e3e716f29c4/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -475,10 +475,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-async-storage_async-storage::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/@react-native-async-storage/async-storage/android/build/.transforms/a70a3a36732cf6ec74fc85b7d72bbe5a/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/@react-native-async-storage/async-storage/android/build/.transforms/a70a3a36732cf6ec74fc85b7d72bbe5a/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-async-storage_async-storage::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-async-storage/async-storage/android/build/.transforms/9e4095b9c4483e63e89082107bd461fd/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-async-storage/async-storage/android/build/.transforms/9e4095b9c4483e63e89082107bd461fd/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-async-storage_async-storage:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/@react-native-async-storage/async-storage/android/build/.transforms/a70a3a36732cf6ec74fc85b7d72bbe5a/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-async-storage/async-storage/android/build/.transforms/9e4095b9c4483e63e89082107bd461fd/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -488,10 +488,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-clipboard_clipboard::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/@react-native-clipboard/clipboard/android/build/.transforms/6ae1b46e2466aaf6f345c85df51feb79/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/@react-native-clipboard/clipboard/android/build/.transforms/6ae1b46e2466aaf6f345c85df51feb79/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-clipboard_clipboard::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-clipboard/clipboard/android/build/.transforms/94cb1f51fba1820cc086f1d9d01cdab6/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-clipboard/clipboard/android/build/.transforms/94cb1f51fba1820cc086f1d9d01cdab6/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-clipboard_clipboard:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/@react-native-clipboard/clipboard/android/build/.transforms/6ae1b46e2466aaf6f345c85df51feb79/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-clipboard/clipboard/android/build/.transforms/94cb1f51fba1820cc086f1d9d01cdab6/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -501,10 +501,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-community_datetimepicker::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/.transforms/f5b3b0e39f81df84463e7f798995e698/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/.transforms/f5b3b0e39f81df84463e7f798995e698/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-community_datetimepicker::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/.transforms/a9df16628fc1713f23fbf953a26cc321/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/.transforms/a9df16628fc1713f23fbf953a26cc321/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-community_datetimepicker:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/.transforms/f5b3b0e39f81df84463e7f798995e698/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/.transforms/a9df16628fc1713f23fbf953a26cc321/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -514,10 +514,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-picker_picker::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/@react-native-picker/picker/android/build/.transforms/39d672dba1462dc25e589b133e435e9f/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/@react-native-picker/picker/android/build/.transforms/39d672dba1462dc25e589b133e435e9f/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-picker_picker::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-picker/picker/android/build/.transforms/5c2f277b6bd6e95a202e0dbcb962c382/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-picker/picker/android/build/.transforms/5c2f277b6bd6e95a202e0dbcb962c382/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-picker_picker:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/@react-native-picker/picker/android/build/.transforms/39d672dba1462dc25e589b133e435e9f/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-picker/picker/android/build/.transforms/5c2f277b6bd6e95a202e0dbcb962c382/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -527,10 +527,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:lottie-react-native::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/lottie-react-native/android/build/.transforms/87c71913ca5431593177a13a99fe2c29/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/lottie-react-native/android/build/.transforms/87c71913ca5431593177a13a99fe2c29/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:lottie-react-native::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/lottie-react-native/android/build/.transforms/f7691ec2f517902d8f6eda0f279ad92c/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/lottie-react-native/android/build/.transforms/f7691ec2f517902d8f6eda0f279ad92c/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:lottie-react-native:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/lottie-react-native/android/build/.transforms/87c71913ca5431593177a13a99fe2c29/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/lottie-react-native/android/build/.transforms/f7691ec2f517902d8f6eda0f279ad92c/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -540,10 +540,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-device-info::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-device-info/android/build/.transforms/8673d77731f6971be30730b52f7065cd/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-device-info/android/build/.transforms/8673d77731f6971be30730b52f7065cd/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-device-info::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-device-info/android/build/.transforms/65affa548768fbdad98578df5441b418/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-device-info/android/build/.transforms/65affa548768fbdad98578df5441b418/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-device-info:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-device-info/android/build/.transforms/8673d77731f6971be30730b52f7065cd/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-device-info/android/build/.transforms/65affa548768fbdad98578df5441b418/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -553,10 +553,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-fast-image::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-fast-image/android/build/.transforms/1c499a0227e47566eace3846bf35fb33/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-fast-image/android/build/.transforms/1c499a0227e47566eace3846bf35fb33/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-fast-image::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-fast-image/android/build/.transforms/26df30907fef66b13c4285490342af81/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-fast-image/android/build/.transforms/26df30907fef66b13c4285490342af81/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-fast-image:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-fast-image/android/build/.transforms/1c499a0227e47566eace3846bf35fb33/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-fast-image/android/build/.transforms/26df30907fef66b13c4285490342af81/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -566,10 +566,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-gesture-handler::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-gesture-handler/android/build/.transforms/4cc14918a55535a197f7ddd3caeafbde/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-gesture-handler/android/build/.transforms/4cc14918a55535a197f7ddd3caeafbde/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-gesture-handler::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-gesture-handler/android/build/.transforms/2d738755512157586a410d96b3e3fd5f/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-gesture-handler/android/build/.transforms/2d738755512157586a410d96b3e3fd5f/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-gesture-handler:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-gesture-handler/android/build/.transforms/4cc14918a55535a197f7ddd3caeafbde/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-gesture-handler/android/build/.transforms/2d738755512157586a410d96b3e3fd5f/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -579,10 +579,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-image-crop-picker::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-image-crop-picker/android/build/.transforms/0352eef747b7e9aeca4384a876486a0b/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-image-crop-picker/android/build/.transforms/0352eef747b7e9aeca4384a876486a0b/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-image-crop-picker::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/.transforms/f381f277fc4583e521e073aafc4c8c32/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/.transforms/f381f277fc4583e521e073aafc4c8c32/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-image-crop-picker:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-image-crop-picker/android/build/.transforms/0352eef747b7e9aeca4384a876486a0b/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-image-crop-picker/android/build/.transforms/f381f277fc4583e521e073aafc4c8c32/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -592,10 +592,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-linear-gradient::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-linear-gradient/android/build/.transforms/80e592b6435c282589b5c632ecda2c91/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-linear-gradient/android/build/.transforms/80e592b6435c282589b5c632ecda2c91/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-linear-gradient::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-linear-gradient/android/build/.transforms/b23946fe5d1ccdf0be33c8d7dbf044c1/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-linear-gradient/android/build/.transforms/b23946fe5d1ccdf0be33c8d7dbf044c1/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-linear-gradient:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-linear-gradient/android/build/.transforms/80e592b6435c282589b5c632ecda2c91/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-linear-gradient/android/build/.transforms/b23946fe5d1ccdf0be33c8d7dbf044c1/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -605,10 +605,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-permissions::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-permissions/android/build/.transforms/ac2880fe09f37ad9940445f4e6e6d689/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-permissions/android/build/.transforms/ac2880fe09f37ad9940445f4e6e6d689/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-permissions::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-permissions/android/build/.transforms/7afbfbc3a36973056b3acd85579706f9/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-permissions/android/build/.transforms/7afbfbc3a36973056b3acd85579706f9/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-permissions:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-permissions/android/build/.transforms/ac2880fe09f37ad9940445f4e6e6d689/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-permissions/android/build/.transforms/7afbfbc3a36973056b3acd85579706f9/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -618,10 +618,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-push-notification::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-push-notification/android/build/.transforms/582c0e0308cf7a76f1437665a5bab6f2/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-push-notification/android/build/.transforms/582c0e0308cf7a76f1437665a5bab6f2/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-push-notification::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-push-notification/android/build/.transforms/3d8f2b31e9928d75410849c8219b6051/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-push-notification/android/build/.transforms/3d8f2b31e9928d75410849c8219b6051/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-push-notification:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-push-notification/android/build/.transforms/582c0e0308cf7a76f1437665a5bab6f2/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-push-notification/android/build/.transforms/3d8f2b31e9928d75410849c8219b6051/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -631,10 +631,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-reanimated::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-reanimated/android/build/.transforms/fff116986f17b76460b00a78d3167284/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-reanimated/android/build/.transforms/fff116986f17b76460b00a78d3167284/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-reanimated::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-reanimated/android/build/.transforms/f5896b4d2b74d2b9a6f6913ef5ffc4fc/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-reanimated/android/build/.transforms/f5896b4d2b74d2b9a6f6913ef5ffc4fc/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-reanimated:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-reanimated/android/build/.transforms/fff116986f17b76460b00a78d3167284/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-reanimated/android/build/.transforms/f5896b4d2b74d2b9a6f6913ef5ffc4fc/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -644,10 +644,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-safe-area-context::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-safe-area-context/android/build/.transforms/39956e7f409567a148f4452b03b69095/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-safe-area-context/android/build/.transforms/39956e7f409567a148f4452b03b69095/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-safe-area-context::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-safe-area-context/android/build/.transforms/2d0e05bd8a85c95244f400589daf7c95/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-safe-area-context/android/build/.transforms/2d0e05bd8a85c95244f400589daf7c95/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-safe-area-context:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-safe-area-context/android/build/.transforms/39956e7f409567a148f4452b03b69095/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-safe-area-context/android/build/.transforms/2d0e05bd8a85c95244f400589daf7c95/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -657,10 +657,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-splash-screen::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-splash-screen/android/build/.transforms/9f13235d4e8f49b8ccda9debc097fba8/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-splash-screen/android/build/.transforms/9f13235d4e8f49b8ccda9debc097fba8/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-splash-screen::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-splash-screen/android/build/.transforms/f673c338c1b8ed3ecbaa0b604bec4ba1/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-splash-screen/android/build/.transforms/f673c338c1b8ed3ecbaa0b604bec4ba1/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-splash-screen:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-splash-screen/android/build/.transforms/9f13235d4e8f49b8ccda9debc097fba8/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-splash-screen/android/build/.transforms/f673c338c1b8ed3ecbaa0b604bec4ba1/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -670,10 +670,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-svg::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-svg/android/build/.transforms/e6ae4a837383cdb2b6a24ca58bfa2c37/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-svg/android/build/.transforms/e6ae4a837383cdb2b6a24ca58bfa2c37/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-svg::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-svg/android/build/.transforms/aab66c6d78f1caaecfba1ef8fcded528/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-svg/android/build/.transforms/aab66c6d78f1caaecfba1ef8fcded528/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-svg:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-svg/android/build/.transforms/e6ae4a837383cdb2b6a24ca58bfa2c37/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-svg/android/build/.transforms/aab66c6d78f1caaecfba1ef8fcded528/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -683,10 +683,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="/Users/purushottamrathore/cvtrade/android@@:react-native-webview::release"
-      jars="/Users/purushottamrathore/cvtrade/node_modules/react-native-webview/android/build/.transforms/72e594232779beb77f271ccee3cff4a7/transformed/out/jars/classes.jar:/Users/purushottamrathore/cvtrade/node_modules/react-native-webview/android/build/.transforms/72e594232779beb77f271ccee3cff4a7/transformed/out/jars/libs/R.jar"
+      name="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android@@:react-native-webview::release"
+      jars="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-webview/android/build/.transforms/99a1d5a2319ca51b24fdcb433b17caff/transformed/out/jars/classes.jar:/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-webview/android/build/.transforms/99a1d5a2319ca51b24fdcb433b17caff/transformed/out/jars/libs/R.jar"
       resolved="cvtrade:react-native-webview:unspecified"
-      folder="/Users/purushottamrathore/cvtrade/node_modules/react-native-webview/android/build/.transforms/72e594232779beb77f271ccee3cff4a7/transformed/out"
+      folder="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-webview/android/build/.transforms/99a1d5a2319ca51b24fdcb433b17caff/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

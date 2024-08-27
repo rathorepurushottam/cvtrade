@@ -697,9 +697,11 @@ const BtcCoinDetails = ({ coinDetails }) => {
             })}
           </View>
           <CommonButton
-            title={kycVerified !== 2 ? "Sumbit KYC" : `Buy ${base_currency}`}
+            title={kycVerified !== 2 ? "Sumbit KYC" : option === "Buy" ? `Buy ${base_currency}` : `Sell ${base_currency}`}
             buttonStyle={styles?.Button}
             onPress={() => onSubmit()}
+            normalButton={option === "Sell" ? true : false}
+            normalButtonStyle={[{ backgroundColor: colors.red }]}
             // containerStyle={{width: 170}}
           />
         </View>

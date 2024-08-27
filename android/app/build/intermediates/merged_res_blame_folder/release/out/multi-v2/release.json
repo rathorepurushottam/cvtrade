@@ -2073,7 +2073,7 @@
                     }
                 },
                 {
-                    "source": "/Users/purushottamrathore/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/intermediates/packaged_res/release/values-night-v8/values-night-v8.xml",
+                    "source": "/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/intermediates/packaged_res/release/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,5",
                         "startColumns": "4,4",
@@ -2494,22 +2494,20 @@
                     }
                 },
                 {
-                    "source": "/Users/purushottamrathore/cvtrade/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/res/values/strings.xml",
                     "from": {
-                        "startLines": "3",
+                        "startLines": "1",
                         "startColumns": "4",
-                        "startOffsets": "54",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "267"
+                        "startOffsets": "16",
+                        "endColumns": "44",
+                        "endOffsets": "56"
                     },
                     "to": {
-                        "startLines": "1794",
+                        "startLines": "1597",
                         "startColumns": "4",
-                        "startOffsets": "124536",
-                        "endLines": "1797",
-                        "endColumns": "12",
-                        "endOffsets": "124714"
+                        "startOffsets": "99271",
+                        "endColumns": "44",
+                        "endOffsets": "99311"
                     }
                 },
                 {
@@ -2568,25 +2566,6 @@
                     }
                 },
                 {
-                    "source": "/Users/purushottamrathore/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/intermediates/packaged_res/release/values/values.xml",
-                    "from": {
-                        "startLines": "2,3,6,9,10,13",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "100,181,389,572,653,861",
-                        "endLines": "2,5,8,9,12,15",
-                        "endColumns": "80,12,12,80,12,12",
-                        "endOffsets": "176,384,567,648,856,1039"
-                    },
-                    "to": {
-                        "startLines": "5310,5311,5314,5317,5318,5321",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "358987,359068,359276,359459,359540,359748",
-                        "endLines": "5310,5313,5316,5317,5320,5323",
-                        "endColumns": "80,12,12,80,12,12",
-                        "endOffsets": "359063,359271,359454,359535,359743,359926"
-                    }
-                },
-                {
                     "source": "/Users/purushottamrathore/.gradle/caches/transforms-3/aa8b400e3fa62f6a4287be6e71a3821f/transformed/lifecycle-viewmodel-2.5.1/res/values/values.xml",
                     "from": {
                         "startLines": "2",
@@ -2620,6 +2599,44 @@
                         "endLines": "98,101,858,9670",
                         "endColumns": "55,47,51,24",
                         "endOffsets": "4885,5041,50843,615126"
+                    }
+                },
+                {
+                    "source": "/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/react-native-splash-screen/android/build/intermediates/packaged_res/release/values/values.xml",
+                    "from": {
+                        "startLines": "2,6,9,12",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,193,341,481",
+                        "endLines": "4,8,11,14",
+                        "endColumns": "11,12,12,12",
+                        "endOffsets": "138,336,476,663"
+                    },
+                    "to": {
+                        "startLines": "1561,5324,5327,5330",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "96797,359931,360079,360219",
+                        "endLines": "1563,5326,5329,5332",
+                        "endColumns": "11,12,12,12",
+                        "endOffsets": "96880,360074,360214,360401"
+                    }
+                },
+                {
+                    "source": "/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "267"
+                    },
+                    "to": {
+                        "startLines": "1794",
+                        "startColumns": "4",
+                        "startOffsets": "124536",
+                        "endLines": "1797",
+                        "endColumns": "12",
+                        "endOffsets": "124714"
                     }
                 },
                 {
@@ -2716,6 +2733,25 @@
                     }
                 },
                 {
+                    "source": "/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/intermediates/packaged_res/release/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,6,9,10,13",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "100,181,389,572,653,861",
+                        "endLines": "2,5,8,9,12,15",
+                        "endColumns": "80,12,12,80,12,12",
+                        "endOffsets": "176,384,567,648,856,1039"
+                    },
+                    "to": {
+                        "startLines": "5310,5311,5314,5317,5318,5321",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "358987,359068,359276,359459,359540,359748",
+                        "endLines": "5310,5313,5316,5317,5320,5323",
+                        "endColumns": "80,12,12,80,12,12",
+                        "endOffsets": "359063,359271,359454,359535,359743,359926"
+                    }
+                },
+                {
                     "source": "/Users/purushottamrathore/.gradle/caches/transforms-3/e58f5a5a9361b8dc0ec210eacdd61c46/transformed/jetified-activity-1.6.0/res/values/values.xml",
                     "from": {
                         "startLines": "2",
@@ -2785,23 +2821,6 @@
                         "endLines": "11611",
                         "endColumns": "24",
                         "endOffsets": "689851"
-                    }
-                },
-                {
-                    "source": "/Users/purushottamrathore/cvtrade/android/app/build/generated/res/resValues/release/values/gradleResValues.xml",
-                    "from": {
-                        "startLines": "6,8",
-                        "startColumns": "4,4",
-                        "startOffsets": "154,258",
-                        "endColumns": "63,68",
-                        "endOffsets": "213,322"
-                    },
-                    "to": {
-                        "startLines": "1556,1557",
-                        "startColumns": "4,4",
-                        "startOffsets": "96469,96533",
-                        "endColumns": "63,68",
-                        "endOffsets": "96528,96597"
                     }
                 },
                 {
@@ -2915,25 +2934,6 @@
                     }
                 },
                 {
-                    "source": "/Users/purushottamrathore/cvtrade/node_modules/react-native-splash-screen/android/build/intermediates/packaged_res/release/values/values.xml",
-                    "from": {
-                        "startLines": "2,6,9,12",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,193,341,481",
-                        "endLines": "4,8,11,14",
-                        "endColumns": "11,12,12,12",
-                        "endOffsets": "138,336,476,663"
-                    },
-                    "to": {
-                        "startLines": "1561,5324,5327,5330",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "96797,359931,360079,360219",
-                        "endLines": "1563,5326,5329,5332",
-                        "endColumns": "11,12,12,12",
-                        "endOffsets": "96880,360074,360214,360401"
-                    }
-                },
-                {
                     "source": "/Users/purushottamrathore/.gradle/caches/transforms-3/c2c67d6ef97116786f5e00cacbb4d36d/transformed/lifecycle-runtime-2.5.1/res/values/values.xml",
                     "from": {
                         "startLines": "2",
@@ -2951,20 +2951,20 @@
                     }
                 },
                 {
-                    "source": "/Users/purushottamrathore/cvtrade/android/app/src/main/res/values/strings.xml",
+                    "source": "/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app/build/generated/res/resValues/release/values/gradleResValues.xml",
                     "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "44",
-                        "endOffsets": "56"
+                        "startLines": "6,8",
+                        "startColumns": "4,4",
+                        "startOffsets": "154,258",
+                        "endColumns": "63,68",
+                        "endOffsets": "213,322"
                     },
                     "to": {
-                        "startLines": "1597",
-                        "startColumns": "4",
-                        "startOffsets": "99271",
-                        "endColumns": "44",
-                        "endOffsets": "99311"
+                        "startLines": "1556,1557",
+                        "startColumns": "4,4",
+                        "startOffsets": "96469,96533",
+                        "endColumns": "63,68",
+                        "endOffsets": "96528,96597"
                     }
                 },
                 {

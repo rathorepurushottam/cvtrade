@@ -146,7 +146,7 @@ const Home = () => {
         </View>
         <NewsSection />
         <View style={{width: Screen.Width-40, height: 120, alignSelf: "center"}}>
-          <FastImage source={augBanner} resizeMode='contain' style={{width: Screen.Width-40, height: 120}}/>
+          <FastImage source={augBanner} resizeMode='stretch' style={{width: Screen.Width-40, height: 120}}/>
 
         </View>
         <CoinSlider />

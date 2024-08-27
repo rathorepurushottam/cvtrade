@@ -1,6 +1,6 @@
 <lint-module
     format="1"
-    dir="/Users/purushottamrathore/cvtrade/android/app"
+    dir="/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/android/app"
     name=":app"
     type="APP"
     maven="cvtrade:app:"

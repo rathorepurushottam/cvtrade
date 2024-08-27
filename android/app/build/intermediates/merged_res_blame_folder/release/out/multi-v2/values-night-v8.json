@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/purushottamrathore/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/intermediates/packaged_res/release/values-night-v8/values-night-v8.xml",
+                    "source": "/Users/purushottamrathore/AppinopWorkspace/Crypto/cvtrade/node_modules/@react-native-community/datetimepicker/android/build/intermediates/packaged_res/release/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,5",
                         "startColumns": "4,4",

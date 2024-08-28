@@ -282,4 +282,11 @@ export default (appOperation: AppOperation) => ({
         appOperation.post('staking/break_staking', data, CUSTOMER_TYPE),
         get_trade_history: (data: any) =>
         appOperation.post('transaction/trade-history', data, CUSTOMER_TYPE),
+        p2p_coin_list: () =>
+        appOperation.get(
+          'coin/p2p_coin_list',
+          undefined,
+          undefined,
+          CUSTOMER_TYPE,
+        ),
   });

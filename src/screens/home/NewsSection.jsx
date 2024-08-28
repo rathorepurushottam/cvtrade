@@ -44,8 +44,8 @@ const NewsSection = () => {
     {
       id: 4,
       image: peopleIcon,
-      title: "Partnership",
-      onPress: () => navigation.navigate("ComingSoon"),
+      title: "P2P",
+      onPress: () => navigation.navigate("p2pHome"),
     },
     {
       id: 5,
@@ -123,7 +123,7 @@ const NewsSection = () => {
             >
               {item.title}
             </Typography> */}
-            <AppText  type={TWELVE} weight={MEDIUM} style={{ marginLeft: 15 }}>
+            <AppText  type={TWELVE} weight={MEDIUM} style={{ marginLeft: 11 }}>
             {item.title}
             </AppText>
           </TouchableOpacity>

@@ -5,9 +5,10 @@ import {AppText, SEMI_BOLD, TWELVE} from './AppText';
 import FastImage from 'react-native-fast-image';
 import {
   bitcoinIcon,
-  downIcon,
+  Down_Icon,
   filterIcon,
   notifyIcon,
+  Tether_Icon,
 } from '../helper/ImageAssets';
 import TouchableOpacityView from './TouchableOpacityView';
 
@@ -34,7 +35,7 @@ const P2pSheet = ({
           style={{flexDirection: 'row', alignItems: 'center'}}
           onPress={onCurrencyPress}>
           <FastImage
-            source={bitcoinIcon}
+            source={Tether_Icon}
             style={{height: 15, width: 15}}
             resizeMode="contain"
           />
@@ -45,7 +46,7 @@ const P2pSheet = ({
             USDT
           </AppText>
           <FastImage
-            source={downIcon}
+            source={Down_Icon}
             tintColor={'white'}
             style={{height: 10, width: 10}}
             resizeMode="contain"
@@ -66,7 +67,7 @@ const P2pSheet = ({
             Amount
           </AppText>
           <FastImage
-            source={downIcon}
+            source={Down_Icon}
             tintColor={'white'}
             style={{height: 10, width: 10}}
             resizeMode="contain"
@@ -87,7 +88,7 @@ const P2pSheet = ({
             Payment
           </AppText>
           <FastImage
-            source={downIcon}
+            source={Down_Icon}
             tintColor={'white'}
             style={{height: 10, width: 10, marginLeft: 5}}
             resizeMode="contain"

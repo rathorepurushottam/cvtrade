@@ -263,6 +263,7 @@ const MyAuthLoadingStack = () => {
       <Stack.Screen name={routes.REFERRAL_LIST} component={ReferralList} />
       <Stack.Screen name={"ComingSoon"} component={ComingSoon} />
       <Stack.Screen name={"CurrencyList"} component={CurrencyList} />
+      <Stack.Screen name={"p2pHome"} component={p2pHome} />
       
     </Stack.Navigator>
   );
@@ -334,174 +335,174 @@ const Navigator = () => {
   );
 };
 
-const P2PBottomTabNavigator = () => (
-  <P2PTab.Navigator
-    initialRouteName={routes.p2pHome}
-    screenOptions={{
-      headerShown: false,
-      tabBarHideOnKeyboard: true,
-      tabBarStyle: {
-        backgroundColor: colors.black,
-        height: 60,
-        borderTopWidth: 0,
-        paddingVertical: 10,
-        // borderTopLeftRadius:10,
-        // borderTopRightRadius:10,
-      },
-      tabBarIconStyle: {},
-      tabBarAllowFontScaling: false,
-      tabBarShowLabel: true,
-      tabBarLabelStyle: {
-        fontSize: 12,
-        marginBottom: 10,
-      },
-      tabBarActiveTintColor: colors.buttonBg,
-      tabBarInactiveTintColor: colors.tabIcon,
-    }}>
-    <P2PTab.Screen
-      options={{
-        tabBarLabel: '',
-        tabBarIcon: ({focused}) => (
-          <>
-            {focused ? (
-              <TouchableOpacityView>
-                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                  <AppText
-                    style={{top: 5}}
-                    weight={MEDIUM}
-                    color={focused ? YELLOW : WHITE}>
-                    P2P
-                  </AppText>
-                  <View
-                    style={{
-                      marginTop: 12,
-                      width: 5,
-                      height: 5,
-                      backgroundColor: colors.buttonBg,
-                      borderRadius: 5,
-                    }}></View>
-                </View>
-              </TouchableOpacityView>
-            ) : (
-              <View style={{alignItems: 'center', marginTop: 10}}>
-                <TabIcon focused={focused} icon={p2p_Icon} />
+// const P2PBottomTabNavigator = () => (
+//   <P2PTab.Navigator
+//     initialRouteName={routes.p2pHome}
+//     screenOptions={{
+//       headerShown: false,
+//       tabBarHideOnKeyboard: true,
+//       tabBarStyle: {
+//         backgroundColor: colors.black,
+//         height: 60,
+//         borderTopWidth: 0,
+//         paddingVertical: 10,
+//         // borderTopLeftRadius:10,
+//         // borderTopRightRadius:10,
+//       },
+//       tabBarIconStyle: {},
+//       tabBarAllowFontScaling: false,
+//       tabBarShowLabel: true,
+//       tabBarLabelStyle: {
+//         fontSize: 12,
+//         marginBottom: 10,
+//       },
+//       tabBarActiveTintColor: colors.buttonBg,
+//       tabBarInactiveTintColor: colors.tabIcon,
+//     }}>
+//     <P2PTab.Screen
+//       options={{
+//         tabBarLabel: '',
+//         tabBarIcon: ({focused}) => (
+//           <>
+//             {focused ? (
+//               <TouchableOpacityView>
+//                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
+//                   <AppText
+//                     style={{top: 5}}
+//                     weight={MEDIUM}
+//                     color={focused ? YELLOW : WHITE}>
+//                     P2P
+//                   </AppText>
+//                   <View
+//                     style={{
+//                       marginTop: 12,
+//                       width: 5,
+//                       height: 5,
+//                       backgroundColor: colors.buttonBg,
+//                       borderRadius: 5,
+//                     }}></View>
+//                 </View>
+//               </TouchableOpacityView>
+//             ) : (
+//               <View style={{alignItems: 'center', marginTop: 10}}>
+//                 <TabIcon focused={focused} icon={p2p_Icon} />
 
-                {/* <AppText color={WHITE} weight={MEDIUM}>Account</AppText> */}
-              </View>
-            )}
-          </>
-        ),
-      }}
-      name={routes?.p2pHome}
-      component={p2pHome}
-    />
-    <P2PTab.Screen
-      options={{
-        tabBarLabel: '',
-        tabBarIcon: ({focused}) => (
-          <>
-            {focused ? (
-              <TouchableOpacityView>
-                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                  <AppText
-                    style={{top: 5}}
-                    weight={MEDIUM}
-                    color={focused ? YELLOW : WHITE}>
-                    Order
-                  </AppText>
-                  <View
-                    style={{
-                      marginTop: 12,
-                      width: 5,
-                      height: 5,
-                      backgroundColor: colors.buttonBg,
-                      borderRadius: 5,
-                    }}></View>
-                </View>
-              </TouchableOpacityView>
-            ) : (
-              <View style={{alignItems: 'center', marginTop: 10}}>
-                <TabIcon focused={focused} icon={order} />
-              </View>
-            )}
-          </>
-        ),
-      }}
-      name={routes?.p2pOrder}
-      component={p2pOrder}
-    />
-    <P2PTab.Screen
-      options={{
-        tabBarLabel: '',
-        tabBarIcon: ({focused}) => (
-          <>
-            {focused ? (
-              <TouchableOpacityView>
-                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                  <AppText
-                    style={{top: 5}}
-                    weight={MEDIUM}
-                    color={focused ? YELLOW : WHITE}>
-                    Ads
-                  </AppText>
-                  <View
-                    style={{
-                      marginTop: 12,
-                      width: 5,
-                      height: 5,
-                      backgroundColor: colors.buttonBg,
-                      borderRadius: 5,
-                    }}></View>
-                </View>
-              </TouchableOpacityView>
-            ) : (
-              <View style={{alignItems: 'center', marginTop: 10}}>
-                <TabIcon focused={focused} icon={ads} />
-              </View>
-            )}
-          </>
-        ),
-      }}
-      name={routes?.p2pAds}
-      component={p2pAds}
-    />
+//                 {/* <AppText color={WHITE} weight={MEDIUM}>Account</AppText> */}
+//               </View>
+//             )}
+//           </>
+//         ),
+//       }}
+//       name={routes?.p2pHome}
+//       component={p2pHome}
+//     />
+//     <P2PTab.Screen
+//       options={{
+//         tabBarLabel: '',
+//         tabBarIcon: ({focused}) => (
+//           <>
+//             {focused ? (
+//               <TouchableOpacityView>
+//                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
+//                   <AppText
+//                     style={{top: 5}}
+//                     weight={MEDIUM}
+//                     color={focused ? YELLOW : WHITE}>
+//                     Order
+//                   </AppText>
+//                   <View
+//                     style={{
+//                       marginTop: 12,
+//                       width: 5,
+//                       height: 5,
+//                       backgroundColor: colors.buttonBg,
+//                       borderRadius: 5,
+//                     }}></View>
+//                 </View>
+//               </TouchableOpacityView>
+//             ) : (
+//               <View style={{alignItems: 'center', marginTop: 10}}>
+//                 <TabIcon focused={focused} icon={order} />
+//               </View>
+//             )}
+//           </>
+//         ),
+//       }}
+//       name={routes?.p2pOrder}
+//       component={p2pOrder}
+//     />
+//     <P2PTab.Screen
+//       options={{
+//         tabBarLabel: '',
+//         tabBarIcon: ({focused}) => (
+//           <>
+//             {focused ? (
+//               <TouchableOpacityView>
+//                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
+//                   <AppText
+//                     style={{top: 5}}
+//                     weight={MEDIUM}
+//                     color={focused ? YELLOW : WHITE}>
+//                     Ads
+//                   </AppText>
+//                   <View
+//                     style={{
+//                       marginTop: 12,
+//                       width: 5,
+//                       height: 5,
+//                       backgroundColor: colors.buttonBg,
+//                       borderRadius: 5,
+//                     }}></View>
+//                 </View>
+//               </TouchableOpacityView>
+//             ) : (
+//               <View style={{alignItems: 'center', marginTop: 10}}>
+//                 <TabIcon focused={focused} icon={ads} />
+//               </View>
+//             )}
+//           </>
+//         ),
+//       }}
+//       name={routes?.p2pAds}
+//       component={p2pAds}
+//     />
 
-    <P2PTab.Screen
-      options={{
-        tabBarLabel: '',
-        tabBarIcon: ({focused}) => (
-          <>
-            {focused ? (
-              <TouchableOpacityView>
-                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                  <AppText
-                    style={{top: 5}}
-                    weight={MEDIUM}
-                    color={focused ? YELLOW : WHITE}>
-                    Profile
-                  </AppText>
-                  <View
-                    style={{
-                      marginTop: 12,
-                      width: 5,
-                      height: 5,
-                      backgroundColor: colors.buttonBg,
-                      borderRadius: 5,
-                    }}></View>
-                </View>
-              </TouchableOpacityView>
-            ) : (
-              <View style={{alignItems: 'center', marginTop: 10}}>
-                <TabIcon focused={focused} icon={account_ic} />
-              </View>
-            )}
-          </>
-        ),
-      }}
-      name={routes?.p2pProfile}
-      component={p2pProfile}
-    />
-  </P2PTab.Navigator>
-);
+//     <P2PTab.Screen
+//       options={{
+//         tabBarLabel: '',
+//         tabBarIcon: ({focused}) => (
+//           <>
+//             {focused ? (
+//               <TouchableOpacityView>
+//                 <View style={{alignItems: 'center', justifyContent: 'center'}}>
+//                   <AppText
+//                     style={{top: 5}}
+//                     weight={MEDIUM}
+//                     color={focused ? YELLOW : WHITE}>
+//                     Profile
+//                   </AppText>
+//                   <View
+//                     style={{
+//                       marginTop: 12,
+//                       width: 5,
+//                       height: 5,
+//                       backgroundColor: colors.buttonBg,
+//                       borderRadius: 5,
+//                     }}></View>
+//                 </View>
+//               </TouchableOpacityView>
+//             ) : (
+//               <View style={{alignItems: 'center', marginTop: 10}}>
+//                 <TabIcon focused={focused} icon={account_ic} />
+//               </View>
+//             )}
+//           </>
+//         ),
+//       }}
+//       name={routes?.p2pProfile}
+//       component={p2pProfile}
+//     />
+//   </P2PTab.Navigator>
+// );
 
 export default Navigator;

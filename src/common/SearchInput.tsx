@@ -115,7 +115,7 @@ const SearchInput = ({
         <TouchableOpacityView
           style={styles.cancelButton}
           onPress={sheetDownPress}>
-          <AppText type={FIFTEEN} color={YELLOW} weight={MEDIUM}>
+          <AppText type={FIFTEEN} color={GREEN} weight={MEDIUM}>
             Cancel
           </AppText>
         </TouchableOpacityView>
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
   cancelButton: {
     position: 'absolute',
     // alignSelf:"flex-start",
-    bottom: 0,
+    bottom: 6,
     right: 15,
   },
   mainViewStyle: {

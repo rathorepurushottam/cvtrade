@@ -67,6 +67,22 @@ export interface WalletSliceProps {
   coinDetails: any,
 }
 
+export interface p2pSliceProps {
+  p2pCoinList: [],
+  // walletBalance: number | string;
+  // userWallet: WalletProps[];
+  // walletAddress: string;
+  // adminBankDetails?: AdminBankDetailsProps;
+  // walletHistory: WalletHistoryProps[];
+  // tradeHistory: TradeHistoryProps[];
+  // selectedWalletHistory?: WalletHistoryProps;
+  // selectedTradeHistory?: TradeHistoryProps;
+  // transactionHistory: WalletHistoryProps[];
+  // depositHistory: any,
+  // withdrawHistory: any
+  // coinDetails: any,
+}
+
 export interface SendOtpRegistrationProps {
   email_or_phone: string;
   resend: boolean;

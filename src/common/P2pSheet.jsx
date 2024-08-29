@@ -17,7 +17,7 @@ const P2pSheet = ({
   onAmountPress = () => {},
   onPaymentPress = () => {},
   onFilterPress = () => {},
-
+  onFiatPress = () => {},
 }) => {
   return (
     <View
@@ -34,16 +34,16 @@ const P2pSheet = ({
         <TouchableOpacityView
           style={{flexDirection: 'row', alignItems: 'center'}}
           onPress={onCurrencyPress}>
-          <FastImage
+          {/* <FastImage
             source={Tether_Icon}
             style={{height: 15, width: 15}}
             resizeMode="contain"
-          />
+          /> */}
           <AppText
             type={TWELVE}
             weight={SEMI_BOLD}
             style={{marginHorizontal: 5}}>
-            USDT
+            Currency
           </AppText>
           <FastImage
             source={Down_Icon}
@@ -65,6 +65,22 @@ const P2pSheet = ({
             weight={SEMI_BOLD}
             style={{marginHorizontal: 5}}>
             Amount
+          </AppText>
+          <FastImage
+            source={Down_Icon}
+            tintColor={'white'}
+            style={{height: 10, width: 10}}
+            resizeMode="contain"
+          />
+        </TouchableOpacityView>
+        <TouchableOpacityView
+          style={{flexDirection: 'row', alignItems: 'center'}}
+          onPress={onFiatPress}>
+          <AppText
+            type={TWELVE}
+            weight={SEMI_BOLD}
+            style={{marginHorizontal: 5}}>
+            Fiat
           </AppText>
           <FastImage
             source={Down_Icon}

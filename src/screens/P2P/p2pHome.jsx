@@ -34,42 +34,33 @@ import TouchableOpacityView from '../../common/TouchableOpacityView';
 import NavigationService from '../../navigation/NavigationService';
 import {BUY_CRYPTO, p2pFilter} from '../../navigation/routes';    
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {getP2pCoinList} from "../../actions/p2pActions";
+import {getP2pCoinList, getFiatCurrencyList, getPaymentMethod, getbuyOrdersList} from "../../actions/p2pActions";
 
 const p2pHome = () => {
   const dispatch = useAppDispatch();
   const p2pCoinList = useAppSelector((state) => state.p2p.p2pCoinList);
+  const fiatCurrencyList = useAppSelector((state) => state.p2p.fiatCurrencyList);
+  const paymentMethodList = useAppSelector((state) => state.p2p.paymentMethodList);
+  const buyOrderList = useAppSelector((state) => state.p2p.buyOrderList);
+  const paymentList = Object.keys(paymentMethodList);
   const amountRef = useRef(null);
   const paymentRef = useRef(null);
   const availableCurrenciesRef = useRef(null);
+  const fiatCurrenciesRef = useRef(null);
+  const [orderType, setOrderType] = useState('Buy');
   const [currencySearch, setCurrencySearch] = useState('');
   const [buyList, setBuyList] = useState([1, 2, 3]);
-  const [amountList, setAmountList] = useState([1, 2, 3]);
-  const [availableCurrencies, setAvailableCurrencies] = useState([
-    1, 2, 3, 4, 5, 6, 7, 889, 9, 9, 90, 99, 6, 656, 4545, 4534534, 345345, 3,
-  ]);
-  const [paymentList, setPaymentList] = useState([
-    {
-      id: 0,
-      text: 'All',
-    },
-    {
-      id: 0,
-      text: 'UPI',
-    },
-    {
-      id: 0,
-      text: 'IMPS',
-    },
-    {
-      id: 0,
-      text: 'PhonePe',
-    },
-  ]);
+  const [amountList, setAmountList] = useState(0);
 
   useEffect(() => {
     dispatch(getP2pCoinList());
+    dispatch(getFiatCurrencyList());
+    dispatch(getPaymentMethod());
   }, []);
+
+  useEffect(() => {
+    dispatch(getbuyOrdersList());
+  }, [orderType]);
 
   const _BuyRenderItem = useMemo(() => {
     const _renderItem = ({item, index}) => {
@@ -216,13 +207,13 @@ const p2pHome = () => {
     return _renderItem;
   }, []);
 
-  console.log(p2pCoinList[0]?.short_name, "p2pCoinList");
+  console.log(orderType, "orderType");
 
   return (
     <P2pHeader isLogo={false} >
       <P2pbuySell
         onKeyPressChange={e => {
-          console.log(e);
+          setOrderType(e);
         }}
       />
       <P2pSheet
@@ -237,6 +228,9 @@ const p2pHome = () => {
         }}
         onAmountPress={() => {
           amountRef?.current?.open();
+        }}
+        onFiatPress={() => {
+          fiatCurrenciesRef?.current?.open();
         }}
       />
       <View style={styles.divider} />
@@ -479,7 +473,7 @@ const p2pHome = () => {
               renderItem={({item, index}) => {
                 return (
                   <View style={styles.paymentSheetList}>
-                    <AppText weight={SEMI_BOLD}>{item?.text}</AppText>
+                    <AppText weight={SEMI_BOLD}>{item}</AppText>
                   </View>
                 );
               }}
@@ -495,6 +489,99 @@ const p2pHome = () => {
               children="Confirm"
               titleStyle={{color: colors.black}}
               containerStyle={{width: '48%'}}
+            />
+          </View>
+
+          <View style={{height: 10}}></View>
+        </View>
+      </RBSheet>
+      <RBSheet
+        ref={fiatCurrenciesRef}
+        animationType="none"
+        customStyles={{
+          container: [styles.sheetContainer, {height: Screen.Height / 2}],
+          wrapper: {
+            backgroundColor: '#0005',
+          },
+          draggableIcon: {
+            backgroundColor: 'transparent',
+          },
+        }}>
+        <View style={[styles.cryptoSheetContainer]}>
+
+          <View style={[styles.paymentListContainer]}>
+            <AppText color={SECOND} type={TWELVE} weight={MEDIUM}>
+              Fiat Currency
+            </AppText>
+            <View
+              style={{
+                width: Screen.Width,
+                height: 0.3,
+                backgroundColor: '#757575',
+                alignSelf: 'center',
+                marginTop: 5,
+              }}></View>
+
+            <View style={{height: Screen.Width / 1.4}}>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                data={fiatCurrencyList}
+                renderItem={({item, index}) => {
+                  return (
+                    <AppText
+                      color={WHITE}
+                      type={THIRTEEN}
+                      weight={BOLD}
+                      style={{marginTop: 10, marginLeft: 15}}>
+                      {item?.short_name}
+                    </AppText>
+                  );
+                }}
+              />
+            </View>
+          </View>
+          {/* <View style={[styles.paymentListContainer]}>
+            <AppText color={SECOND} type={TWELVE} weight={MEDIUM}>
+              All currencies
+            </AppText>
+            <View
+              style={{
+                width: Screen.Width,
+                height: 0.3,
+                backgroundColor: '#757575',
+                alignSelf: 'center',
+                marginTop: 5,
+              }}></View>
+
+            <View style={{height: Screen.Height / 5.1}}>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                data={availableCurrencies}
+                renderItem={({item, index}) => {
+                  return (
+                    <AppText
+                      color={WHITE}
+                      type={THIRTEEN}
+                      weight={BOLD}
+                      style={{marginTop: 10, marginLeft: 15}}>
+                      {'AED'}
+                    </AppText>
+                  );
+                }}
+              />
+            </View>
+          </View> */}
+          <View style={[styles.buttonContainer, {}]}>
+            <Button
+              children="Reset"
+              titleStyle={{color: colors.white}}
+              containerStyle={styles.resetButton}
+            />
+            <Button
+              children="Confirm"
+              titleStyle={{color: colors.black}}
+              containerStyle={{width: '48%', borderRadius: 20}}
+              bgColor={colors.greenShade}
             />
           </View>
 

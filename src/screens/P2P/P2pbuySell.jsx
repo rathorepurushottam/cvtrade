@@ -8,9 +8,9 @@ import { notifyIcon} from '../../helper/ImageAssets';
 const P2pbuySell = ({onKeyPressChange = () => {}}) => {
   const [activeTab, setActiveTab] = useState('Buy');
 
-  useEffect(() => {
-    onKeyPressChange('Buy');
-  }, []);
+  // useEffect(() => {
+  //   onKeyPressChange('Buy');
+  // }, []);
 
   const handleTabPress = (tab) => {
     console.log(tab, '===tab');

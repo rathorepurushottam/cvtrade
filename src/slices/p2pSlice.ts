@@ -2,6 +2,9 @@ import {createSlice} from '@reduxjs/toolkit';
 import {p2pSliceProps} from '../helper/types';
 export const initialState: p2pSliceProps = {
     p2pCoinList: [],
+    fiatCurrencyList: [],
+    paymentMethodList: [],
+    buyOrderList: [],
 //   walletBalance: 0,
 //   userWallet: [],
 //   walletAddress: '',
@@ -22,13 +25,16 @@ export const p2pSlice = createSlice({
   reducers: {
     setP2pCoinList: (state, {payload}) => {
         state.p2pCoinList = payload;
-    }
-    // setWalletBalance: (state, {payload}) => {
-    //   state.walletBalance = payload;
-    // },
-    // setUserWallet: (state, {payload}) => {
-    //   state.userWallet = payload;
-    // },
+    },
+    setFiatCurrencyList: (state, {payload}) => {
+      state.fiatCurrencyList = payload;
+    },
+    setPaymentMethodList: (state, {payload}) => {
+      state.paymentMethodList = payload;
+    },
+    setBuyOrderList: (state, {payload}) => {
+      state.buyOrderList = payload;
+    },
     // setWalletAddress: (state, {payload}) => {
     //   state.walletAddress = payload;
     // },
@@ -63,6 +69,9 @@ export const p2pSlice = createSlice({
 });
 export const {
     setP2pCoinList,
+    setFiatCurrencyList,
+    setPaymentMethodList,
+    setBuyOrderList,
 //   setWalletBalance,
 //   setUserWallet,
 //   setWalletAddress,

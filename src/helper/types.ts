@@ -69,6 +69,9 @@ export interface WalletSliceProps {
 
 export interface p2pSliceProps {
   p2pCoinList: [],
+  fiatCurrencyList: [],
+  paymentMethodList: [],
+  buyOrderList: [],
   // walletBalance: number | string;
   // userWallet: WalletProps[];
   // walletAddress: string;

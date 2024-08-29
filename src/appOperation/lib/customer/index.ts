@@ -289,4 +289,20 @@ export default (appOperation: AppOperation) => ({
           undefined,
           CUSTOMER_TYPE,
         ),
+        get_fiat_curreny_list: () =>
+        appOperation.get(
+          'p2p/fiat_currency_list',
+          undefined,
+          undefined,
+          CUSTOMER_TYPE,
+        ),
+        get_payment_method: () =>
+        appOperation.get(
+          'p2p/fetch_payment_methods',
+          undefined,
+          undefined,
+          CUSTOMER_TYPE,
+        ),
+        get_buy_order_list: (data: any) =>
+    appOperation.post('p2p/buy_order', data, CUSTOMER_TYPE),
   });

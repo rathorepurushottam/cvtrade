@@ -1,11 +1,17 @@
-import {FlatList, ScrollView, StyleSheet, TextInput, View} from 'react-native';
-import {P2pHeader} from '../../common/P2pHeader';
-import {Screen, borderWidth} from '../../theme/dimens';
-import {P2pbuySell} from './P2pbuySell';
-import {P2pSheet} from '../../common/P2pSheet';
-import {colors} from '../../theme/colors';
-import {useEffect, useMemo, useRef, useState} from 'react';
-import FastImage from 'react-native-fast-image';
+import {
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  View,
+} from "react-native";
+import { P2pHeader } from "../../common/P2pHeader";
+import { Screen, borderWidth } from "../../theme/dimens";
+import { P2pbuySell } from "./P2pbuySell";
+import { P2pSheet } from "../../common/P2pSheet";
+import { colors } from "../../theme/colors";
+import { useEffect, useMemo, useRef, useState } from "react";
+import FastImage from "react-native-fast-image";
 import {
   INR_CURRENCY,
   LikeButton,
@@ -14,7 +20,7 @@ import {
   doneIcon,
   searchIcon,
   watch,
-} from '../../helper/ImageAssets';
+} from "../../helper/ImageAssets";
 import {
   AppText,
   BOLD,
@@ -28,27 +34,37 @@ import {
   TWELVE,
   TWENTY_TWO,
   WHITE,
-} from '../../common';
-import RBSheet from 'react-native-raw-bottom-sheet';
-import TouchableOpacityView from '../../common/TouchableOpacityView';
-import NavigationService from '../../navigation/NavigationService';
-import {BUY_CRYPTO, p2pFilter} from '../../navigation/routes';    
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {getP2pCoinList, getFiatCurrencyList, getPaymentMethod, getbuyOrdersList} from "../../actions/p2pActions";
+} from "../../common";
+import RBSheet from "react-native-raw-bottom-sheet";
+import TouchableOpacityView from "../../common/TouchableOpacityView";
+import NavigationService from "../../navigation/NavigationService";
+import { BUY_CRYPTO, p2pFilter } from "../../navigation/routes";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import {
+  getP2pCoinList,
+  getFiatCurrencyList,
+  getPaymentMethod,
+  getbuyOrdersList,
+} from "../../actions/p2pActions";
 
 const p2pHome = () => {
   const dispatch = useAppDispatch();
   const p2pCoinList = useAppSelector((state) => state.p2p.p2pCoinList);
-  const fiatCurrencyList = useAppSelector((state) => state.p2p.fiatCurrencyList);
-  const paymentMethodList = useAppSelector((state) => state.p2p.paymentMethodList);
+  const fiatCurrencyList = useAppSelector(
+    (state) => state.p2p.fiatCurrencyList
+  );
+  const paymentMethodList = useAppSelector(
+    (state) => state.p2p.paymentMethodList
+  );
   const buyOrderList = useAppSelector((state) => state.p2p.buyOrderList);
   const paymentList = Object.keys(paymentMethodList);
   const amountRef = useRef(null);
   const paymentRef = useRef(null);
   const availableCurrenciesRef = useRef(null);
   const fiatCurrenciesRef = useRef(null);
-  const [orderType, setOrderType] = useState('Buy');
-  const [currencySearch, setCurrencySearch] = useState('');
+  const [orderType, setOrderType] = useState("Buy");
+  const [currencySearch, setCurrencySearch] = useState("");
+  const [availableCurrency, setAvailableCurrency] = useState("BTC");
   const [buyList, setBuyList] = useState([1, 2, 3]);
   const [amountList, setAmountList] = useState(0);
 
@@ -58,122 +74,31 @@ const p2pHome = () => {
     dispatch(getPaymentMethod());
   }, []);
 
-  useEffect(() => {
-    dispatch(getbuyOrdersList());
-  }, [orderType]);
+  // useEffect(() => {
+  //   let data = {
+  //     short_name: availableCurrency,
+  //   };
+  //   dispatch(getbuyOrdersList(data));
+  // }, [orderType]);
 
-  const _BuyRenderItem = useMemo(() => {
-    const _renderItem = ({item, index}) => {
+ 
+    const _renderItem = ({ item, index }) => {
       return (
         <View style={styles.listMainContainer}>
           <View style={styles.userContain}>
-            <FastImage
-              source={customUserImg}
-              style={styles.customUserImage}
-              resizeMode="contain"
-            />
+            <View style={{flexDirection: "column", justifyContent: "space-between"}}>
             <AppText
               type={FOURTEEN}
               weight={SEMI_BOLD}
-              style={styles.horizontal}>
-              ABC User
+              style={styles.horizontal}
+            >
+              {item?.post_name}
             </AppText>
-            <FastImage
-              source={doneIcon}
-              style={styles.listImgStyle}
-              resizeMode="contain"
-            />
-          </View>
-
-          <View style={{marginTop: 10}}>
-            <AppText
-              type={TWELVE}
-              weight={MEDIUM}
-              color={SECOND}
-              style={styles.horizontal}>
-              Trade(S) : 1234 | Completion : 95.4%
-            </AppText>
-          </View>
-
-          <View style={{flexDirection: 'row'}}>
-            <View style={styles.sameStyle}>
-              <FastImage
-                source={LikeButton}
-                style={styles.listImgStyle}
-                resizeMode="contain"
-              />
-              <AppText
-                type={TWELVE}
-                weight={MEDIUM}
-                color={SECOND}
-                style={styles.horizontal}>
-                95.95%
+            <View style={styles.quantityBox}>
+              <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
+                Limit {item?.volume} {item?.base_short_name}
               </AppText>
-            </View>
-            <View style={styles.sameStyle}>
-              <FastImage
-                source={watch}
-                style={styles.listImgStyle}
-                resizeMode="contain"
-              />
-              <AppText
-                type={TWELVE}
-                weight={MEDIUM}
-                color={SECOND}
-                style={styles.horizontal}>
-                95.95%
-              </AppText>
-            </View>
-          </View>
-          <View style={styles.currencyTextBox}>
-            <View style={styles.alignItem}>
-              <FastImage
-                source={INR_CURRENCY}
-                style={styles.currencyImg}
-                resizeMode="contain"
-              />
-              <AppText
-                type={TWENTY_TWO}
-                weight={MEDIUM}
-                color={WHITE}
-                style={styles.horizontal}>
-                95.50%
-              </AppText>
-            </View>
-            <View>
-              <View style={styles.alignItem}>
-                <AppText
-                  type={TWELVE}
-                  weight={MEDIUM}
-                  color={SECOND}
-                  style={styles.horizontal}>
-                  Bank Transfer
-                </AppText>
-                <AppText
-                  type={TWELVE}
-                  weight={MEDIUM}
-                  style={{color: colors.pink}}>
-                  |
-                </AppText>
-              </View>
-              <View style={styles.cornerStyle}>
-                <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
-                  IMPS{' '}
-                  <AppText
-                    type={TWELVE}
-                    weight={MEDIUM}
-                    style={{color: colors.pink}}>
-                    |
-                  </AppText>
-                </AppText>
-              </View>
-            </View>
-          </View>
-          <View style={styles.quantityBox}>
-            <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
-              Quantity 381.18 USDT
-            </AppText>
-            <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
+              {/* <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
               UPI{' '}
               <AppText
                 type={TWELVE}
@@ -181,20 +106,51 @@ const p2pHome = () => {
                 style={{color: colors.pink}}>
                 |
               </AppText>
-            </AppText>
-          </View>
-          <View style={styles.buttonContain}>
-            <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
-              INR 7,500.00 - INR 6.499.00
-            </AppText>
+            </AppText> */}
+            </View>
 
-            <Button
-              children="Buy"
-              titleStyle={{color: colors.white}}
-              containerStyle={styles.buyBtn}
-               onPress={()=>{NavigationService.navigate(BUY_CRYPTO)}}
-           />
+            </View>
+            
+            {/* <FastImage
+              source={doneIcon}
+              style={styles.listImgStyle}
+              resizeMode="contain"
+            /> */}
+            <View style={styles.buttonContain}>
+              <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
+                Price {item?.quote_short_name} {item?.fixed_price}
+              </AppText>
+
+              <Button
+                children="Buy"
+                titleStyle={{ color: colors.white }}
+                containerStyle={[styles.buyBtn, {backgroundColor: orderType === 'Buy' ? colors.green : colors.red}]}
+                onPress={() => {
+                  NavigationService.navigate(BUY_CRYPTO);
+                }}
+              />
+            </View>
           </View>
+          <View>
+            <View style={styles.cornerStyle}>
+              {item?.payment_method?.map((item) => {
+                return (
+                  <><AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
+                    {item?.type}
+
+                  </AppText><AppText
+                    type={TWELVE}
+                    weight={MEDIUM}
+                    style={{ color: colors.pink, marginLeft: 5 }}
+                  >
+                      |
+                    </AppText></>
+                );
+              })}
+            </View>
+            
+          </View>
+
           {buyList?.length - 1 == index ? (
             <></>
           ) : (
@@ -204,15 +160,15 @@ const p2pHome = () => {
       );
     };
 
-    return _renderItem;
-  }, []);
+    // return _renderItem;
+  
 
   console.log(orderType, "orderType");
 
   return (
-    <P2pHeader isLogo={false} >
+    <P2pHeader isLogo={false}>
       <P2pbuySell
-        onKeyPressChange={e => {
+        onKeyPressChange={(e) => {
           setOrderType(e);
         }}
       />
@@ -234,20 +190,21 @@ const p2pHome = () => {
         }}
       />
       <View style={styles.divider} />
-      <FlatList data={buyList} renderItem={_BuyRenderItem} />
+      <FlatList data={buyOrderList} renderItem={_renderItem} />
 
       <RBSheet
         ref={availableCurrenciesRef}
         animationType="none"
         customStyles={{
-          container: [styles.sheetContainer, {height: Screen.Height / 1.2}],
+          container: [styles.sheetContainer, { height: Screen.Height / 1.2 }],
           wrapper: {
-            backgroundColor: '#0005',
+            backgroundColor: "#0005",
           },
           draggableIcon: {
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
-        }}>
+        }}
+      >
         <View style={[styles.cryptoSheetContainer]}>
           <SearchInput
             value={currencySearch}
@@ -256,7 +213,7 @@ const p2pHome = () => {
               availableCurrenciesRef?.current?.close();
             }}
             onChangeText={setCurrencySearch}
-            placeholder={'Please enter currency'}
+            placeholder={"Please enter currency"}
             autoCapitalize="none"
             returnKeyType="done"
             onSubmitEditing={() => {}}
@@ -265,7 +222,7 @@ const p2pHome = () => {
               width: "70%",
               backgroundColor: colors.sheetInput,
               marginRight: 60,
-              borderColor: colors.InputBorder
+              borderColor: colors.InputBorder,
             }}
           />
 
@@ -277,22 +234,25 @@ const p2pHome = () => {
               style={{
                 width: Screen.Width,
                 height: 0.3,
-                backgroundColor: '#757575',
-                alignSelf: 'center',
+                backgroundColor: "#757575",
+                alignSelf: "center",
                 marginTop: 5,
-              }}></View>
+              }}
+            ></View>
 
-            <View style={{height: Screen.Width / 1.4}}>
+            <View style={{ height: Screen.Width / 1.4 }}>
               <FlatList
                 showsVerticalScrollIndicator={false}
                 data={p2pCoinList}
-                renderItem={({item, index}) => {
+                renderItem={({ item, index }) => {
                   return (
                     <AppText
+                      onSelect={() => setAvailableCurrency(item?.short_name)}
                       color={WHITE}
                       type={THIRTEEN}
                       weight={BOLD}
-                      style={{marginTop: 10, marginLeft: 15}}>
+                      style={{ marginTop: 10, marginLeft: 15 }}
+                    >
                       {item?.short_name}
                     </AppText>
                   );
@@ -334,18 +294,18 @@ const p2pHome = () => {
           <View style={[styles.buttonContainer, {}]}>
             <Button
               children="Reset"
-              titleStyle={{color: colors.white}}
+              titleStyle={{ color: colors.white }}
               containerStyle={styles.resetButton}
             />
             <Button
               children="Confirm"
-              titleStyle={{color: colors.black}}
-              containerStyle={{width: '48%', borderRadius: 20}}
+              titleStyle={{ color: colors.black }}
+              containerStyle={{ width: "48%", borderRadius: 20 }}
               bgColor={colors.greenShade}
             />
           </View>
 
-          <View style={{height: 10}}></View>
+          <View style={{ height: 10 }}></View>
         </View>
       </RBSheet>
 
@@ -356,12 +316,13 @@ const p2pHome = () => {
         customStyles={{
           container: styles.sheetContainer,
           wrapper: {
-            backgroundColor: '#0005',
+            backgroundColor: "#0005",
           },
           draggableIcon: {
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
-        }}>
+        }}
+      >
         <View style={styles.currencyHeader}>
           <AppText type={FOURTEEN} weight={SEMI_BOLD}>
             Amount
@@ -370,7 +331,8 @@ const p2pHome = () => {
             style={styles.removeBtn}
             onPress={() => {
               amountRef?.current?.close();
-            }}>
+            }}
+          >
             <FastImage
               source={REMOVE}
               tintColor={colors.black}
@@ -383,22 +345,23 @@ const p2pHome = () => {
             <TextInput
               editable={false}
               placeholder="e.g. 100"
-              placeholderTextColor={'#7E7E7E'}
+              placeholderTextColor={"#7E7E7E"}
               keyboardType="decimal-pad"
-              onChangeText={e => {}}
-              style={styles.currencyBoxInput}></TextInput>
+              onChangeText={(e) => {}}
+              style={styles.currencyBoxInput}
+            ></TextInput>
             <View style={styles.contain}>
               <AppText color={WHITE} weight={SEMI_BOLD} style={styles.coin}>
-                {'INR'}
+                {"INR"}
               </AppText>
             </View>
           </View>
-          <View style={{marginTop: 10}}>
+          <View style={{ marginTop: 10 }}>
             <FlatList
               data={amountList}
               horizontal
               showsHorizontalScrollIndicator={false}
-              renderItem={({item, index}) => {
+              renderItem={({ item, index }) => {
                 return (
                   <View style={[styles.currencyListView]}>
                     <AppText weight={SEMI_BOLD}>5X</AppText>
@@ -410,16 +373,16 @@ const p2pHome = () => {
           <View style={styles.buttonContainer}>
             <Button
               children="Reset"
-              titleStyle={{color: colors.white}}
+              titleStyle={{ color: colors.white }}
               containerStyle={styles.resetButton}
             />
             <Button
               children="Confirm"
-              titleStyle={{color: colors.black}}
-              containerStyle={{width: '48%'}}
+              titleStyle={{ color: colors.black }}
+              containerStyle={{ width: "48%" }}
             />
           </View>
-          <View style={{height: 10}}></View>
+          <View style={{ height: 10 }}></View>
         </View>
       </RBSheet>
 
@@ -427,14 +390,15 @@ const p2pHome = () => {
         ref={paymentRef}
         animationType="none"
         customStyles={{
-          container: [styles.sheetContainer, {height: Screen.Height / 1.7}],
+          container: [styles.sheetContainer, { height: Screen.Height / 1.7 }],
           wrapper: {
-            backgroundColor: '#0005',
+            backgroundColor: "#0005",
           },
           draggableIcon: {
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
-        }}>
+        }}
+      >
         <View style={styles.currencyHeader}>
           <AppText type={FOURTEEN} weight={SEMI_BOLD}>
             Payment Methods
@@ -443,7 +407,8 @@ const p2pHome = () => {
             style={styles.removeBtn}
             onPress={() => {
               paymentRef?.current?.close();
-            }}>
+            }}
+          >
             <FastImage
               source={REMOVE}
               tintColor={colors.black}
@@ -455,22 +420,23 @@ const p2pHome = () => {
           <View style={styles.currencyBox}>
             <FastImage
               source={searchIcon}
-              tintColor={'#7E7E7E'}
+              tintColor={"#7E7E7E"}
               resizeMode="contain"
               style={styles.searchIcon}
             />
             <TextInput
               placeholder="Search payment method"
-              placeholderTextColor={'#7E7E7E'}
-              onChangeText={e => {}}
-              style={styles.searchInput}></TextInput>
+              placeholderTextColor={"#7E7E7E"}
+              onChangeText={(e) => {}}
+              style={styles.searchInput}
+            ></TextInput>
           </View>
           <View style={styles.paymentListContainer}>
             <FlatList
               data={paymentList}
               numColumns={2}
               showsHorizontalScrollIndicator={false}
-              renderItem={({item, index}) => {
+              renderItem={({ item, index }) => {
                 return (
                   <View style={styles.paymentSheetList}>
                     <AppText weight={SEMI_BOLD}>{item}</AppText>
@@ -482,33 +448,33 @@ const p2pHome = () => {
           <View style={styles.buttonContainer}>
             <Button
               children="Reset"
-              titleStyle={{color: colors.white}}
+              titleStyle={{ color: colors.white }}
               containerStyle={styles.resetButton}
             />
             <Button
               children="Confirm"
-              titleStyle={{color: colors.black}}
-              containerStyle={{width: '48%'}}
+              titleStyle={{ color: colors.black }}
+              containerStyle={{ width: "48%" }}
             />
           </View>
 
-          <View style={{height: 10}}></View>
+          <View style={{ height: 10 }}></View>
         </View>
       </RBSheet>
       <RBSheet
         ref={fiatCurrenciesRef}
         animationType="none"
         customStyles={{
-          container: [styles.sheetContainer, {height: Screen.Height / 2}],
+          container: [styles.sheetContainer, { height: Screen.Height / 2 }],
           wrapper: {
-            backgroundColor: '#0005',
+            backgroundColor: "#0005",
           },
           draggableIcon: {
-            backgroundColor: 'transparent',
+            backgroundColor: "transparent",
           },
-        }}>
+        }}
+      >
         <View style={[styles.cryptoSheetContainer]}>
-
           <View style={[styles.paymentListContainer]}>
             <AppText color={SECOND} type={TWELVE} weight={MEDIUM}>
               Fiat Currency
@@ -517,22 +483,24 @@ const p2pHome = () => {
               style={{
                 width: Screen.Width,
                 height: 0.3,
-                backgroundColor: '#757575',
-                alignSelf: 'center',
+                backgroundColor: "#757575",
+                alignSelf: "center",
                 marginTop: 5,
-              }}></View>
+              }}
+            ></View>
 
-            <View style={{height: Screen.Width / 1.4}}>
+            <View style={{ height: Screen.Width / 1.4 }}>
               <FlatList
                 showsVerticalScrollIndicator={false}
                 data={fiatCurrencyList}
-                renderItem={({item, index}) => {
+                renderItem={({ item, index }) => {
                   return (
                     <AppText
                       color={WHITE}
                       type={THIRTEEN}
                       weight={BOLD}
-                      style={{marginTop: 10, marginLeft: 15}}>
+                      style={{ marginTop: 10, marginLeft: 15 }}
+                    >
                       {item?.short_name}
                     </AppText>
                   );
@@ -574,18 +542,18 @@ const p2pHome = () => {
           <View style={[styles.buttonContainer, {}]}>
             <Button
               children="Reset"
-              titleStyle={{color: colors.white}}
+              titleStyle={{ color: colors.white }}
               containerStyle={styles.resetButton}
             />
             <Button
               children="Confirm"
-              titleStyle={{color: colors.black}}
-              containerStyle={{width: '48%', borderRadius: 20}}
+              titleStyle={{ color: colors.black }}
+              containerStyle={{ width: "48%", borderRadius: 20 }}
               bgColor={colors.greenShade}
             />
           </View>
 
-          <View style={{height: 10}}></View>
+          <View style={{ height: 10 }}></View>
         </View>
       </RBSheet>
     </P2pHeader>
@@ -598,17 +566,17 @@ const styles = StyleSheet.create({
   searchIcon: {
     width: 25,
     height: 25,
-    position: 'absolute',
+    position: "absolute",
     bottom: 13,
     left: 10,
   },
   paymentListContainer: {
     marginTop: 15,
     width: Screen.Width - 30,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   searchInput: {
-    width: '100%',
+    width: "100%",
     zIndex: 9999,
     paddingHorizontal: 50,
     color: colors.white,
@@ -618,48 +586,48 @@ const styles = StyleSheet.create({
     height: 25,
     backgroundColor: colors.white,
     borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    position: 'absolute',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    position: "absolute",
     bottom: 15,
     right: 10,
   },
   resetButton: {
-    width: '48%',
+    width: "48%",
     borderWidth: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderColor: colors.greenShade,
-    borderRadius: 20
+    borderRadius: 20,
   },
   paymentSheetList: {
-    width: '45%',
+    width: "45%",
     marginEnd: 20,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderWidth: 1,
     borderColor: colors.buttonBg,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 10,
     padding: 10,
     borderRadius: 10,
   },
   coin: {
-    position: 'absolute',
+    position: "absolute",
     left: -35,
   },
   contain: {
-    width: '20%',
+    width: "20%",
     height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
   },
   currencyBoxInput: {
-    width: '100%',
+    width: "100%",
     height: 50,
     paddingHorizontal: 10,
     // color: 'white',
@@ -673,9 +641,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: colors.blackFive,
     // borderWidth: 1,
-    alignSelf: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignSelf: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
     backgroundColor: colors.sheetInput,
   },
   divider: {
@@ -685,14 +653,16 @@ const styles = StyleSheet.create({
   },
   listMainContainer: {
     width: Screen.Width - 15,
-    alignSelf: 'center',
+    alignSelf: "center",
     padding: 5,
     marginVertical: 5,
   },
   userContain: {
-    width: '100%',
-    alignItems: 'center',
-    flexDirection: 'row',
+    // width: '100%',
+    // alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    // justifyContent: "space-around"
   },
   listImgStyle: {
     height: 15,
@@ -706,44 +676,46 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   sameStyle: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginLeft: 5,
   },
   currencyTextBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 10,
   },
   alignItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   currencyImg: {
     height: 10,
     width: 10,
   },
   cornerStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 10,
+    // justifyContent: 'flex-end',
   },
   quantityBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 10,
   },
   buttonContain: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 10,
   },
   buyBtn: {
-    backgroundColor: colors.green,
-    width: '25%',
+    // backgroundColor: colors.green,
+    width: "75%",
     height: 30,
+    marginTop: 10,
   },
   sheetContainer: {
     backgroundColor: colors.p2pbgColor,
@@ -751,13 +723,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   currencyHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: 10,
     backgroundColor: colors.p2pbgColor,
-    position: 'absolute',
+    position: "absolute",
     width: Screen.Width,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     paddingHorizontal: 15,
   },
   emptyView: {
@@ -781,9 +753,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: colors.buttonBg,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     marginTop: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

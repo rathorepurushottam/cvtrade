@@ -56,6 +56,7 @@ const AppText = ({
   style,
   color,
   numberOfLines,
+  onSelect,
   ...props
 }) => {
   const getTextStyle = (type, weight, color) => {
@@ -201,6 +202,7 @@ const AppText = ({
   };
   return (
     <Text
+    onPress={onSelect}
       allowFontScaling={false}
       numberOfLines={numberOfLines}
       style={StyleSheet.flatten([styles.text(type, weight, color), style])}

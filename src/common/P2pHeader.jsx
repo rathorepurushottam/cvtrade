@@ -164,8 +164,8 @@ const P2pHeader = ({
           style={{
             flex: 1,
             backgroundColor:colors.p2pbgColor,
-            borderTopLeftRadius: 15,
-            borderTopRightRadius: 15,
+            // borderTopLeftRadius: 15,
+            // borderTopRightRadius: 15,
           }}>
    {children}
           </View>

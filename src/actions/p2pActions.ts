@@ -13,6 +13,7 @@ import {
     setFiatCurrencyList,
     setPaymentMethodList,
     setBuyOrderList,
+    setSellOrderList
 } from '../slices/p2pSlice';
 import {AppDispatch} from '../store/store';
 
@@ -69,9 +70,22 @@ export const getbuyOrdersList =
       if (response.success) {
         dispatch(setBuyOrderList(response?.data))
       } 
-      // else {
-      //   showError(response?.message);
-      // }
+    } catch (e) {
+      logger(e);
+      showError(e?.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  export const getSellOrdersList =
+  (data: any) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setLoading(true));
+      const response: any = await appOperation.customer.get_sell_order_list(data);
+      if (response.success) {
+        dispatch(setSellOrderList(response?.data))
+      } 
     } catch (e) {
       logger(e);
       showError(e?.message);

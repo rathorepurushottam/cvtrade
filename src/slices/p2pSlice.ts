@@ -5,6 +5,7 @@ export const initialState: p2pSliceProps = {
     fiatCurrencyList: [],
     paymentMethodList: [],
     buyOrderList: [],
+    sellOrderList: [],
 //   walletBalance: 0,
 //   userWallet: [],
 //   walletAddress: '',
@@ -34,6 +35,9 @@ export const p2pSlice = createSlice({
     },
     setBuyOrderList: (state, {payload}) => {
       state.buyOrderList = payload;
+    },
+    setSellOrderList: (state, {payload}) => {
+      state.sellOrderList = payload;
     },
     // setWalletAddress: (state, {payload}) => {
     //   state.walletAddress = payload;
@@ -72,6 +76,7 @@ export const {
     setFiatCurrencyList,
     setPaymentMethodList,
     setBuyOrderList,
+    setSellOrderList,
 //   setWalletBalance,
 //   setUserWallet,
 //   setWalletAddress,

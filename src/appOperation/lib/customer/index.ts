@@ -305,4 +305,6 @@ export default (appOperation: AppOperation) => ({
         ),
         get_buy_order_list: (data: any) =>
     appOperation.post('p2p/buy_order', data, CUSTOMER_TYPE),
+    get_sell_order_list: (data: any) =>
+    appOperation.post('p2p/sell_order', data, CUSTOMER_TYPE),
   });

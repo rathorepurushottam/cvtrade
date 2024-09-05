@@ -5,7 +5,15 @@ import { useAppSelector } from "../../store/hooks";
 import { borderWidth, Screen } from "../../theme/dimens";
 import { colors } from "../../theme/colors";
 import { useMemo } from "react";
-import { AppText, FOURTEEN, MEDIUM, SECOND, SEMI_BOLD, TWELVE } from "../../common";
+import {
+  AppText,
+  Button,
+  FOURTEEN,
+  MEDIUM,
+  SECOND,
+  SEMI_BOLD,
+  TWELVE,
+} from "../../common";
 
 const AddPaymentMethod = () => {
   const paymentMethodList = useAppSelector(
@@ -14,8 +22,6 @@ const AddPaymentMethod = () => {
   const bankList = paymentMethodList?.BankDetails;
   const upiList = paymentMethodList?.upi;
 
-
-    console.log(paymentMethodList, "paymentMethodList");
   const _renderItem = ({ item, index }) => {
     return (
       <View style={styles.listMainContainer}>
@@ -32,15 +38,15 @@ const AddPaymentMethod = () => {
             </AppText>
             <View style={styles.quantityBox}>
               <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
-                Limit {item?.volume} {item?.base_short_name}
+              {item?.account_holder_name}
               </AppText>
               {/* <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
-                  UPI{' '}
+                   Account Holder Name{' '}
                   <AppText
                     type={TWELVE}
                     weight={MEDIUM}
                     style={{color: colors.pink}}>
-                    |
+                   {item?.account_holder_name}
                   </AppText>
                 </AppText> */}
             </View>
@@ -53,28 +59,28 @@ const AddPaymentMethod = () => {
                 /> */}
           <View style={styles.buttonContain}>
             <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
-              Price {item?.quote_short_name} {item?.fixed_price}
+              {item?.account_number}
+            </AppText>
+            <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
+              {item?.ifsc_code}
             </AppText>
           </View>
         </View>
         <View>
           <View style={styles.cornerStyle}>
-            {item?.payment_method?.map((item) => {
-              return (
-                <>
+            
                   <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
-                    {item?.type}
+                    {item?.bank_name}
                   </AppText>
                   <AppText
                     type={TWELVE}
                     weight={MEDIUM}
                     style={{ color: colors.pink, marginLeft: 5 }}
                   >
-                    |
+                    {item?.branch_name}
                   </AppText>
-                </>
-              );
-            })}
+                
+            
           </View>
         </View>
 
@@ -92,18 +98,19 @@ const AddPaymentMethod = () => {
       <ToolBar isLogo={false} isSecond title="Payment Method" />
       <View style={styles.divider} />
       <View>
-   <Button
+        <Button
           children="Add Payment Method"
           isSecond
           containerStyle={{
-            backgroundColor: '#7ED375',
-            width: '48%',
-            height:35,
-            alignSelf: "center"
+            backgroundColor: "#7ED375",
+            width: "48%",
+            height: 35,
+            alignSelf: "center",
           }}
-          onPress={() => NavigationService.navigate("p2pAddPost")}
+          //   onPress={() => NavigationService.navigate("p2pAddPost")}
         />
-   </View>
+      </View>
+      <View style={styles.divider} />
       <FlatList data={bankList} renderItem={_renderItem} />
     </AppSafeAreaView>
   );

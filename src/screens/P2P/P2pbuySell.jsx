@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {Screen} from '../../theme/dimens';
-import {Button} from '../../common';
+import {AppText, Button, FOURTEEN} from '../../common';
 import FastImage from 'react-native-fast-image';
-import { notifyIcon} from '../../helper/ImageAssets';
+import { ThreeDots_Icon} from '../../helper/ImageAssets';
+import { colors } from '../../theme/colors';
 
-const P2pbuySell = ({onKeyPressChange = () => {}}) => {
+const P2pbuySell = ({onKeyPressChange = () => {}, onOrders, onPosts}) => {
   const [activeTab, setActiveTab] = useState('Buy');
 
   // useEffect(() => {
@@ -68,12 +69,7 @@ const P2pbuySell = ({onKeyPressChange = () => {}}) => {
             setActiveTab('Sell'), handleTabPress('Sell');
           }}
         />
-      </View>
-      {/* <FastImage
-        source={notifyIcon}
-        style={{height: 20, width: 20}}
-        resizeMode="contain"
-      /> */}
+      </View>  
     </View>
   );
 };

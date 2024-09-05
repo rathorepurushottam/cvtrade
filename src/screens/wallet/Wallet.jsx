@@ -275,7 +275,7 @@ const Wallet = () => {
                       ]}
                     >
                       <AppText type={ELEVEN} weight={SEMI_BOLD}>
-                        {item?.status === true ? 'Success' : item?.status}
+                        {item?.status === "true" ? 'Success' : item?.status}
                       </AppText>
                     </View>
                   </View>

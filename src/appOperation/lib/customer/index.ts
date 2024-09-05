@@ -307,4 +307,18 @@ export default (appOperation: AppOperation) => ({
     appOperation.post('p2p/buy_order', data, CUSTOMER_TYPE),
     get_sell_order_list: (data: any) =>
     appOperation.post('p2p/sell_order', data, CUSTOMER_TYPE),
+    p2p_order_list: () =>
+        appOperation.get(
+          'p2p/my_orders',
+          undefined,
+          undefined,
+          CUSTOMER_TYPE,
+        ),
+        p2p_posts_list: () =>
+        appOperation.get(
+          'p2p/my_ads',
+          undefined,
+          undefined,
+          CUSTOMER_TYPE,
+        ),
   });

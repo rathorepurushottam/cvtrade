@@ -73,6 +73,9 @@ export interface p2pSliceProps {
   paymentMethodList: [],
   buyOrderList: [],
   sellOrderList: [],
+  postOrders: [],
+  purchasedOrders: [],
+  postsList: [],
   // walletBalance: number | string;
   // userWallet: WalletProps[];
   // walletAddress: string;

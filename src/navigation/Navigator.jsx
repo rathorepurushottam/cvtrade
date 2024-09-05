@@ -88,12 +88,12 @@ import qsTransaction from '../screens/QuickBuySell/qsTransaction';
 import LackedStakes from '../screens/Staking/LackedStakes';
 import StakingHistory from '../screens/Staking/StakingHistory';
 import BtcCoinDetails from '../screens/trades/BtcCoinDetails';
-import p2pHome from '../screens/P2P/p2pHome';
-import p2pAmount from '../screens/P2P/p2pOrder';
-import p2pProfile from '../screens/P2P/p2pProfile';
+import P2pHome from '../screens/P2P/P2pHome';
+import p2pOrder from '../screens/P2P/P2pOrder';
+import P2pPost from '../screens/P2P/P2pPost';
 import {useAppSelector} from '../store/hooks';
-import p2pAds from '../screens/P2P/p2pAds';
-import p2pOrder from '../screens/P2P/p2pOrder';
+import P2pAddPost from '../screens/P2P/P2pAddPost';
+import P2pOrder from '../screens/P2P/P2pOrder';
 // import p2pFilter from '../screens/P2P/P2pFilter';
 // import buyCrypto from '../screens/P2P/buyCrypto';
 // import buyByCrypto from '../screens/P2P/BuyByCrypto';
@@ -108,6 +108,7 @@ import ReferralList from '../screens/account/ReferralList';
 import ComingSoon from '../common/ComingSoon';
 import Market from '../screens/Market';
 import CurrencyList from '../screens/wallet/CurrencyList';
+import AddPaymentMethod from '../screens/P2P/AddPaymentMethod';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -263,7 +264,13 @@ const MyAuthLoadingStack = () => {
       <Stack.Screen name={routes.REFERRAL_LIST} component={ReferralList} />
       <Stack.Screen name={"ComingSoon"} component={ComingSoon} />
       <Stack.Screen name={"CurrencyList"} component={CurrencyList} />
-      <Stack.Screen name={"p2pHome"} component={p2pHome} />
+      <Stack.Screen name={"p2pHome"} component={P2pHome} />
+      <Stack.Screen name={"p2pOrders"} component={P2pOrder} />
+      <Stack.Screen name={"p2pPost"} component={P2pPost} />
+      <Stack.Screen name={"p2pAddPost"} component={P2pAddPost} />
+      <Stack.Screen name={"AddPaymentMethod"} component={AddPaymentMethod} />
+      
+      
       
     </Stack.Navigator>
   );

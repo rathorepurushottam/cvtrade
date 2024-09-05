@@ -28,6 +28,7 @@ import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {setP2P} from '../slices/homeSlice';
 import {colors} from '../theme/colors';
 import LinearGradient from 'react-native-linear-gradient';
+import AppSafeAreaView from './AppSafeAreaView';
 
 const P2pHeader = ({
   isLogo = true,
@@ -44,7 +45,7 @@ const P2pHeader = ({
   isLock = false,
 }) => {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <AppSafeAreaView>
       <StatusBar backgroundColor={'black'} barStyle={'light-content'}/>
       {/* <ImageBackground resizeMode="cover" source={p2pBg} style={{flex: 1}}> */}
         {/* <View
@@ -170,7 +171,7 @@ const P2pHeader = ({
    {children}
           </View>
       {/* </ImageBackground> */}
-    </SafeAreaView>
+    </AppSafeAreaView>
   );
 };
 

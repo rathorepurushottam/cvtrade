@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   dropdownWrapper: {
     borderRadius: 5,
     height: inputHeight,
-    backgroundColor: colors.inputBackground,
+    backgroundColor: "#FFFFFF47",
     paddingHorizontal: Platform.OS === 'ios' ? universalPaddingVertical : 0,
     alignItems: 'center',
     justifyContent: 'center',

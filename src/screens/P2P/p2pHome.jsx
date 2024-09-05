@@ -40,7 +40,11 @@ import {
 import RBSheet from "react-native-raw-bottom-sheet";
 import TouchableOpacityView from "../../common/TouchableOpacityView";
 import NavigationService from "../../navigation/NavigationService";
-import { BUY_CRYPTO, p2pFilter } from "../../navigation/routes";
+import {
+  BUY_CRYPTO,
+  KYC_STATUS_SCREEN,
+  p2pFilter,
+} from "../../navigation/routes";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
   getP2pCoinList,
@@ -50,8 +54,9 @@ import {
   getSellOrdersList,
 } from "../../actions/p2pActions";
 import { setBuyOrderList } from "../../slices/p2pSlice";
+import AppSafeAreaView from "../../common/AppSafeAreaView";
 
-const p2pHome = () => {
+const P2pHome = () => {
   const dispatch = useAppDispatch();
   const p2pCoinList = useAppSelector((state) => state.p2p.p2pCoinList);
   const fiatCurrencyList = useAppSelector(
@@ -62,6 +67,7 @@ const p2pHome = () => {
   );
   const buyOrderList = useAppSelector((state) => state.p2p.buyOrderList);
   const sellOrderList = useAppSelector((state) => state.p2p.sellOrderList);
+  const userData = useAppSelector((state) => state.auth.userData);
   const paymentList = Object.keys(paymentMethodList);
   const amountRef = useRef(null);
   const paymentRef = useRef(null);
@@ -70,9 +76,11 @@ const p2pHome = () => {
   const [orderType, setOrderType] = useState("Buy");
   const [amountFocus, setAmountFocus] = useState(false);
   // const [currencySearch, setCurrencySearch] = useState("");
-  const [availableCurrency, setAvailableCurrency] = useState(p2pCoinList[0]?.short_name);
-  const [fiatCurrency, setFiatCurrency] = useState('');
-  const [paymentType, setPaymentType] = useState('');
+  const [availableCurrency, setAvailableCurrency] = useState(
+    p2pCoinList[0]?.short_name
+  );
+  const [fiatCurrency, setFiatCurrency] = useState("");
+  const [paymentType, setPaymentType] = useState("");
   const [buyList, setBuyList] = useState([1, 2, 3]);
   const [amount, setAmount] = useState(0);
 
@@ -86,7 +94,9 @@ const p2pHome = () => {
     let data = {
       short_name: availableCurrency,
     };
-    dispatch(orderType === "Buy"  ? getbuyOrdersList(data) : getSellOrdersList(data));
+    dispatch(
+      orderType === "Buy" ? getbuyOrdersList(data) : getSellOrdersList(data)
+    );
   }, [availableCurrency, orderType]);
 
   const handleChangeAvailableCurrency = (coin) => {
@@ -96,13 +106,21 @@ const p2pHome = () => {
 
   const handleAmountFilter = (amount) => {
     let filteredData = [];
-    if(orderType === "Buy") {
-       filteredData = buyOrderList.filter((item) => item?.fixed_price === amount);
+    if (orderType === "Buy") {
+      filteredData = buyOrderList.filter(
+        (item) => item?.fixed_price === amount
+      );
     } else {
-       filteredData = sellOrderList.filter((item) => item?.fixed_price === amount);
+      filteredData = sellOrderList.filter(
+        (item) => item?.fixed_price === amount
+      );
     }
-     dispatch(orderType === "Buy" ? setBuyOrderList(filteredData) : setBuyOrderList(filteredData));
-     amountRef?.current?.close();
+    dispatch(
+      orderType === "Buy"
+        ? setBuyOrderList(filteredData)
+        : setBuyOrderList(filteredData)
+    );
+    amountRef?.current?.close();
   };
 
   const handleResetAmountFilter = () => {
@@ -111,29 +129,41 @@ const p2pHome = () => {
     let data = {
       short_name: availableCurrency,
     };
-    dispatch(orderType === "Buy"  ? getbuyOrdersList(data) : getSellOrdersList(data));
+    dispatch(
+      orderType === "Buy" ? getbuyOrdersList(data) : getSellOrdersList(data)
+    );
     amountRef?.current?.close();
   };
 
   const handlePaymentFilter = (type) => {
     let filteredData = [];
-    if(orderType === "Buy") {
+    if (orderType === "Buy") {
       filteredData = buyOrderList.filter((item) => item);
     } else {
       filteredData = sellOrderList.filter((item) => item);
     }
-    
-    console.log(filteredData, "payfilteredData");
-    //  dispatch(orderType === "Buy" ? setBuyOrderList(filteredData) : setBuyOrderList(filteredData));
-    //  paymentRef?.current?.close();
-  }
 
- 
-    const _renderItem = ({ item, index }) => {
-      return (
-        <View style={styles.listMainContainer}>
-          <View style={styles.userContain}>
-            <View style={{flexDirection: "column", justifyContent: "space-between"}}>
+    // console.log(filteredData, "payfilteredData");
+    //  dispatch(orderType === "Buy" ? setBuyOrderList(filteredData) : setBuyOrderList(filteredData));
+    paymentRef?.current?.close();
+  };
+
+
+  const handleActionButton = () => {
+    if (userData?.kycVerified !== 2) {
+      NavigationService.navigate(KYC_STATUS_SCREEN);
+    } else {
+      NavigationService.navigate(BUY_CRYPTO);
+    }
+  };
+
+  const _renderItem = ({ item, index }) => {
+    return (
+      <View style={styles.listMainContainer}>
+        <View style={styles.userContain}>
+          <View
+            style={{ flexDirection: "column", justifyContent: "space-between" }}
+          >
             <AppText
               type={FOURTEEN}
               weight={SEMI_BOLD}
@@ -155,72 +185,125 @@ const p2pHome = () => {
               </AppText>
             </AppText> */}
             </View>
+          </View>
 
-            </View>
-            
-            {/* <FastImage
+          {/* <FastImage
               source={doneIcon}
               style={styles.listImgStyle}
               resizeMode="contain"
             /> */}
-            <View style={styles.buttonContain}>
-              <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
-                Price {item?.quote_short_name} {item?.fixed_price}
-              </AppText>
+          <View style={styles.buttonContain}>
+            <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
+              Price {item?.quote_short_name} {item?.fixed_price}
+            </AppText>
 
-              <Button
-                children="Buy"
-                titleStyle={{ color: colors.white }}
-                containerStyle={[styles.buyBtn, {backgroundColor: orderType === 'Buy' ? colors.green : colors.red}]}
-                onPress={() => {
-                  NavigationService.navigate(BUY_CRYPTO);
-                }}
-              />
-            </View>
+            <Button
+              children={
+                userData?.kycVerified !== 2
+                  ? "Restricted"
+                  : orderType === "Buy"
+                  ? "Sell"
+                  : "Buy"
+              }
+              titleStyle={{ color: colors.white }}
+              containerStyle={[
+                styles.buyBtn,
+                {
+                  backgroundColor:
+                    userData?.kycVerified !== 2
+                      ? colors.red
+                      : orderType === "Buy"
+                      ? colors.green
+                      : colors.red,
+                },
+              ]}
+              onPress={() => handleActionButton()}
+            />
           </View>
-          <View>
-            <View style={styles.cornerStyle}>
-              {item?.payment_method?.map((item) => {
-                return (
-                  <><AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
+        </View>
+        <View>
+          <View style={styles.cornerStyle}>
+            {item?.payment_method?.map((item) => {
+              return (
+                <>
+                  <AppText type={TWELVE} weight={MEDIUM} color={SECOND}>
                     {item?.type}
-
-                  </AppText><AppText
+                  </AppText>
+                  <AppText
                     type={TWELVE}
                     weight={MEDIUM}
                     style={{ color: colors.pink, marginLeft: 5 }}
                   >
-                      |
-                    </AppText></>
-                );
-              })}
-            </View>
-            
+                    |
+                  </AppText>
+                </>
+              );
+            })}
           </View>
-
-          {buyOrderList?.length - 1 == index ? (
-            <></>
-          ) : (
-            <View style={styles.divider} />
-          )}
         </View>
-      );
-    };
 
-    // return _renderItem;
+        {buyOrderList?.length - 1 == index ? (
+          <></>
+        ) : (
+          <View style={styles.divider} />
+        )}
+      </View>
+    );
+  };
 
-    
-
-  
-
+  // return _renderItem;
 
   return (
+    <AppSafeAreaView>
     <P2pHeader isLogo={false}>
       <P2pbuySell
         onKeyPressChange={(e) => {
           setOrderType(e);
         }}
       />
+      <View style={{flexDirection: "row", justifyContent: "space-around",alignItems: "center" , marginHorizontal: 10, borderRadius: 10, marginTop: 10}}>
+        <TouchableOpacity
+          onPress={() => NavigationService.navigate("p2pPost")}
+          style={{
+            backgroundColor: colors.belowText,
+            width: 60,
+            height: 40,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 8,
+            padding: 2,
+            margin: 5
+          }}
+        >
+          <AppText type={FOURTEEN} weight={SEMI_BOLD}>Posts</AppText>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => NavigationService.navigate("p2pOrders")}
+        style={{
+          backgroundColor: colors.belowText,
+          width: 60,
+          height: 40,
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 8,
+          padding: 2,
+          margin: 5
+        }}>
+          <AppText type={FOURTEEN} weight={SEMI_BOLD}>Orders</AppText>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => NavigationService.navigate('AddPaymentMethod')}
+        style={{
+          backgroundColor: colors.belowText,
+          width: 140,
+          height: 40,
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 8,
+          padding: 2,
+          margin: 5
+        }}>
+          <AppText type={FOURTEEN} weight={SEMI_BOLD}>Payment Method</AppText>
+        </TouchableOpacity>
+      </View>
       <P2pSheet
         onFilterPress={() => {
           NavigationService.navigate(p2pFilter);
@@ -239,7 +322,10 @@ const p2pHome = () => {
         }}
       />
       <View style={styles.divider} />
-      <FlatList data={orderType === "Buy" ? buyOrderList  : sellOrderList} renderItem={_renderItem} />
+      <FlatList
+        data={orderType === "Buy" ? buyOrderList : sellOrderList}
+        renderItem={_renderItem}
+      />
 
       <RBSheet
         ref={availableCurrenciesRef}
@@ -296,8 +382,12 @@ const p2pHome = () => {
                 renderItem={({ item, index }) => {
                   return (
                     <AppText
-                      onSelect={() => handleChangeAvailableCurrency(item?.short_name)}
-                      color={availableCurrency === item?.short_name ? GREEN : WHITE}
+                      onSelect={() =>
+                        handleChangeAvailableCurrency(item?.short_name)
+                      }
+                      color={
+                        availableCurrency === item?.short_name ? GREEN : WHITE
+                      }
                       type={THIRTEEN}
                       weight={BOLD}
                       style={{ marginVertical: 10, marginLeft: 15 }}
@@ -388,7 +478,15 @@ const p2pHome = () => {
               onChangeText={(e) => setAmount(e)}
               onFocus={() => setAmountFocus(true)}
               onBlur={() => setAmountFocus(false)}
-              style={[styles.currencyBoxInput, {borderWidth:1, borderColor: !amountFocus ? colors.inputBorder :colors.focusedColor}]}
+              style={[
+                styles.currencyBoxInput,
+                {
+                  borderWidth: 1,
+                  borderColor: !amountFocus
+                    ? colors.inputBorder
+                    : colors.focusedColor,
+                },
+              ]}
             ></TextInput>
           </View>
           <View style={styles.buttonContainer}>
@@ -401,7 +499,7 @@ const p2pHome = () => {
             <Button
               children="Confirm"
               titleStyle={{ color: colors.black }}
-              containerStyle={{ width: "48%", borderRadius: 20}}
+              containerStyle={{ width: "48%", borderRadius: 20 }}
               bgColor={colors.greenShade}
               onPress={() => handleAmountFilter(parseInt(amount))}
             />
@@ -442,7 +540,7 @@ const p2pHome = () => {
         </View>
         <View style={[styles.cryptoSheetContainer]}>
           {/* <View style={styles.currencyBox}> */}
-            {/* <FastImage
+          {/* <FastImage
               source={searchIcon}
               tintColor={"#7E7E7E"}
               resizeMode="contain"
@@ -463,8 +561,14 @@ const p2pHome = () => {
               renderItem={({ item, index }) => {
                 return (
                   <TouchableOpacity
-                  style={[styles.paymentSheetList, {backgroundColor: paymentType === item ? colors.green : "transparent"}]}
-                  onPress={() => setPaymentType(item)}
+                    style={[
+                      styles.paymentSheetList,
+                      {
+                        backgroundColor:
+                          paymentType === item ? colors.green : "transparent",
+                      },
+                    ]}
+                    onPress={() => setPaymentType(item)}
                   >
                     <AppText weight={SEMI_BOLD}>{item}</AppText>
                   </TouchableOpacity>
@@ -477,11 +581,12 @@ const p2pHome = () => {
               children="Reset"
               titleStyle={{ color: colors.white }}
               containerStyle={styles.resetButton}
+              onPress={() => paymentRef?.current?.close()}
             />
             <Button
               children="Confirm"
               titleStyle={{ color: colors.black }}
-              containerStyle={{ width: "48%", borderRadius: 20}}
+              containerStyle={{ width: "48%", borderRadius: 20 }}
               bgColor={colors.greenShade}
               onPress={() => handlePaymentFilter(paymentType)}
             />
@@ -525,7 +630,7 @@ const p2pHome = () => {
                 renderItem={({ item, index }) => {
                   return (
                     <AppText
-                    onSelect={(item) => setFiatCurrency(item?.short_name)}
+                      onSelect={(item) => setFiatCurrency(item?.short_name)}
                       color={fiatCurrency === item?.short_name ? GREEN : WHITE}
                       type={THIRTEEN}
                       weight={BOLD}
@@ -542,10 +647,11 @@ const p2pHome = () => {
         </View>
       </RBSheet>
     </P2pHeader>
+    </AppSafeAreaView>
   );
 };
 
-export default p2pHome;
+export default P2pHome;
 
 const styles = StyleSheet.create({
   searchIcon: {
@@ -618,7 +724,7 @@ const styles = StyleSheet.create({
     // color: 'white',
     backgroundColor: colors.sheetInput,
     borderRadius: 10,
-    color: 'white'
+    color: "white",
   },
   currencyBox: {
     marginTop: 20,
